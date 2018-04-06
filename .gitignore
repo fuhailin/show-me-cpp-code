@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+LeetCode/.vs/
+LeetCode/剑指offer/Debug/
+LeetCode/LeetCode/Debug/
