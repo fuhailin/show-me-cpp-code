@@ -143,6 +143,7 @@
     <ClCompile Include="从尾到头打印链表.cpp" />
     <ClCompile Include="替换空格.cpp" />
     <ClCompile Include="理解字符串.cpp" />
+    <ClCompile Include="用两个栈实现队列.cpp" />
     <ClCompile Include="重建二叉树.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

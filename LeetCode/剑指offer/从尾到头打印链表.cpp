@@ -61,5 +61,6 @@ int main3()
 	printf("请输入第1个链表:\n");
 	ListNode *L1 = Solution().Create();
 	vector<int> test = Solution().printListFromTailToHead(L1);
-	system("pause");
+	system("pause"); 
+	return 0;
 }

@@ -30,5 +30,8 @@
     <ClCompile Include="重建二叉树.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="用两个栈实现队列.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
