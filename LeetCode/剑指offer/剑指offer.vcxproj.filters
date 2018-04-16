@@ -33,5 +33,17 @@
     <ClCompile Include="用两个栈实现队列.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="旋转数组的最小数字.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="数值的整数次方.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="分解整数.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="回文串.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -141,6 +141,10 @@
   <ItemGroup>
     <ClCompile Include="二维数组中查找.cpp" />
     <ClCompile Include="从尾到头打印链表.cpp" />
+    <ClCompile Include="分解整数.cpp" />
+    <ClCompile Include="回文串.cpp" />
+    <ClCompile Include="数值的整数次方.cpp" />
+    <ClCompile Include="旋转数组的最小数字.cpp" />
     <ClCompile Include="替换空格.cpp" />
     <ClCompile Include="理解字符串.cpp" />
     <ClCompile Include="用两个栈实现队列.cpp" />

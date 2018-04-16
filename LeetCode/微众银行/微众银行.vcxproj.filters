@@ -15,19 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LeetCode.cpp">
+    <ClCompile Include="求数列的和.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="删除链表中的元素.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="构造函数.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="螺旋矩阵.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Decode Ways.cpp">
+    <ClCompile Include="水仙花数.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

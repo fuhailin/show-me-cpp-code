@@ -71,9 +71,44 @@ void BubbleSort(int R[], int n)
 	}
 }
 
+void QuickSort(int R[], int left, int right)
+{
+	int temp;
+	int i = left, j = right;
+	if (left < right)
+	{
+		temp = R[left];
+		while (i!=j)
+		{
+			while (j>i&&R[j]>temp)
+			{
+				--j;
+			}
+			if (i < j)
+			{
+				R[i] = R[j];
+				++i;
+			}
+			while (i<j&&R[i]<temp)
+			{
+				++i;
+			}
+			if (i < j)
+			{
+				R[j] = R[i];
+				--j;
+			}
+		}
+		R[i] = temp;
+		QuickSort(R, left, i - 1);
+		QuickSort(R, i + 1, right);
+	}
+}
+
 int main()
 {
 	int test[10] = { 9,8,7,6,5,4,3,2,1,0 };
+	QuickSort(test, 0, 9);
 	HalfInsertSort(test, 10);
 	//BubbleSort(test, 10);
 	int n = 10;
