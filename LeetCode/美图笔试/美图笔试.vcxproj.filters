@@ -15,16 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="求数列的和.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="水仙花数.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="1的个数.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="回文数.cpp">
+    <ClCompile Include="最大公约数.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

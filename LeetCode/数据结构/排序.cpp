@@ -108,6 +108,7 @@ void QuickSort(int R[], int left, int right)
 int main()
 {
 	int test[10] = { 9,8,7,6,5,4,3,2,1,0 };
+	InsertSort(test,10);
 	QuickSort(test, 0, 9);
 	HalfInsertSort(test, 10);
 	//BubbleSort(test, 10);

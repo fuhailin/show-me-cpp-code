@@ -45,5 +45,8 @@
     <ClCompile Include="回文串.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="调整数组顺序使奇数位于偶数前面.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

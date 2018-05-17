@@ -29,7 +29,7 @@ void shuixianflower(int m,int n)
 	}
 }
 
-int main()
+int main2()
 {
 	vector<vector<int>> test1;
 	vector<int> test2(2);
