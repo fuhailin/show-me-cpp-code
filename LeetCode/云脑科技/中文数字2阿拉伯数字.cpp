@@ -42,6 +42,8 @@ int chineseNum2num(wstring s)
 	for (int i = 0; i < s.length(); ++i)
 	{
 		curr_char = s.at(i);
+		if (chineseNum.find(curr_char) == chineseNum.end())
+			return NULL;
 		curr_digit = chineseNum.at(curr_char);
 
 		if (curr_digit == pow(10, 8))//meet 「亿」 or 「億」
@@ -101,18 +103,17 @@ int getArrayLen(T& array)
 
 int main()
 {
-	wstring test;
+	/*wstring test;
 	wcin >> test;
-	wcout << test << endl;
+	wcout << test << endl;*/
 
 	wcout.imbue(locale("chs"));
-	wstring test1 = L"华师";
-	wcout << test1 << endl;
+	/*wstring test1 = L"华师";
+	wcout << test1 << endl;*/
 
 	
 
-	wstring testdict[] = { L"五十八", L"一百二十三万四千五百六十七" ,L"三千二百一十万零二百一十五" ,L"一亿零九十万零七十六" };
-	cout << getArrayLen(testdict) << endl;
+	wstring testdict[] = { L"哈十八",L"五十八", L"一百二十三万四千五百六十七" ,L"三千二百一十万零二百一十五" ,L"一亿零九十万零七十六" };
 	for (int i = 0; i < getArrayLen(testdict); ++i)
 	{
 		wcout << testdict[i] << '\t' << chineseNum2num(testdict[i]) << endl;

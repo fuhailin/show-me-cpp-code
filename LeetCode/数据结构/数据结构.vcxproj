@@ -139,12 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="二叉树.cpp" />
-    <ClCompile Include="单链表合并.cpp" />
-    <ClCompile Include="图.cpp" />
-    <ClCompile Include="排序.cpp" />
-    <ClCompile Include="笔试题.cpp" />
-    <ClCompile Include="顺序栈.cpp" />
+    <ClCompile Include="cpp容器之map.cpp" />
+    <ClCompile Include="4二叉树.cpp" />
+    <ClCompile Include="2单链表合并.cpp" />
+    <ClCompile Include="5图.cpp" />
+    <ClCompile Include="6排序.cpp" />
+    <ClCompile Include="1笔试题.cpp" />
+    <ClCompile Include="3顺序栈.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
