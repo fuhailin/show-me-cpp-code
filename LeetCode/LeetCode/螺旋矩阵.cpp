@@ -53,7 +53,7 @@ vector<vector<int>> SpiralMatrix::generateMatrix(int n)
 
 
 
-int main4()
+int main4_1()
 {
 	SpiralMatrix spm;
 	spm.generateMatrix(3);

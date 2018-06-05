@@ -2,7 +2,7 @@
 #include<map>
 using namespace std;
 
-int main()
+int main7()
 {
 	map<char, int> chineseNum;
 	chineseNum.insert(pair<char, int>('A', 0));

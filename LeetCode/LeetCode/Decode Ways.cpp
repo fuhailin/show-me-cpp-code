@@ -28,7 +28,7 @@ public:
 		return r1;
 	}
 };
-int main()
+int main1()
 {
 	int test = Solution().numDecodings("12312434");
 	system("pause");

@@ -30,5 +30,20 @@
     <ClCompile Include="Decode Ways.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="12 Integer to Roman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="13. Roman to Integer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3. Longest Substring Without Repeating Characters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4. Median of Two Sorted Arrays.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="80. Remove Duplicates from Sorted Array II.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

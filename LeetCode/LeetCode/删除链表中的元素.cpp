@@ -98,7 +98,7 @@ public:
 
 
 
-int main3()
+int main3_1()
 {
 	ListNode *L1;
 	int temp;

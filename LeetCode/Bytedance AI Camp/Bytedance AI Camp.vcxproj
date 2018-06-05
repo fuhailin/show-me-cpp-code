@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{1CF3FF26-AF61-446D-B9FF-1DF4FB3CE6D6}</ProjectGuid>
+    <ProjectGuid>{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>数据结构</RootNamespace>
+    <RootNamespace>BytedanceAICamp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,14 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="7cpp容器之map.cpp" />
-    <ClCompile Include="4二叉树.cpp" />
-    <ClCompile Include="2单链表合并.cpp" />
-    <ClCompile Include="5图.cpp" />
-    <ClCompile Include="6排序.cpp" />
-    <ClCompile Include="1笔试题.cpp" />
-    <ClCompile Include="3顺序栈.cpp" />
-    <ClCompile Include="8静态变量.cpp" />
+    <ClCompile Include="区间和.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

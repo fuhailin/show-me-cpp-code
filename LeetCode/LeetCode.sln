@@ -19,6 +19,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "阿里巴巴", "阿里巴�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "云脑科技", "云脑科技\云脑科技.vcxproj", "{D25FF062-2266-41CC-AA02-0376C9BFAEFB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bytedance AI Camp", "Bytedance AI Camp\Bytedance AI Camp.vcxproj", "{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "牛客网", "牛客网\牛客网.vcxproj", "{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,8 +95,27 @@ Global
 		{D25FF062-2266-41CC-AA02-0376C9BFAEFB}.Release|x64.Build.0 = Release|x64
 		{D25FF062-2266-41CC-AA02-0376C9BFAEFB}.Release|x86.ActiveCfg = Release|Win32
 		{D25FF062-2266-41CC-AA02-0376C9BFAEFB}.Release|x86.Build.0 = Release|Win32
+		{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}.Debug|x64.ActiveCfg = Debug|x64
+		{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}.Debug|x64.Build.0 = Debug|x64
+		{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}.Debug|x86.ActiveCfg = Debug|Win32
+		{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}.Debug|x86.Build.0 = Debug|Win32
+		{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}.Release|x64.ActiveCfg = Release|x64
+		{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}.Release|x64.Build.0 = Release|x64
+		{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}.Release|x86.ActiveCfg = Release|Win32
+		{3F7C04D3-73AE-4A21-907D-3729F8E8D97B}.Release|x86.Build.0 = Release|Win32
+		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Debug|x64.ActiveCfg = Debug|x64
+		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Debug|x64.Build.0 = Debug|x64
+		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Debug|x86.ActiveCfg = Debug|Win32
+		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Debug|x86.Build.0 = Debug|Win32
+		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Release|x64.ActiveCfg = Release|x64
+		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Release|x64.Build.0 = Release|x64
+		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Release|x86.ActiveCfg = Release|Win32
+		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {576F651F-E412-4603-BA86-AA93A5B77090}
 	EndGlobalSection
 EndGlobal

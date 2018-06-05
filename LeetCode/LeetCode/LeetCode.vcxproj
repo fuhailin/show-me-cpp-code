@@ -139,6 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="12 Integer to Roman.cpp" />
+    <ClCompile Include="13. Roman to Integer.cpp" />
+    <ClCompile Include="3. Longest Substring Without Repeating Characters.cpp" />
+    <ClCompile Include="4. Median of Two Sorted Arrays.cpp" />
+    <ClCompile Include="80. Remove Duplicates from Sorted Array II.cpp" />
     <ClCompile Include="Decode Ways.cpp" />
     <ClCompile Include="LeetCode.cpp" />
     <ClCompile Include="删除链表中的元素.cpp" />

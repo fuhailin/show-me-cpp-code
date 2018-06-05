@@ -15,28 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="1笔试题.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="2单链表合并.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="4二叉树.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="3顺序栈.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="5图.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="6排序.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="7cpp容器之map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="8静态变量.cpp">
+    <ClCompile Include="区间和.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
