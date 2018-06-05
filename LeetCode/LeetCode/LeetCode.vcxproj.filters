@@ -45,5 +45,8 @@
     <ClCompile Include="80. Remove Duplicates from Sorted Array II.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="6. ZigZag Conversion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
