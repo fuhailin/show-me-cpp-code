@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bytedance AI Camp", "Byteda
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "牛客网", "牛客网\牛客网.vcxproj", "{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "西洋汇", "西洋汇\西洋汇.vcxproj", "{33572CD5-3EB5-423A-BCFE-ED9F1A1E854D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -111,6 +113,14 @@ Global
 		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Release|x64.Build.0 = Release|x64
 		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Release|x86.ActiveCfg = Release|Win32
 		{01DDE0DE-F152-4D6C-A4D6-BA0BB0610F01}.Release|x86.Build.0 = Release|Win32
+		{33572CD5-3EB5-423A-BCFE-ED9F1A1E854D}.Debug|x64.ActiveCfg = Debug|x64
+		{33572CD5-3EB5-423A-BCFE-ED9F1A1E854D}.Debug|x64.Build.0 = Debug|x64
+		{33572CD5-3EB5-423A-BCFE-ED9F1A1E854D}.Debug|x86.ActiveCfg = Debug|Win32
+		{33572CD5-3EB5-423A-BCFE-ED9F1A1E854D}.Debug|x86.Build.0 = Debug|Win32
+		{33572CD5-3EB5-423A-BCFE-ED9F1A1E854D}.Release|x64.ActiveCfg = Release|x64
+		{33572CD5-3EB5-423A-BCFE-ED9F1A1E854D}.Release|x64.Build.0 = Release|x64
+		{33572CD5-3EB5-423A-BCFE-ED9F1A1E854D}.Release|x86.ActiveCfg = Release|Win32
+		{33572CD5-3EB5-423A-BCFE-ED9F1A1E854D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
