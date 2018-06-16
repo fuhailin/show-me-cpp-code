@@ -54,5 +54,8 @@
     <ClCompile Include="链表中倒数第k个结点.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="合并两个排序的链表.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -23,10 +23,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="牛客网.cpp">
+    <ClCompile Include="牛牛数星星.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

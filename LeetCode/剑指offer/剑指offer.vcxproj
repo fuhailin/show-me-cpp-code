@@ -143,6 +143,7 @@
     <ClCompile Include="从尾到头打印链表.cpp" />
     <ClCompile Include="分解整数.cpp" />
     <ClCompile Include="反转链表.cpp" />
+    <ClCompile Include="合并两个排序的链表.cpp" />
     <ClCompile Include="回文串.cpp" />
     <ClCompile Include="数值的整数次方.cpp" />
     <ClCompile Include="旋转数组的最小数字.cpp" />
