@@ -20,10 +20,10 @@ public:
 		if (pre.size() == 0|| vinlen ==0)
 			return NULL;
 		vector<int> left_pre, right_pre, left_vin, right_vin;
-		//´´½¨¸ù½Úµã£¬¸ù½Úµã¿Ï¶¨ÊÇÇ°Ğò±éÀúµÄµÚÒ»¸öÊı
+		//åˆ›å»ºæ ¹èŠ‚ç‚¹ï¼Œæ ¹èŠ‚ç‚¹è‚¯å®šæ˜¯å‰åºéå†çš„ç¬¬ä¸€ä¸ªæ•°
 		TreeNode* root = new TreeNode(pre[0]);
 
-		//ÕÒµ½ÖĞĞò±éÀú¸ù½ÚµãËùÔÚÎ»ÖÃ,´æ·ÅÓÚ±äÁ¿genÖĞ
+		//æ‰¾åˆ°ä¸­åºéå†æ ¹èŠ‚ç‚¹æ‰€åœ¨ä½ç½®,å­˜æ”¾äºå˜é‡genä¸­
 		int rootIndex = 0;
 
 		for (int i = 0; i < vinlen; i++)
@@ -35,12 +35,12 @@ public:
 			}
 		}
 
-		//¶ÔÓÚÖĞĞò±éÀú£¬¸ù½Úµã×ó±ßµÄ½ÚµãÎ»ÓÚ¶ş²æÊ÷µÄ×ó±ß£¬¸ù½ÚµãÓÒ±ßµÄ½ÚµãÎ»ÓÚ¶ş²æÊ÷µÄÓÒ±ß
-		//ÀûÓÃÉÏÊöÕâµã£¬¶Ô¶ş²æÊ÷½Úµã½øĞĞ¹é²¢
+		//å¯¹äºä¸­åºéå†ï¼Œæ ¹èŠ‚ç‚¹å·¦è¾¹çš„èŠ‚ç‚¹ä½äºäºŒå‰æ ‘çš„å·¦è¾¹ï¼Œæ ¹èŠ‚ç‚¹å³è¾¹çš„èŠ‚ç‚¹ä½äºäºŒå‰æ ‘çš„å³è¾¹
+		//åˆ©ç”¨ä¸Šè¿°è¿™ç‚¹ï¼Œå¯¹äºŒå‰æ ‘èŠ‚ç‚¹è¿›è¡Œå½’å¹¶
 		for (int i = 0; i < rootIndex; i++)
 		{
 			left_vin.push_back(vin[i]);
-			left_pre.push_back(pre[i + 1]);//Ç°ĞòµÚÒ»¸öÎª¸ù½Úµã
+			left_pre.push_back(pre[i + 1]);//å‰åºç¬¬ä¸€ä¸ªä¸ºæ ¹èŠ‚ç‚¹
 		}
 		for (int i = rootIndex + 1; i < vinlen; i++)
 		{
@@ -48,8 +48,8 @@ public:
 			right_pre.push_back(pre[i]);
 		}
 
-		//ºÍshellÅÅĞòµÄË¼ÏëÀàËÆ£¬È¡³öÇ°ĞòºÍÖĞĞò±éÀú¸ù½Úµã×ó±ßºÍÓÒ±ßµÄ×ÓÊ÷
-		//µİ¹é£¬ÔÙ¶ÔÆä½øĞĞÉÏÊöËùÓĞ²½Öè£¬¼´ÔÙÇø·Ö×ÓÊ÷µÄ×ó¡¢ÓÒ×Ó×ÓÊı£¬Ö±µ½Ò¶½Úµã
+		//å’Œshellæ’åºçš„æ€æƒ³ç±»ä¼¼ï¼Œå–å‡ºå‰åºå’Œä¸­åºéå†æ ¹èŠ‚ç‚¹å·¦è¾¹å’Œå³è¾¹çš„å­æ ‘
+		//é€’å½’ï¼Œå†å¯¹å…¶è¿›è¡Œä¸Šè¿°æ‰€æœ‰æ­¥éª¤ï¼Œå³å†åŒºåˆ†å­æ ‘çš„å·¦ã€å³å­å­æ•°ï¼Œç›´åˆ°å¶èŠ‚ç‚¹
 		root->left = reConstructBinaryTree(left_pre, left_vin);
 		root->right = reConstructBinaryTree(right_pre, right_vin);
 		return root;
@@ -66,7 +66,7 @@ public:
 	}
 	void visit(TreeNode* node)
 	{
-		printf("%d", node->val);// %c Êä³ö×Ö·ûĞÍ±äÁ¿
+		printf("%d", node->val);// %c è¾“å‡ºå­—ç¬¦å‹å˜é‡
 	}
 
 private:
@@ -75,12 +75,12 @@ private:
 
 int main4()
 {
-	printf("ÇëÊäÈëµÚ1¸öÁ´±í:\n");
+	printf("è¯·è¾“å…¥ç¬¬1ä¸ªé“¾è¡¨:\n");
 	vector<int> preorder = { 1,2,4,7,3,5,6,8 };
 	vector<int> midorder = { 4,7,2,1,5,3,8,6 };
 
 	TreeNode* BTTree = Solution().reConstructBinaryTree(preorder,midorder);
-	Solution().postorder(BTTree);	//ºóĞò±éÀú£º
+	Solution().postorder(BTTree);	//ååºéå†ï¼š
 	system("pause");
 	return 0;
 }

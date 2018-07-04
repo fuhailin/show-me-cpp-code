@@ -3,9 +3,9 @@ using namespace std;
 class Solution
 {
 public:
-	/* ÌâÄ¿ÃèÊö:
-	ÇëÊµÏÖÒ»¸öº¯Êı£¬½«Ò»¸ö×Ö·û´®ÖĞµÄ¿Õ¸ñÌæ»»³É¡°%20¡±¡£ÀıÈç£¬µ±×Ö·û´®ÎªWe Are Happy.Ôò¾­¹ıÌæ»»Ö®ºóµÄ×Ö·û´®ÎªWe%20Are%20Happy¡£
-	lengthÎª×Ö·ûÊı×éstringµÄ×ÜÈİÁ¿*/
+	/* é¢˜ç›®æè¿°:
+	è¯·å®ç°ä¸€ä¸ªå‡½æ•°ï¼Œå°†ä¸€ä¸ªå­—ç¬¦ä¸²ä¸­çš„ç©ºæ ¼æ›¿æ¢æˆâ€œ%20â€ã€‚ä¾‹å¦‚ï¼Œå½“å­—ç¬¦ä¸²ä¸ºWe Are Happy.åˆ™ç»è¿‡æ›¿æ¢ä¹‹åçš„å­—ç¬¦ä¸²ä¸ºWe%20Are%20Happyã€‚
+	lengthä¸ºå­—ç¬¦æ•°ç»„stringçš„æ€»å®¹é‡*/
 	void replaceSpace(char *str, int length) {
 		if (str == NULL&&length<=0)
 			return;
@@ -21,7 +21,7 @@ public:
 		if (len >length)
 			return;
 
-		char*pStr1 = str + Originallength;//¸´ÖÆ½áÊø·û¡®\0¡¯
+		char*pStr1 = str + Originallength;//å¤åˆ¶ç»“æŸç¬¦â€˜\0â€™
 		char*pStr2 = str + len;
 		while (pStr1<pStr2&&*pStr1>=0)
 		{

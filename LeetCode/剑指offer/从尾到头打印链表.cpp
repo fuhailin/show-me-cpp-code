@@ -12,7 +12,7 @@ struct ListNode {
 class Solution
 {
 public:
-	//´´½¨Á´±í
+	//åˆ›å»ºé“¾è¡¨
 	ListNode* Create(void)
 	{
 		ListNode *Head, *current;
@@ -24,14 +24,14 @@ public:
 		char s;
 		while (1)
 		{
-			temp = (ListNode *)malloc(sizeof(ListNode)); //ÎªĞÂ½Úµã·ÖÅäÄÚ´æ¿Õ¼ä
+			temp = (ListNode *)malloc(sizeof(ListNode)); //ä¸ºæ–°èŠ‚ç‚¹åˆ†é…å†…å­˜ç©ºé—´
 			scanf("%d", &temp->val);
 			current->next = temp;
 			current = temp;
-			s = getchar();           //sÓÃÀ´½ÓÊÕÊÇ·ñÊÇ»Ø³µ  
+			s = getchar();           //sç”¨æ¥æ¥æ”¶æ˜¯å¦æ˜¯å›è½¦  
 			if (s == '\n') { break; }
 		}
-		current->next = NULL;  //×îºóÎ²Ö¸ÕëÎªNULL
+		current->next = NULL;  //æœ€åå°¾æŒ‡é’ˆä¸ºNULL
 		return Head;
 	}
 
@@ -58,7 +58,7 @@ public:
 
 int main3()
 {
-	printf("ÇëÊäÈëµÚ1¸öÁ´±í:\n");
+	printf("è¯·è¾“å…¥ç¬¬1ä¸ªé“¾è¡¨:\n");
 	ListNode *L1 = Solution().Create();
 	vector<int> test = Solution().printListFromTailToHead(L1);
 	system("pause"); 

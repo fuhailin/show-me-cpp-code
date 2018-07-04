@@ -1,43 +1,84 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 typedef int ElemType;
-struct ListNode {
+
+struct ListNode
+{
 	int val;
 	struct ListNode *next;
-	ListNode(int x) :
-		val(x), next(NULL) {
+	ListNode(int x) : val(x), next(NULL)
+	{
 	}
 };
 
-//´´½¨Á´±í
-ListNode* Create(void)
+void PrintList(ListNode *pHead)
 {
-	ListNode *Head, *current;
-	Head = current = (ListNode *)malloc(sizeof(ListNode));
-	Head->next = NULL;
+	ListNode *pNode = pHead;
+	while (pNode != nullptr)
+	{
+		cout << pNode->val << " ";
+		pNode = pNode->next;
+	}
+}
 
+//åˆ›å»ºæ— å¤´ç»“ç‚¹å•é“¾è¡¨
+ListNode *Create(void)
+{
+	ListNode *head, *tail;
+	head = NULL;
+	tail = head;
 	ElemType d;
-	ListNode *temp;
 	char s;
 	while (1)
 	{
-		temp = (ListNode *)malloc(sizeof(ListNode)); //ÎªÐÂ½Úµã·ÖÅäÄÚ´æ¿Õ¼ä
-		scanf("%d", &temp->val);
-		current->next = temp;
-		current = temp;
-		s = getchar();           //sÓÃÀ´½ÓÊÕÊÇ·ñÊÇ»Ø³µ  
+		//scanf("%d", &d);
+		cin >> d;
+		ListNode* temp = new ListNode(d); //initialized root
+		if (tail == NULL)
+		{
+			head = temp;
+			tail = head;
+		}
+		else
+		{
+			tail->next = temp;
+			tail = temp;
+		}
+		s = getchar();           //sç”¨æ¥æŽ¥æ”¶æ˜¯å¦æ˜¯å›žè½¦  
 		if (s == '\n') { break; }
 	}
-	current->next = NULL;  //×îºóÎ²Ö¸ÕëÎªNULL
-	return Head;
+	return head;
 }
 
-ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
+ListNode *Merge(ListNode *pHead1, ListNode *pHead2)
 {
-
+	if (pHead1 == nullptr)
+		return pHead2;
+	else if (pHead2 == nullptr)
+		return pHead1;
+	ListNode *pMergeHead = NULL;
+	if (pHead1->val < pHead2->val)
+	{
+		pMergeHead = pHead1;
+		pMergeHead->next = Merge(pHead1->next, pHead2);
+	}
+	else
+	{
+		pMergeHead = pHead2;
+		pMergeHead->next = Merge(pHead1, pHead2->next);
+	}
+	return pMergeHead;
 }
 int main()
 {
+
+	printf("input the 1st List:\n");
+	ListNode *L1 = Create();
+	printf("input the 2nd List:\n");
+	ListNode *L2 = Create();
+	ListNode *L3 = Merge(L1, L2);
+	PrintList(L3);
 	system("pause");
+
 	return 0;
 }

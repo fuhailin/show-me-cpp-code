@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include<stdio.h>
 #include<iostream>
 #include<string>
@@ -13,7 +12,7 @@ struct ListNode {
 	}
 };
 
-//´´½¨Á´±í
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ListNode* Create(void)
 {
 	ListNode *Head, *current;
@@ -25,14 +24,14 @@ ListNode* Create(void)
 	char s;
 	while (1)
 	{
-		temp = (ListNode *)malloc(sizeof(ListNode)); //ÎªÐÂ½Úµã·ÖÅäÄÚ´æ¿Õ¼ä
+		temp = (ListNode *)malloc(sizeof(ListNode)); //Îªï¿½Â½Úµï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Õ¼ï¿½
 		scanf("%d", &temp->val);
 		current->next = temp;
 		current = temp;
-		s = getchar();           //sÓÃÀ´½ÓÊÕÊÇ·ñÊÇ»Ø³µ  
+		s = getchar();           //sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ç»Ø³ï¿½  
 		if (s == '\n') { break; }
 	}
-	current->next = NULL;  //×îºóÎ²Ö¸ÕëÎªNULL
+	current->next = NULL;  //ï¿½ï¿½ï¿½Î²Ö¸ï¿½ï¿½ÎªNULL
 	return Head;
 }
 
@@ -62,7 +61,7 @@ int main14()
 	int k;
 	cin >> k;
 	ListNode *L1, *L2, *L3;
-	printf("ÇëÊäÈëµÚ1¸öÁ´±í:\n");
+	printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:\n");
 	L1 = Create();
 
 	ListNode *tmp=FindKthToTail(L1, k);

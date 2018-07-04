@@ -25,7 +25,7 @@ BTNode* newNode(char value)
 
 void visit(BTNode* node)
 {
-	printf("%c", node->data);// %c Êä³ö×Ö·ûĞÍ±äÁ¿
+	printf("%c", node->data);// %c è¾“å‡ºå­—ç¬¦å‹å˜é‡
 }
 
 void preorder(BTNode* p)
@@ -138,15 +138,15 @@ int main4()
 	*/
 
 	//getchar();
-	preorder(root);		//ÏÈĞò±éÀú£ºABDCEF
+	preorder(root);		//å…ˆåºéå†ï¼šABDCEF
 	printf("\n");
-	inorder(root);		//ÖĞĞò±éÀú£ºDBAECF
+	inorder(root);		//ä¸­åºéå†ï¼šDBAECF
 	printf("\n");
-	postorder(root);	//ºóĞò±éÀú£ºDBEFCA
+	postorder(root);	//ååºéå†ï¼šDBEFCA
 	printf("\n");
-	printf("%d", getDepth(root));//¶ş²æÊ÷Éî¶È£º3
+	printf("%d", getDepth(root));//äºŒå‰æ ‘æ·±åº¦ï¼š3
 	printf("\n");
-	levelorder(root);	//²ã´Î±éÀú£ºABCDEF
+	levelorder(root);	//å±‚æ¬¡éå†ï¼šABCDEF
 	system("pause");
 
 	return 0;

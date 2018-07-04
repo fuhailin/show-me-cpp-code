@@ -8,7 +8,7 @@ typedef struct LNode
 	struct LNode *next;
 }LNode;
 
-//´´½¨Á´±í
+//åˆ›å»ºé“¾è¡¨
 LNode* Create(void)
 {
 	LNode *Head, *current;
@@ -20,18 +20,18 @@ LNode* Create(void)
 	char s;
 	while (1)
 	{
-		temp = (LNode *)malloc(sizeof(LNode)); //ÎªĞÂ½Úµã·ÖÅäÄÚ´æ¿Õ¼ä
+		temp = (LNode *)malloc(sizeof(LNode)); //ä¸ºæ–°èŠ‚ç‚¹åˆ†é…å†…å­˜ç©ºé—´
 		scanf("%d", &temp->data);
 		current->next = temp;
 		current = temp;
-		s = getchar();           //sÓÃÀ´½ÓÊÕÊÇ·ñÊÇ»Ø³µ  
+		s = getchar();           //sç”¨æ¥æ¥æ”¶æ˜¯å¦æ˜¯å›è½¦  
 		if (s == '\n') { break; }
 	}
-	current->next = NULL;  //×îºóÎ²Ö¸ÕëÎªNULL
+	current->next = NULL;  //æœ€åå°¾æŒ‡é’ˆä¸ºNULL
 	return Head;
 }
 
-//Êä³öÁ´±í
+//è¾“å‡ºé“¾è¡¨
 void List(LNode *L)
 {
 	LNode *p;
@@ -81,12 +81,12 @@ void Merge(LNode *&A, LNode *&B, LNode *&C)
 int main2()
 {
 	LNode *L1, *L2,*L3;
-	printf("ÇëÊäÈëµÚ1¸öÁ´±í:\n");
+	printf("è¯·è¾“å…¥ç¬¬1ä¸ªé“¾è¡¨:\n");
 	L1 = Create();
-	printf("\nÇëÊäÈëµÚ2¸öÁ´±í:\n");
+	printf("\nè¯·è¾“å…¥ç¬¬2ä¸ªé“¾è¡¨:\n");
 	L2 = Create();
 	Merge(L1, L2, L3);
-	printf("ºÏ²¢ºóµÄÁ´±íÎª:\n");
+	printf("åˆå¹¶åçš„é“¾è¡¨ä¸º:\n");
 	List(L3);
 	system("pause");
 	return 0;
