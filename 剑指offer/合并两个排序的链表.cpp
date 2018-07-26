@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <iostream>
 using namespace std;
 typedef int ElemType;
@@ -14,7 +15,7 @@ struct ListNode
 void PrintList(ListNode *pHead)
 {
 	ListNode *pNode = pHead;
-	while (pNode != nullptr)
+	while (pNode != NULL)
 	{
 		cout << pNode->val << " ";
 		pNode = pNode->next;
@@ -52,9 +53,9 @@ ListNode *Create(void)
 
 ListNode *Merge(ListNode *pHead1, ListNode *pHead2)
 {
-	if (pHead1 == nullptr)
+	if (pHead1 == NULL)
 		return pHead2;
-	else if (pHead2 == nullptr)
+	else if (pHead2 == NULL)
 		return pHead1;
 	ListNode *pMergeHead = NULL;
 	if (pHead1->val < pHead2->val)
@@ -78,7 +79,6 @@ int main()
 	ListNode *L2 = Create();
 	ListNode *L3 = Merge(L1, L2);
 	PrintList(L3);
-	system("pause");
 
 	return 0;
 }
