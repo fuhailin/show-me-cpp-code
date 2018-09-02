@@ -88,6 +88,5 @@ int main2()
 	Merge(L1, L2, L3);
 	printf("合并后的链表为:\n");
 	List(L3);
-	system("pause");
 	return 0;
 }
