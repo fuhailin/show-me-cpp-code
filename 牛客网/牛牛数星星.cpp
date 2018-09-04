@@ -1,8 +1,8 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-int countStar(vector<vector<int>> stars,vector<int> ques)
+int countStar(vector<vector<int>> stars, vector<int> ques)
 {
 	int res = 0;
 	int a1 = ques[0], b1 = ques[1], a2 = ques[2], b2 = ques[3];
@@ -16,7 +16,7 @@ int countStar(vector<vector<int>> stars,vector<int> ques)
 
 int main()
 {
-	int n,m;
+	int n, m;
 	cin >> n;
 	vector<vector<int>> stars(n, vector<int>(2));
 	for (int i = 0; i < n; i++)
@@ -34,7 +34,5 @@ int main()
 	{
 		cout << countStar(stars, ques[i]) << endl;
 	}
-
-	system("pause");
 	return 0;
 }
