@@ -1,7 +1,47 @@
-#include <iostream>;
+#include <iostream>
 using namespace std;
 
-/*  ÷±Ω”≤Â»Î≈≈–Ú  */
+class Sort
+{
+  private:
+	/* partition for quick sort */
+	int partition(int arr[], int left, int right)
+	{
+		int pivot = arr[right];
+		int i = (left - 1);
+
+		for (int j = left; j < right; j++)
+		{
+			if (arr[j] <= pivot)
+			{
+				i++;
+				swap(&arr[i], &arr[j]);
+			}
+		}
+		swap(&arr[++i], &arr[right]);
+		return i;
+	}
+	// A utility function to swap two elements
+	void swap(int *a, int *b)
+	{
+		int tmp = *a;
+		*a = *b;
+		*b = tmp;
+	}
+
+  public:
+	void QuickSort(int arr[], int left, int right)
+	{
+		if (left < right)
+		{
+			int pivot = partition(arr, left, right);
+			QuickSort(arr, left, pivot - 1);
+			QuickSort(arr, pivot + 1, right);
+		}
+	}
+};
+
+/*  Áõ¥Êé•ÊèíÂÖ•ÊéíÂ∫è  */
 void InsertSort(int R[], int n)
 {
 	int temp;
@@ -10,7 +50,7 @@ void InsertSort(int R[], int n)
 		temp = R[i];
 		for (int j = i; j >= 0; --j)
 		{
-			while (j>=0&&temp<R[j-1])
+			while (j >= 0 && temp < R[j - 1])
 			{
 				R[j] = R[j - 1];
 				--j;
@@ -20,7 +60,7 @@ void InsertSort(int R[], int n)
 	}
 }
 
-/*  ’€∞Î≤Â»Î≈≈–Ú  */
+/*  ÊäòÂçäÊèíÂÖ•ÊéíÂ∫è  */
 void HalfInsertSort(int R[], int n)
 {
 	int i, j, head, rear, mid, tmp;
@@ -41,16 +81,16 @@ void HalfInsertSort(int R[], int n)
 				rear = mid - 1;
 			}
 		}
-		for (j = i-1; j >= rear+1; --j)
+		for (j = i - 1; j >= rear + 1; --j)
 		{
 			R[j] = R[j - 1];
 		}
-		R[j+1] = tmp;
+		R[j + 1] = tmp;
 	}
 }
 
-/*  √∞≈›≈≈–Ú  */
-void BubbleSort(int R[], int n) 
+/*  ÂÜíÊ≥°ÊéíÂ∫è  */
+void BubbleSort(int R[], int n)
 {
 	int temp;
 	for (int i = n - 1; i >= 1; --i)
@@ -58,7 +98,7 @@ void BubbleSort(int R[], int n)
 		//flag = 1;
 		for (int j = i; j >= 0; --j)
 		{
-			if (R[j-1] > R[j])
+			if (R[j - 1] > R[j])
 			{
 				temp = R[j - 1];
 				R[j - 1] = R[j];
@@ -71,68 +111,25 @@ void BubbleSort(int R[], int n)
 	}
 }
 
-void QuickSort(int R[], int left, int right)
+/* Function to print an array */
+void printArray(int arr[], int count)
 {
-	int temp;
-	int i = left, j = right;
-	if (left < right)
+
+	for (int i = 0; i < count; i++)
 	{
-		temp = R[left];
-		while (i!=j)
-		{
-			while (j>i&&R[j]>temp)
-			{
-				--j;
-			}
-			if (i < j)
-			{
-				R[i] = R[j];
-				++i;
-			}
-			while (i<j&&R[i]<temp)
-			{
-				++i;
-			}
-			if (i < j)
-			{
-				R[j] = R[i];
-				--j;
-			}
-		}
-		R[i] = temp;
-		QuickSort(R, left, i - 1);
-		QuickSort(R, i + 1, right);
+		cout << arr[i] << ' ';
 	}
 }
 
-int main6()
+int main()
 {
-	int test[10] = { 9,8,7,6,5,4,3,2,1,0 };
-	InsertSort(test,10);
-	QuickSort(test, 0, 9);
-	HalfInsertSort(test, 10);
-	//BubbleSort(test, 10);
-	int n = 10;
-	int temp;
-	for (int i = 0; i < n; ++i)
-	{
-		//flag = 1;
-		for (int j = i; j >= 0; --j)
-		{
-			if (test[j - 1] > test[j])
-			{
-				temp = test[j - 1];
-				test[j - 1] = test[j];
-				test[j] = temp;
-				//flag = 0;
-			}
-			/*if (flag)
-			break;*/
-		}
-	}
-
-	for (int i = 0; i<10; i++)
-		cout << test[i] << " ";
-	getchar();
+	int arr[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
+	int arrSize = sizeof(arr) / sizeof(arr[0]);
+	Sort sort;
+	// InsertSort(test, 10);
+	sort.QuickSort(arr, 0, arrSize - 1);
+	// HalfInsertSort(test, 10);
+	// BubbleSort(test, 10);
+	printArray(arr, arrSize);
 	return 0;
 }
