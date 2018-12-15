@@ -8,10 +8,8 @@ class Solution
     {
         if (needle == "")
             return 0;
-
-        for (int i = 0; i < (haystack.length() - needle.length() + 1); i++)
+        for (int i = 0; i <= (int(haystack.length()) - int(needle.length())); i++)
         {
-
             for (int j = 0; j < needle.length(); j++)
             {
                 if (haystack[i + j] != needle[j])
