@@ -4,18 +4,12 @@ using namespace std;
 
 int maxProfit(vector<int> &prices)
 {
-    int minprice = 0x7fffffff;
     int maxprofit = 0;
     for (int i = 0; i < prices.size(); i++)
     {
-        if (prices[i] < minprice)
+        if (prices[i] > prices[i - 1])
         {
-            minprice = prices[i];
-        }
-        else
-        {
-            if ((prices[i] - minprice) > maxprofit)
-                maxprofit = prices[i] - minprice;
+            maxprofit = maxprofit + prices[i] - prices[i - 1];
         }
     }
     return maxprofit;
