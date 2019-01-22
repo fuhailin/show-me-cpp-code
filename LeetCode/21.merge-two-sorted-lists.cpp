@@ -66,6 +66,8 @@ class Solution
         {
             cin >> d;
             ListNode *temp = new ListNode(d);
+            // ListNode temp1(d);
+            // tail->next = &temp1; //
             tail->next = temp;
             tail = tail->next;
             s = getchar(); //s用来接收是否是回车
@@ -95,6 +97,7 @@ int main(int argc, char const *argv[])
     ListNode *L1, *L2, *L3;
     cout << "请输入第1个链表:\n";
     L1 = solu.Create();
+    solu.Print_List(L1);
     cout << "\n请输入第2个链表:" << endl;
     L2 = solu.Create();
     L3 = solu.mergeTwoLists2(L1, L2);
