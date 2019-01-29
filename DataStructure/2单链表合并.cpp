@@ -2,17 +2,18 @@
 using namespace std;
 
 typedef int ElemType;
-typedef struct LNode
+struct LNode
 {
 	ElemType data;
 	struct LNode *next;
-}LNode;
+};
 
 //创建链表
-LNode* Create(void)
+LNode *Create(void)
 {
 	LNode *Head, *current;
-	Head = current = (LNode *)malloc(sizeof(LNode));
+	// Head = current = (LNode *)malloc(sizeof(LNode));
+	Head = current = new LNode();
 	Head->next = NULL;
 
 	ElemType d;
@@ -20,14 +21,19 @@ LNode* Create(void)
 	char s;
 	while (1)
 	{
-		temp = (LNode *)malloc(sizeof(LNode)); //为新节点分配内存空间
-		scanf("%d", &temp->data);
+		temp = new LNode();
+		// temp = (LNode *)malloc(sizeof(LNode)); //为新节点分配内存空间
+		cin >> &temp->data;
+		// scanf("%d", &temp->data);
 		current->next = temp;
 		current = temp;
-		s = getchar();           //s用来接收是否是回车  
-		if (s == '\n') { break; }
+		s = getchar(); //s用来接收是否是回车
+		if (s == '\n')
+		{
+			break;
+		}
 	}
-	current->next = NULL;  //最后尾指针为NULL
+	current->next = NULL; //最后尾指针为NULL
 	return Head;
 }
 
@@ -35,7 +41,7 @@ LNode* Create(void)
 void List(LNode *L)
 {
 	LNode *p;
-	p = L->next;  //
+	p = L->next; //
 	while (p != NULL)
 	{
 		printf("%2d", p->data);
@@ -78,9 +84,9 @@ void Merge(LNode *&A, LNode *&B, LNode *&C)
 	}
 }
 
-int main2()
+int main()
 {
-	LNode *L1, *L2,*L3;
+	LNode *L1, *L2, *L3;
 	printf("请输入第1个链表:\n");
 	L1 = Create();
 	printf("\n请输入第2个链表:\n");

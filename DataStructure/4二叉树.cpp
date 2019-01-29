@@ -1,34 +1,30 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 #define maxSize 100
-typedef struct BTNode
+struct BTNode
 {
 	char data;
-	struct BTNode *lchild;
-	struct BTNode *rchild;
-}BTNode;
+	BTNode *lchild;
+	BTNode *rchild;
+	BTNode(char x) : data(x), lchild(NULL), rchild(NULL) {}
+};
 
-
-BTNode* newNode(char value)
+BTNode *newNode(char value)
 {
-	// Allocate memory for new node 
-	BTNode* node = (BTNode*)malloc(sizeof(BTNode));
-
+	// Allocate memory for new node
+	BTNode *node = new BTNode(value);
 	// Assign data to this node
-	node->data = value;
-
 	// Initialize left and right children as NULL
-	node->lchild = NULL;
-	node->rchild = NULL;
-	return(node);
+	return (node);
 }
 
-void visit(BTNode* node)
+void visit(BTNode *node)
 {
-	printf("%c", node->data);// %c 输出字符型变量
+	cout << node->data; // %c 输出字符型变量
 }
 
-void preorder(BTNode* p)
+void preorder(BTNode *p)
 {
 	if (p != NULL)
 	{
@@ -37,7 +33,6 @@ void preorder(BTNode* p)
 		preorder(p->rchild);
 	}
 }
-
 
 void inorder(BTNode *p)
 {
@@ -64,7 +59,7 @@ void levelorder(BTNode *p)
 	int front, rear;
 	BTNode *que[maxSize];
 	front = rear = 0;
-	BTNode*q;
+	BTNode *q;
 	if (p != NULL)
 	{
 		rear = (rear + 1) % maxSize;
@@ -88,6 +83,36 @@ void levelorder(BTNode *p)
 	}
 }
 
+// Iterative method to find height of Bianry Tree
+void printLevelOrder(BTNode *root)
+{
+	// Base Case
+	if (root == NULL)
+		return;
+
+	// Create an empty queue for level order tarversal
+	queue<BTNode *> q;
+
+	// Enqueue Root and initialize height
+	q.push(root);
+
+	while (q.empty() == false)
+	{
+		// Print front of queue and remove it from queue
+		BTNode *node = q.front();
+		cout << node->data << " ";
+		q.pop();
+
+		/* Enqueue left child */
+		if (node->lchild != NULL)
+			q.push(node->lchild);
+
+		/*Enqueue right child */
+		if (node->rchild != NULL)
+			q.push(node->rchild);
+	}
+}
+
 int getDepth(BTNode *p)
 {
 	int LD, RD;
@@ -101,17 +126,16 @@ int getDepth(BTNode *p)
 	}
 }
 
-int main4()
+int main()
 {
 	/*create root*/
-	BTNode* root = newNode('A');
+	BTNode *root = newNode('A');
 	/* following is the tree after above statement
 
 	A
 	/   \
 	NULL  NULL
 	*/
-
 
 	root->lchild = newNode('B');
 	root->rchild = newNode('C');
@@ -122,7 +146,6 @@ int main4()
 	/    \    /  \
 	NULL NULL NULL NULL
 	*/
-
 
 	root->lchild->lchild = newNode('D');
 	root->rchild->lchild = newNode('E');
@@ -138,16 +161,13 @@ int main4()
 	*/
 
 	//getchar();
-	preorder(root);		//先序遍历：ABDCEF
-	printf("\n");
-	inorder(root);		//中序遍历：DBAECF
-	printf("\n");
-	postorder(root);	//后序遍历：DBEFCA
-	printf("\n");
-	printf("%d", getDepth(root));//二叉树深度：3
-	printf("\n");
-	levelorder(root);	//层次遍历：ABCDEF
-	system("pause");
-
+	preorder(root); //先序遍历：ABDCEF
+	cout << endl;
+	inorder(root); //中序遍历：DBAECF
+	cout << endl;
+	postorder(root); //后序遍历：DBEFCA
+	cout << endl;
+	cout << getDepth(root) << endl; //二叉树深度：3
+	levelorder(root);				//层次遍历：ABCDEF
 	return 0;
 }
