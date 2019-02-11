@@ -4,55 +4,18 @@
 using namespace std;
 string addBinary(string a, string b)
 {
-    int bigger = max(a.size(), b.size());
-    int carry = 0;
-    string result = "";
-    int tmp;
-    for (int i = 1; i <= bigger; i++)
+    string s = "";
+
+    int c = 0, i = a.size() - 1, j = b.size() - 1;
+    while (i >= 0 || j >= 0 || c == 1)
     {
-        if (i > a.size())
-        {
-            tmp = int(b[-1 * i]) + carry;
-            if (tmp == 2)
-            {
-                carry = 1;
-                tmp = 0;
-            }
-            else
-                carry = 0;
-        }
-        else if (i > b.size())
-        {
-            tmp = int(a[-1 * i]) + carry;
-            if (tmp == 2)
-            {
-                carry = 1;
-                tmp = 0;
-            }
-            else
-                carry = 0;
-        }
-        else
-        {
-            tmp = int(a[-1 * i]) + int(b[-1 * i]) + carry;
-            if (tmp == 2)
-            {
-                carry = 1;
-                tmp = 0;
-            }
-            else if (tmp == 3)
-            {
-                carry = 1;
-                tmp = 1;
-            }
-            else
-                carry = 0;
-        }
-        result = to_string(tmp) + result;
+        c += i >= 0 ? a[i--] - '0' : 0;
+        c += j >= 0 ? b[j--] - '0' : 0;
+        s = char(c % 2 + '0') + s;
+        c /= 2;
     }
-    if (carry)
-        result = to_string(carry) + result;
-    return result;
+
+    return s;
 }
 
 int main(int argc, char const *argv[])

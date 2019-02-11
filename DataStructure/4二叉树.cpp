@@ -54,37 +54,9 @@ void postorder(BTNode *p)
 	}
 }
 
-void levelorder(BTNode *p)
-{
-	int front, rear;
-	BTNode *que[maxSize];
-	front = rear = 0;
-	BTNode *q;
-	if (p != NULL)
-	{
-		rear = (rear + 1) % maxSize;
-		que[rear] = p;
-		while (front != rear)
-		{
-			front = (front + 1) % maxSize;
-			q = que[front];
-			visit(q);
-			if (q->lchild != NULL)
-			{
-				rear = (rear + 1) % maxSize;
-				que[rear] = q->lchild;
-			}
-			if (q->rchild != NULL)
-			{
-				rear = (rear + 1) % maxSize;
-				que[rear] = q->rchild;
-			}
-		}
-	}
-}
 
 // Iterative method to find height of Bianry Tree
-void printLevelOrder(BTNode *root)
+void levelorder(BTNode *root)
 {
 	// Base Case
 	if (root == NULL)
@@ -100,7 +72,8 @@ void printLevelOrder(BTNode *root)
 	{
 		// Print front of queue and remove it from queue
 		BTNode *node = q.front();
-		cout << node->data << " ";
+		visit(node);
+		// cout << node->data << " ";
 		q.pop();
 
 		/* Enqueue left child */

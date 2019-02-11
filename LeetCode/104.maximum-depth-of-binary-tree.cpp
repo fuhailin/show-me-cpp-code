@@ -15,13 +15,7 @@ class Solution
     {
         if (root == NULL)
             return 0;
-
-        else if (root->left == NULL && root->right == NULL)
-        {
-            return 1;
-        }
-
-        return max(maxDepth(root->left), maxDepth(root->right));
+        return max(1 + maxDepth(root->left), 1 + cmaxDepth(root->right));
     }
 };
 int main(int argc, char const *argv[])

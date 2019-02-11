@@ -1,98 +1,79 @@
+#include "../DataStructure/LinkedList.h"
 #include <iostream>
+#include <string>
 using namespace std;
-
 typedef int ElemType;
-struct LNode
-{
-	ElemType data;
-	struct LNode *next;
-};
 
-//创建链表
-LNode *Create(void)
+class Solution
 {
-	LNode *Head, *current;
-	// Head = current = (LNode *)malloc(sizeof(LNode));
-	Head = current = new LNode();
-	Head->next = NULL;
-
-	ElemType d;
-	LNode *temp;
-	char s;
-	while (1)
+  public:
+	ListNode *mergeTwoLists_recursive(ListNode *l1, ListNode *l2)
 	{
-		temp = new LNode();
-		// temp = (LNode *)malloc(sizeof(LNode)); //为新节点分配内存空间
-		cin >> &temp->data;
-		// scanf("%d", &temp->data);
-		current->next = temp;
-		current = temp;
-		s = getchar(); //s用来接收是否是回车
-		if (s == '\n')
+		if (l1 == NULL)
+			return l2;
+		if (l2 == NULL)
+			return l1;
+		if (l1->val < l2->val)
 		{
-			break;
-		}
-	}
-	current->next = NULL; //最后尾指针为NULL
-	return Head;
-}
-
-//输出链表
-void List(LNode *L)
-{
-	LNode *p;
-	p = L->next; //
-	while (p != NULL)
-	{
-		printf("%2d", p->data);
-		p = p->next;
-	}
-}
-
-void Merge(LNode *&A, LNode *&B, LNode *&C)
-{
-	LNode *p, *q, *current;
-	p = A->next;
-	q = B->next;
-	free(B);
-	C = A;
-	C->next = NULL;
-	current = C;
-	while (p != NULL && q != NULL)
-	{
-		if (p->data <= q->data)
-		{
-			current->next = p;
-			p = p->next;
-			current = current->next;
+			l1->next = mergeTwoLists_recursive(l1->next, l2);
+			return l1;
 		}
 		else
 		{
-			current->next = q;
-			q = q->next;
-			current = current->next;
+			l2->next = mergeTwoLists_recursive(l1, l2->next);
+			return l2;
 		}
 	}
-	current->next = NULL;
-	if (p != NULL)
-	{
-		current->next = p;
-	}
-	if (q != NULL)
-	{
-		current->next = q;
-	}
-}
 
-int main()
+	ListNode *mergeTwoLists_iterative(ListNode *l1, ListNode *l2)
+	{
+		ListNode dummy(-1);
+		ListNode *tail = &dummy;
+		while (l1 != NULL && l2 != NULL)
+		{
+			if (l1->val < l2->val)
+			{
+				tail->next = l1;
+				l1 = l1->next;
+			}
+			else
+			{
+				tail->next = l2;
+				l2 = l2->next;
+			}
+			tail = tail->next;
+		}
+		tail->next = l1 == NULL ? l2 : l1;
+		return dummy.next;
+	}
+
+	//创建链表
+	void Create(LinkedList &list)
+	{
+		while (1)
+		{
+			int temp;
+			cin >> temp;
+			list.addNode(temp);
+			char s = cin.get(); //s用来接收是否是回车
+			if (s == '\n')
+			{
+				break;
+			}
+		}
+	}
+};
+
+int main(int argc, char const *argv[])
 {
-	LNode *L1, *L2, *L3;
-	printf("请输入第1个链表:\n");
-	L1 = Create();
-	printf("\n请输入第2个链表:\n");
-	L2 = Create();
-	Merge(L1, L2, L3);
-	printf("合并后的链表为:\n");
-	List(L3);
+	Solution solu;
+	LinkedList L1, L2, L3;
+	cout << "请输入第1个链表:\n";
+	solu.Create(L1);
+	cout << "\n请输入第2个链表:" << endl;
+	solu.Create(L2);
+	L3.head = solu.mergeTwoLists_iterative(L1.head, L2.head);
+	cout << "合并后的链表为:" << endl;
+	L3.display();
 	return 0;
 }

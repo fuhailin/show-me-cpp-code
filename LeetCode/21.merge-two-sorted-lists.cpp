@@ -1,18 +1,13 @@
+#include "../DataStructure/LinkedList.h"
 #include <iostream>
+#include <string>
 using namespace std;
 typedef int ElemType;
-//  Definition for singly-linked list.
-struct ListNode
-{
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
 
 class Solution
 {
   public:
-    ListNode *mergeTwoLists1(ListNode *l1, ListNode *l2)
+    ListNode *mergeTwoLists_recursive(ListNode *l1, ListNode *l2)
     {
         if (l1 == NULL)
             return l2;
@@ -20,17 +15,17 @@ class Solution
             return l1;
         if (l1->val < l2->val)
         {
-            l1->next = mergeTwoLists1(l1->next, l2);
+            l1->next = mergeTwoLists_recursive(l1->next, l2);
             return l1;
         }
         else
         {
-            l2->next = mergeTwoLists1(l1, l2->next);
+            l2->next = mergeTwoLists_recursive(l1, l2->next);
             return l2;
         }
     }
 
-    ListNode *mergeTwoLists2(ListNode *l1, ListNode *l2)
+    ListNode *mergeTwoLists_iterative(ListNode *l1, ListNode *l2)
     {
         ListNode dummy(-1);
         ListNode *tail = &dummy;
@@ -53,40 +48,18 @@ class Solution
     }
 
     //创建链表
-    ListNode *Create(void)
+    void Create(LinkedList &list)
     {
-        ListNode head(-1); //, *current;
-        // Head = current = (ListNode *)malloc(sizeof(ListNode));
-        // Head->next = NULL;
-
-        ElemType d;
-        ListNode *tail = &head;
-        char s;
         while (1)
         {
-            cin >> d;
-            ListNode *temp = new ListNode(d);
-            // ListNode temp1(d);
-            // tail->next = &temp1; //
-            tail->next = temp;
-            tail = tail->next;
-            s = getchar(); //s用来接收是否是回车
+            int temp;
+            cin >> temp;
+            list.addNode(temp);
+            char s = cin.get(); //s用来接收是否是回车
             if (s == '\n')
             {
                 break;
             }
-        }
-        return head.next;
-    }
-    //输出链表
-    void Print_List(ListNode *L)
-    {
-        ListNode *p;
-        p = L; //
-        while (p != NULL)
-        {
-            cout << p->val << " ";
-            p = p->next;
         }
     }
 };
@@ -94,14 +67,13 @@ class Solution
 int main(int argc, char const *argv[])
 {
     Solution solu;
-    ListNode *L1, *L2, *L3;
+    LinkedList L1, L2, L3;
     cout << "请输入第1个链表:\n";
-    L1 = solu.Create();
-    solu.Print_List(L1);
+    solu.Create(L1);
     cout << "\n请输入第2个链表:" << endl;
-    L2 = solu.Create();
-    L3 = solu.mergeTwoLists2(L1, L2);
+    solu.Create(L2);
+    L3.head = solu.mergeTwoLists_iterative(L1.head, L2.head);
     cout << "合并后的链表为:" << endl;
-    solu.Print_List(L3);
+    L3.display();
     return 0;
 }

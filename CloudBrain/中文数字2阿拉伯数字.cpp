@@ -6,35 +6,35 @@ using namespace std;
 int chineseNum2num(wstring s)
 {
 	map<wchar_t, int> chineseNum;
-	chineseNum.insert(pair<wchar_t, int>(L'Áã', 0));
-	chineseNum.insert(pair<wchar_t, int>(L'Ò»', 1));
-	chineseNum.insert(pair<wchar_t, int>(L'¶ş', 2));
-	chineseNum.insert(pair<wchar_t, int>(L'Èı', 3));
-	chineseNum.insert(pair<wchar_t, int>(L'ËÄ', 4));
-	chineseNum.insert(pair<wchar_t, int>(L'Îå', 5));
-	chineseNum.insert(pair<wchar_t, int>(L'Áù', 6));
-	chineseNum.insert(pair<wchar_t, int>(L'Æß', 7));
-	chineseNum.insert(pair<wchar_t, int>(L'°Ë', 8));
-	chineseNum.insert(pair<wchar_t, int>(L'¾Å', 9));
-	chineseNum.insert(pair<wchar_t, int>(L'Ê®', 10));
-	chineseNum.insert(pair<wchar_t, int>(L'°Ù', 100));
-	chineseNum.insert(pair<wchar_t, int>(L'Ç§', 1000));
-	chineseNum.insert(pair<wchar_t, int>(L'Íò', 10000));
-	chineseNum.insert(pair<wchar_t, int>(L'ÒÚ', 100000000));
-	chineseNum.insert(pair<wchar_t, int>(L'Ò¼', 1));
-	chineseNum.insert(pair<wchar_t, int>(L'·¡', 2));
-	chineseNum.insert(pair<wchar_t, int>(L'Èş', 3));
-	chineseNum.insert(pair<wchar_t, int>(L'ËÁ', 4));
-	chineseNum.insert(pair<wchar_t, int>(L'Îé', 5));
-	chineseNum.insert(pair<wchar_t, int>(L'Â½', 6));
-	chineseNum.insert(pair<wchar_t, int>(L'Æâ', 7));
-	chineseNum.insert(pair<wchar_t, int>(L'°Æ', 8));
-	chineseNum.insert(pair<wchar_t, int>(L'¾Á', 9));
-	chineseNum.insert(pair<wchar_t, int>(L'Ê°', 10));
-	chineseNum.insert(pair<wchar_t, int>(L'¾Á', 100));
-	chineseNum.insert(pair<wchar_t, int>(L'Çª', 1000));
-	chineseNum.insert(pair<wchar_t, int>(L'Èf', 10000));
-	chineseNum.insert(pair<wchar_t, int>(L'ƒ|', 100000000));
+	chineseNum.insert(pair<wchar_t, int>(L'é›¶', 0));
+	chineseNum.insert(pair<wchar_t, int>(L'ä¸€', 1));
+	chineseNum.insert(pair<wchar_t, int>(L'äºŒ', 2));
+	chineseNum.insert(pair<wchar_t, int>(L'ä¸‰', 3));
+	chineseNum.insert(pair<wchar_t, int>(L'å››', 4));
+	chineseNum.insert(pair<wchar_t, int>(L'äº”', 5));
+	chineseNum.insert(pair<wchar_t, int>(L'å…­', 6));
+	chineseNum.insert(pair<wchar_t, int>(L'ä¸ƒ', 7));
+	chineseNum.insert(pair<wchar_t, int>(L'å…«', 8));
+	chineseNum.insert(pair<wchar_t, int>(L'ä¹', 9));
+	chineseNum.insert(pair<wchar_t, int>(L'å', 10));
+	chineseNum.insert(pair<wchar_t, int>(L'ç™¾', 100));
+	chineseNum.insert(pair<wchar_t, int>(L'åƒ', 1000));
+	chineseNum.insert(pair<wchar_t, int>(L'ä¸‡', 10000));
+	chineseNum.insert(pair<wchar_t, int>(L'äº¿', 100000000));
+	chineseNum.insert(pair<wchar_t, int>(L'å£¹', 1));
+	chineseNum.insert(pair<wchar_t, int>(L'è´°', 2));
+	chineseNum.insert(pair<wchar_t, int>(L'å', 3));
+	chineseNum.insert(pair<wchar_t, int>(L'è‚†', 4));
+	chineseNum.insert(pair<wchar_t, int>(L'ä¼', 5));
+	chineseNum.insert(pair<wchar_t, int>(L'é™†', 6));
+	chineseNum.insert(pair<wchar_t, int>(L'æŸ’', 7));
+	chineseNum.insert(pair<wchar_t, int>(L'æŒ', 8));
+	chineseNum.insert(pair<wchar_t, int>(L'ç–', 9));
+	chineseNum.insert(pair<wchar_t, int>(L'æ‹¾', 10));
+	chineseNum.insert(pair<wchar_t, int>(L'ç–', 100));
+	chineseNum.insert(pair<wchar_t, int>(L'ä»Ÿ', 1000));
+	chineseNum.insert(pair<wchar_t, int>(L'è¬', 10000));
+	chineseNum.insert(pair<wchar_t, int>(L'å„„', 100000000));
 
 	int result=0, tmp = 0, hnd_mln=0;
 	wchar_t curr_char;
@@ -46,11 +46,11 @@ int chineseNum2num(wstring s)
 			return NULL;
 		curr_digit = chineseNum.at(curr_char);
 
-		if (curr_digit == pow(10, 8))//meet ¡¸ÒÚ¡¹ or ¡¸ƒ|¡¹
+		if (curr_digit == pow(10, 8))//meet ã€Œäº¿ã€ or ã€Œå„„ã€
 		{
 			result = result + tmp;
 			result = result * curr_digit;
-			//get result before ¡¸ÒÚ¡¹ and store it into hnd_mln
+			//get result before ã€Œäº¿ã€ and store it into hnd_mln
 			//reset `result`
 			hnd_mln = hnd_mln * pow(10, 8) + result;
 			result = 0;
@@ -58,7 +58,7 @@ int chineseNum2num(wstring s)
 		}
 		else
 		{
-			if (curr_digit == pow(10, 4))//meet ¡¸Íò¡¹ or ¡¸Èf¡¹
+			if (curr_digit == pow(10, 4))//meet ã€Œä¸‡ã€ or ã€Œè¬ã€
 			{
 				result = result + tmp;
 				result = result * curr_digit;
@@ -66,7 +66,7 @@ int chineseNum2num(wstring s)
 			}
 			else
 			{
-				if (curr_digit >= 10)//meet ¡¸Ê®¡¹, ¡¸°Ù¡¹, ¡¸Ç§¡¹ or their traditional version
+				if (curr_digit >= 10)//meet ã€Œåã€, ã€Œç™¾ã€, ã€Œåƒã€ or their traditional version
 				{
 					if (tmp == 0)
 						tmp = 1;
@@ -95,7 +95,7 @@ template <class T>
 
 int getArrayLen(T& array)
 
-{//Ê¹ÓÃÄ£°å¶¨ÒåÒ» ¸öº¯ÊıgetArrayLen,¸Ãº¯Êı½«·µ»ØÊı×éarrayµÄ³¤¶È
+{//ä½¿ç”¨æ¨¡æ¿å®šä¹‰ä¸€ ä¸ªå‡½æ•°getArrayLen,è¯¥å‡½æ•°å°†è¿”å›æ•°ç»„arrayçš„é•¿åº¦
 
 	return (sizeof(array) / sizeof(array[0]));
 }
@@ -108,12 +108,12 @@ int main()
 	wcout << test << endl;*/
 
 	wcout.imbue(locale("chs"));
-	/*wstring test1 = L"»ªÊ¦";
+	/*wstring test1 = L"åå¸ˆ";
 	wcout << test1 << endl;*/
 
 	
 
-	wstring testdict[] = { L"¹şÊ®°Ë",L"ÎåÊ®°Ë", L"Ò»°Ù¶şÊ®ÈıÍòËÄÇ§Îå°ÙÁùÊ®Æß" ,L"ÈıÇ§¶ş°ÙÒ»Ê®ÍòÁã¶ş°ÙÒ»Ê®Îå" ,L"Ò»ÒÚÁã¾ÅÊ®ÍòÁãÆßÊ®Áù" };
+	wstring testdict[] = { L"å“ˆåå…«",L"äº”åå…«", L"ä¸€ç™¾äºŒåä¸‰ä¸‡å››åƒäº”ç™¾å…­åä¸ƒ" ,L"ä¸‰åƒäºŒç™¾ä¸€åä¸‡é›¶äºŒç™¾ä¸€åäº”" ,L"ä¸€äº¿é›¶ä¹åä¸‡é›¶ä¸ƒåå…­" };
 	for (int i = 0; i < getArrayLen(testdict); ++i)
 	{
 		wcout << testdict[i] << '\t' << chineseNum2num(testdict[i]) << endl;
