@@ -1,4 +1,4 @@
-// ±ÊÊÔÌâ.cpp : Defines the entry point for the console application.
+// ç¬”è¯•é¢˜.cpp : Defines the entry point for the console application.
 //
 
 #include "stdlib.h"
@@ -8,28 +8,27 @@
 using namespace std;
 
 
-int main1()
+int main()
 {
 	int m, n;
-	//cout << "ÇëÊäÈëĞĞºÍÁĞ£º";
+	//cout << "è¯·è¾“å…¥è¡Œå’Œåˆ—ï¼š";
 	cin >> m >> n;
 
-	//×¢ÒâÏÂÃæÕâÒ»ĞĞ£ºvector <intºóÁ½¸ö "> "Ö®¼äÒªÓĞ¿Õ¸ñ£¡·ñÔò»á±»ÈÏÎªÊÇÖØÔØ "> > "¡£   
+	//æ³¨æ„ä¸‹é¢è¿™ä¸€è¡Œï¼švector <intåä¸¤ä¸ª "> "ä¹‹é—´è¦æœ‰ç©ºæ ¼ï¼å¦åˆ™ä¼šè¢«è®¤ä¸ºæ˜¯é‡è½½ "> > "ã€‚   
 	vector<vector<int> > p(m, vector<int>(n));
 
-	//cout << "ÇëÊäÈëÊı¾İ£º";
+	//cout << "è¯·è¾“å…¥æ•°æ®ï¼š";
 	for (int i = 0; i < m; i++)
 		for (int j = 0; j < n; j++)
 			cin >> p[i][j];
 
-	//cout << "Êä³öÊı¾İ£º" << endl;
+	//cout << "è¾“å‡ºæ•°æ®ï¼š" << endl;
 	for (int i = 0; i < m; i++)
 	{
 		for (int j = 0; j < n; j++)
 			cout << setw(3) << p[i][j];
 		cout << endl;
 	}
-	system("pause");
     return 0;
 }
 
