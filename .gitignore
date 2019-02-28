@@ -287,3 +287,7 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+*.exe
+.vscode/
+Memory-based-collaborative-filtering/input/ml-100k/
+Memory-based-collaborative-filtering/CollectiveFiltering/data.txt
