@@ -37,7 +37,7 @@ string add(const int &m, string a, string b)
         }
         if (b[i] > '9')
         {
-			two1 = b[i] - 'a' + 10;
+            two1 = b[i] - 'a' + 10;
         }
         else
         {
@@ -48,7 +48,7 @@ string add(const int &m, string a, string b)
         carry = temp / m;
         if (remainder > 9)
         {
-			char ctemp = remainder + 'a' - 10;
+            char ctemp = remainder + 'a' - 10;
             sum = sum + ctemp;
         }
         else
