@@ -5,8 +5,9 @@ using namespace std;
 class Stack
 {
 	int top;
-public:
-	int a[MAX];    //Maximum size of Stack
+
+  public:
+	int a[MAX]; //Maximum size of Stack
 
 	Stack() { top = -1; }
 	bool push(int x);
@@ -48,15 +49,12 @@ bool Stack::isEmpty()
 }
 
 // Driver program to test above functions
-int main3()
+int main()
 {
 	struct Stack s;
 	s.push(10);
 	s.push(20);
 	s.push(30);
-
 	cout << s.pop() << " Popped from stack\n";
-	system("pause");
-
 	return 0;
 }

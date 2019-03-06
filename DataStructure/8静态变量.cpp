@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include <vector>
 using namespace std;
 
@@ -6,22 +6,26 @@ using namespace std;
 int X = 100000;
 int f[MAX][MAX];
 
-int getmax(int a, int b) {
-	return a>b ? a : b;
+int getmax(int a, int b)
+{
+	return a > b ? a : b;
 }
 
-
-int suanfa(vector<int> tmp,int m) {//·µ»Ø×Ü³¤¶ÈÎªnµÄĞòÁĞµÄ»®·ÖÎªm¶Î×ÓĞòÁĞºóºÍµÄ×î´óÖµµÄ×îĞ¡Öµ
+int suanfa(vector<int> tmp, int m)
+{ //è¿”å›æ€»é•¿åº¦ä¸ºnçš„åºåˆ—çš„åˆ’åˆ†ä¸ºmæ®µå­åºåˆ—åå’Œçš„æœ€å¤§å€¼çš„æœ€å°å€¼
 	int i, j, k, temp, min;
 	f[0][1] = 0;
-	for (i = 1; i <= tmp.size(); i++)  //f[i][1]Ç°i¸öÊı¾İ·Ö³ÉÒ»¶ÎµÃ×î´ó×îĞ¡Öµ¡£
-		f[i][1] = f[i - 1][1] + tmp[i];//Ç°i-1¶Î+µ±Ç°=Ç°i¶Î
+	for (i = 1; i <= tmp.size(); i++)   //f[i][1]å‰iä¸ªæ•°æ®åˆ†æˆä¸€æ®µå¾—æœ€å¤§æœ€å°å€¼ã€‚
+		f[i][1] = f[i - 1][1] + tmp[i]; //å‰i-1æ®µ+å½“å‰=å‰iæ®µ
 
-	for (i = 2; i <= tmp.size(); i++) {
-		for (j = 2; j <= m; j++) {
-			for (k = 1, temp = X; k<i; k++) {
-				min = getmax(f[i][1] - f[k][1], f[k][j - 1]);//±È½ÏµÃµ½´óµÄ
-				if (min<temp)
+	for (i = 2; i <= tmp.size(); i++)
+	{
+		for (j = 2; j <= m; j++)
+		{
+			for (k = 1, temp = X; k < i; k++)
+			{
+				min = getmax(f[i][1] - f[k][1], f[k][j - 1]); //æ¯”è¾ƒå¾—åˆ°å¤§çš„
+				if (min < temp)
 					temp = min;
 			}
 			f[i][j] = temp;
@@ -29,8 +33,6 @@ int suanfa(vector<int> tmp,int m) {//·µ»Ø×Ü³¤¶ÈÎªnµÄĞòÁĞµÄ»®·ÖÎªm¶Î×ÓĞòÁĞºóºÍµÄ×
 	}
 	return f[tmp.size()][m];
 }
-
-
 
 int main()
 {
@@ -42,6 +44,5 @@ int main()
 		cin >> tmp[i];
 	}
 	suanfa(tmp, m);
-	system("pause");
 	return 0;
 }

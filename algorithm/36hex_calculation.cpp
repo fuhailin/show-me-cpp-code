@@ -1,3 +1,10 @@
+/*=============================================================================
+#  Author:           Hailin - https://fuhailin.github.io/
+#  Email:            hailinfufu@outlook.com
+#  Description:      三十六进制加法
+=============================================================================*/
+
+
 #include <iostream>
 #include <string>
 using namespace std;
