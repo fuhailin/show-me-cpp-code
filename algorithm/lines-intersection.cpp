@@ -11,13 +11,24 @@ using namespace std;
 int getSection(vector<int> vec, int val)
 {
     int sum = 0;
-    int flag = vec[0] - val;
-    for (int i = 0; i < vec.size(); i++)
+    if (vec.empty())
+        return 0;
+    if (vec.size() == 1)
     {
-        if ((vec[i] - val) * flag <= 0)
+        if ((vec[0] - val) == 0)
+            return 1;
+        else
+            return 0;
+    }
+    for (int i = 1; i < vec.size(); i++)
+    {
+        if ((vec[i] - val) * (vec[i - 1] - val) <= 0)
         {
             sum++;
-            flag = vec[i] - val;
+            if ((vec[i] - val) == 0)
+                sum--;
+            if ((vec[i] - val) == 0 && (vec[i - 1] - val) == 0)
+                return -1;
         }
     }
     return sum;
@@ -25,7 +36,7 @@ int getSection(vector<int> vec, int val)
 
 int main(int argc, char const *argv[])
 {
-    vector<int> test{5, 3, 1, 4};
+    vector<int> test{5, 3, 2, 1, 3};
     int res = getSection(test, 2);
     cout << res << endl;
     return 0;
