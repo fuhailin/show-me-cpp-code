@@ -4,6 +4,7 @@
 #  Description:      Sort in C++
 =============================================================================*/
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -13,19 +14,19 @@ private:
   // A utility function to swap two elements
   void swap(int *a, int *b);
   // partition for quick sort
-  int partition(int arr[], int left, int right);
+  int QuickSort_partition(vector<int> &arr, int left, int right);
 
 public:
   /*  折半插入排序  */
-  void HalfInsertSort(int R[], int n);
+  void HalfInsertSort(vector<int> &arr, int n);
   /*  直接插入排序  */
-  void InsertSort(int arr[], int count);
+  void InsertSort(vector<int> &arr, int count);
   /* Selection Sort */
-  void SectionSort(int arr[], int count);
+  void SectionSort(vector<int> &arr, int count);
   /*  冒泡排序  */
-  void BubbleSort(int arr[], int count);
+  void BubbleSort(vector<int> &arr, int count);
   /*  快速排序  */
-  void QuickSort(int arr[], int left, int right);
+  void QuickSort(vector<int> &arr, int left, int right);
   /* Function to print an array */
-  void printArray(int arr[], int count);
+  void printArray(vector<int> &arr, int count);
 };
