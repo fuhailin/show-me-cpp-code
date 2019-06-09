@@ -58,19 +58,20 @@ void BinaryTree::preorder_Iterative(BTNode *root)
 void BinaryTree::inorder_Iterative(BTNode *root)
 {
     stack<BTNode *> s;
-    while (!s.empty() || root != NULL)
+    BTNode *p = root;
+    while (p != NULL || !s.empty())
     {
-        if (root != NULL)
+        while (p != NULL)
         {
-            s.push(root);
-            root = root->lchild;
+            s.push(p);
+            p = p->lchild;
         }
-        else
+        if (!s.empty())
         {
-            root = s.top();
+            p = s.top();
+            visit(p);
             s.pop();
-            visit(root);
-            root = root->rchild;
+            p = p->rchild;
         }
     }
 }
