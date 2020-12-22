@@ -1,0 +1,5 @@
+# git_repository(
+#         name = "nlohmann_json",
+#         remote = "https://github.com/nlohmann/json.git",
+#         branch = "master",
+# )

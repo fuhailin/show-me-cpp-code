@@ -1,0 +1,15 @@
+workspace(name = "bazel_test")
+ 
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+ 
+git_repository(
+    name = "com_github_gflags_gflags",
+    commit = "f7388c6655e699f777a5a74a3c9880b9cfaabe59",
+    remote = "https://github.com/gflags/gflags.git",
+)
+ 
+git_repository(
+    name = "glog",
+    commit = "0a2e5931bd5ff22fd3bf8999eb8ce776f159cda6",
+    remote = "https://github.com/google/glog.git",
+)

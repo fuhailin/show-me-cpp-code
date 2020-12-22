@@ -291,3 +291,7 @@ __pycache__/
 .vscode/
 Memory-based-collaborative-filtering/input/ml-100k/
 Memory-based-collaborative-filtering/CollectiveFiltering/data.txt
+
+# Bazel output
+# */bazel/
+bazel-*
