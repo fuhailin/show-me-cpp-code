@@ -1,0 +1,1 @@
+bazel build src:sample_binary
