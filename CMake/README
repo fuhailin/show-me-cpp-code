@@ -1,0 +1,7 @@
+$cmake -version
+cmake version 3.19.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+
+
+http://derekmolloy.ie/hello-world-introductions-to-cmake/
