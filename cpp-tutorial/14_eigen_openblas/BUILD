@@ -8,7 +8,6 @@ cmake_external(
     },
     lib_source = "@openblas//:all",
     static_libraries = ["libopenblas.a"],
-    cmake_options = ["j12"],
 )
 
 cmake_external(
@@ -21,7 +20,6 @@ cmake_external(
     lib_source = "@eigen//:all",
     out_include_dir = "include/eigen3",
     deps = [":openblas"],
-    cmake_options = ["j12"],
 )
 
 cc_binary(
