@@ -1,13 +1,8 @@
 load("@rules_foreign_cc//tools/build_defs:cmake.bzl", "cmake_external")
 
-cmake_external(
-    name = "openblas",
-    cache_entries = {
-        "BUILD_WITHOUT_LAPACK": "no",
-        "NOFORTRAN": "on",
-    },
-    lib_source = "@openblas//:all",
-    static_libraries = ["libopenblas.a"],
+filegroup(
+    name = "all",
+    srcs = glob(["**"]),
 )
 
 cmake_external(
@@ -19,13 +14,6 @@ cmake_external(
     headers_only = True,
     lib_source = "@eigen//:all",
     out_include_dir = "include/eigen3",
-    deps = [":openblas"],
-)
-
-cc_binary(
-    name = "EigenDemo",
-    srcs = ["main.cc"],
-    deps = [
-        ":eigen",
-    ],
+    deps = ["@openblas"],
+    visibility = ["//visibility:public"],
 )

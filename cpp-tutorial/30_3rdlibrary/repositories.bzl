@@ -12,6 +12,9 @@ load("//libssh2:libssh2_repositories.bzl", "libssh2_repositories")
 load("//openssl:openssl_repositories.bzl", "openssl_repositories")
 load("//pcre:pcre_repositories.bzl", "pcre_repositories")
 load("//zlib:zlib_repositories.bzl", "zlib_repositories")
+load("//cityhash:cityhash_repositories.bzl", "cityhash_repositories")
+load("//openblas:openblas_repositories.bzl", "openblas_repositories")
+load("//eigen:eigen_repositories.bzl", "eigen_repositories")
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
@@ -27,6 +30,9 @@ def repositories():
     openssl_repositories()
     pcre_repositories()
     zlib_repositories()
+    cityhash_repositories()
+    openblas_repositories()
+    eigen_repositories()
 
     maybe(
         http_archive,

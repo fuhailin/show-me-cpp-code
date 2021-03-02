@@ -1,6 +1,7 @@
-#include "Eigen/Core"
 #include <iostream>
 #include <vector>
+
+#include "Eigen/Core"
 using namespace std;
 using namespace Eigen;
 
@@ -22,8 +23,8 @@ int main(int argc, char** argv) {
          << B << endl;
 
     Eigen::MatrixXd v1;
-    v1 = A.transpose();  // Copy #1
-    v1.resize(A.size(), 1);     // No copy
+    v1 = A.transpose();      // Copy #1
+    v1.resize(A.size(), 1);  // No copy
     cout << "v1: \n"
          << v1 << endl;
 

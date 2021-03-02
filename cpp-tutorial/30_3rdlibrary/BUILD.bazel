@@ -29,6 +29,7 @@ test_suite(
         "//libssh2:libssh2_build_test",
         "//openssl:openssl_build_test",
         "//pcre:pcre_build_test",
+        "//cityhash:cityhash_build_test",
     ],
 )
 
