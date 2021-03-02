@@ -1,0 +1,25 @@
+package(default_visibility = ["//visibility:public"])
+
+test_suite(
+    name = "linux_tests",
+    tags = ["manual"],
+    tests = [
+        "//openssl:openssl_build_test",
+    ],
+)
+
+test_suite(
+    name = "macos_tests",
+    tags = ["manual"],
+    tests = [
+        "//openssl:openssl_build_test",
+    ],
+)
+
+test_suite(
+    name = "windows_tests",
+    tags = ["manual"],
+    tests = [
+        # TODO: Add windows tests
+    ],
+)
