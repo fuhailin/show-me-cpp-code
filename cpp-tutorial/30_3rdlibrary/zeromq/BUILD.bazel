@@ -2,15 +2,15 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
 exports_files(
     [
-        "libevent.BUILD",
+        "zeromq.BUILD",
     ],
     visibility = ["//visibility:public"],
 )
 
 build_test(
-    name = "libevent_build_test",
+    name = "zeromq_build_test",
     targets = [
-        "@libevent//:libevent",
+        "@zeromq//:libzmq",
     ],
     visibility = ["//:__pkg__"],
 )

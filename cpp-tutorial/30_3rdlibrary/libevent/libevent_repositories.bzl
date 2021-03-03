@@ -15,5 +15,5 @@ def libevent_repositories():
         ],
         type = "tar.gz",
         strip_prefix = "libevent-2.1.12-stable",
-        build_file = Label("//libevent:BUILD.libevent.bazel"),
+        build_file = Label("//libevent:libevent.BUILD"),
     )

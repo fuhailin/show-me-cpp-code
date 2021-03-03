@@ -23,6 +23,7 @@ load("//gtest:gtest_repositories.bzl", "gtest_repositories")
 load("//gflags:gflags_repositories.bzl", "gflags_repositories")
 load("//glog:glog_repositories.bzl", "glog_repositories")
 load("//abseil:abseil_repositories.bzl", "abseil_repositories")
+load("//zeromq:zeromq_repositories.bzl", "zeromq_repositories")
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
@@ -48,6 +49,7 @@ def repositories():
     gflags_repositories()
     glog_repositories()
     abseil_repositories()
+    zeromq_repositories()
 
     maybe(
         http_archive,
