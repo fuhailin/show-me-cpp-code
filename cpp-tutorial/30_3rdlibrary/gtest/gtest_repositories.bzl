@@ -1,4 +1,4 @@
-"""A module defining the third party dependency gtest"""
+"""A module defining the third party dependency googletest"""
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
@@ -6,12 +6,11 @@ load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 def gtest_repositories():
     maybe(
         http_archive,
-        name = "gtest",
+        name = "com_google_googletest",
         urls = [
-            "https://github.com.cnpmjs.org/google/googletest/archive/release-1.7.0.zip",
-            "https://github.com/google/googletest/archive/release-1.7.0.zip"
+            "https://github.91chifun.workers.dev/https://github.com//google/googletest/archive/v1.10.x.zip",
+            "https://github.com/google/googletest/archive/v1.10.x.tar.gz",
             ],
-        type = "zip",
-        strip_prefix = "googletest-release-1.7.0",
-        build_file = Label("//gtest:BUILD.gtest.bazel"),
+        strip_prefix = "googletest-1.10.x",
+        build_file = Label("//gtest:gtest.BUILD"),
     )

@@ -2,7 +2,7 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
 exports_files(
     [
-        "BUILD.gtest.bazel",
+        "gtest.BUILD",
     ],
     visibility = ["//visibility:public"],
 )
@@ -10,7 +10,8 @@ exports_files(
 build_test(
     name = "gtest_build_test",
     targets = [
-        "@gtest//:gtest",
+        "@com_google_googletest//:gtest",
+        "@com_google_googletest//:gtest_main",
     ],
     visibility = ["//:__pkg__"],
 )
@@ -20,6 +21,6 @@ cc_test(
     srcs = ["main.cc"],
     copts = ["-Iexternal/gtest/include"],
     deps = [
-        "@gtest",
+        "@com_google_googletest//:gtest_main"
     ],
 )
