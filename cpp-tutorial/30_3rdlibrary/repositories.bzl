@@ -15,6 +15,9 @@ load("//zlib:zlib_repositories.bzl", "zlib_repositories")
 load("//cityhash:cityhash_repositories.bzl", "cityhash_repositories")
 load("//openblas:openblas_repositories.bzl", "openblas_repositories")
 load("//eigen:eigen_repositories.bzl", "eigen_repositories")
+load("//libevent:libevent_repositories.bzl", "libevent_repositories")
+load("//gtest:gtest_repositories.bzl", "gtest_repositories")
+
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
@@ -33,6 +36,8 @@ def repositories():
     cityhash_repositories()
     openblas_repositories()
     eigen_repositories()
+    libevent_repositories()
+    gtest_repositories()
 
     maybe(
         http_archive,

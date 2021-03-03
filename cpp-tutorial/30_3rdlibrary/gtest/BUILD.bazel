@@ -1,0 +1,25 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+
+exports_files(
+    [
+        "BUILD.gtest.bazel",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+build_test(
+    name = "gtest_build_test",
+    targets = [
+        "@gtest//:gtest",
+    ],
+    visibility = ["//:__pkg__"],
+)
+
+cc_test(
+    name = "bazel_test",
+    srcs = ["main.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest",
+    ],
+)
