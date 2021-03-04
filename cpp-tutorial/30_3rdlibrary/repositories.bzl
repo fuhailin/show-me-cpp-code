@@ -24,6 +24,16 @@ load("//gflags:gflags_repositories.bzl", "gflags_repositories")
 load("//glog:glog_repositories.bzl", "glog_repositories")
 load("//abseil:abseil_repositories.bzl", "abseil_repositories")
 load("//zeromq:zeromq_repositories.bzl", "zeromq_repositories")
+load("//msgpack:repositories.bzl", "msgpack_repo")
+load("//rocksdb:repositories.bzl", "rocksdb_repo")
+load("//zstd:repositories.bzl", "zstd_repo")
+load("//snappy:repositories.bzl", "snappy_repo")
+load("//jemalloc:repositories.bzl", "jemalloc_repo")
+load("//bzip2:repositories.bzl", "bzip2_repo")
+load("//lz4:repositories.bzl", "lz4_repo")
+load("//liburing:repositories.bzl", "liburing_repo")
+
+
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
@@ -50,6 +60,15 @@ def repositories():
     glog_repositories()
     abseil_repositories()
     zeromq_repositories()
+    msgpack_repo()
+    rocksdb_repo()
+    zstd_repo()
+    snappy_repo()
+    jemalloc_repo()
+    bzip2_repo()
+    lz4_repo()
+    liburing_repo()
+
 
     maybe(
         http_archive,

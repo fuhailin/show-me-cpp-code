@@ -1,16 +1,17 @@
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
+
 exports_files(
     [
-        "curl.BUILD",
+        "msgpack.BUILD",
     ],
     visibility = ["//visibility:public"],
 )
 
 build_test(
-    name = "libgit2_build_test",
+    name = "msgpack_build_test",
     targets = [
-        "@libgit2//:libgit2",
+        "@msgpack//:msgpack",
     ],
     visibility = ["//:__pkg__"],
 )

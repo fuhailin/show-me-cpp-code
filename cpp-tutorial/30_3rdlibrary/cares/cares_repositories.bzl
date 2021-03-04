@@ -15,7 +15,7 @@ def cares_repositories():
     maybe(
         http_archive,
         name = "cares",
-        build_file = Label("//cares:BUILD.cares.bazel"),
+        build_file = Label("//cares:cares.BUILD"),
         sha256 = "62dd12f0557918f89ad6f5b759f0bf4727174ae9979499f5452c02be38d9d3e8",
         strip_prefix = "c-ares-cares-1_14_0",
         urls = [

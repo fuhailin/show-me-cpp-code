@@ -2,7 +2,7 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
 exports_files(
     [
-        "BUILD.libssh2.bazel",
+        "libssh2.BUILD",
         "WORKSPACE.libssh2.bazel",
     ],
     visibility = ["//visibility:public"],

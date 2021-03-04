@@ -15,5 +15,5 @@ def openblas_repositories():
             ],
         type = "tar.gz",
         strip_prefix = "OpenBLAS-0.3.13",
-        build_file = Label("//openblas:BUILD.openblas.bazel"),
+        build_file = Label("//openblas:openblas.BUILD"),
     )

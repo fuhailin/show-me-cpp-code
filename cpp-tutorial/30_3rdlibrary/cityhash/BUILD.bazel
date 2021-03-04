@@ -3,13 +3,13 @@ load("@rules_cc//cc:defs.bzl", "cc_binary")
 
 exports_files(
     [
-        "BUILD.cityhash.bazel",
+        "cityhash.BUILD",
     ],
     visibility = ["//visibility:public"],
 )
 
 build_test(
-    name = "cityhash_build_test",
+    name = "build_test",
     targets = [
         "@cityhash//:cityhash",
     ],

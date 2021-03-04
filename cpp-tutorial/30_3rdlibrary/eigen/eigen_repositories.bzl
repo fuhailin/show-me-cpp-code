@@ -10,5 +10,5 @@ def eigen_repositories():
         urls = ["https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.gz"],
         type = "tar.gz",
         strip_prefix = "eigen-3.3.9",
-        build_file = Label("//eigen:BUILD.eigen.bazel"),
+        build_file = Label("//eigen:eigen.BUILD"),
     )

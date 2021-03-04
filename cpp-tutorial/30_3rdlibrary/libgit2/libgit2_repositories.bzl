@@ -13,5 +13,5 @@ def libgit2_repositories():
         type = "tar.gz",
         sha256 = "ad73f845965cfd528e70f654e428073121a3fa0dc23caac81a1b1300277d4dba",
         strip_prefix = "libgit2-1.1.0",
-        build_file = Label("//libgit2:BUILD.libgit2.bazel"),
+        build_file = Label("//libgit2:libgit2.BUILD"),
     )

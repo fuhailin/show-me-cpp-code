@@ -13,5 +13,5 @@ def iconv_repositories():
         type = "tar.gz",
         sha256 = "f7729999a9f2adc8c158012bc4bc8d69bea5dec88c8203cdd62067f91ed60b43",
         strip_prefix = "libiconv-59/libiconv",
-        build_file = Label("//iconv:BUILD.iconv.bazel"),
+        build_file = Label("//iconv:iconv.BUILD"),
     )
