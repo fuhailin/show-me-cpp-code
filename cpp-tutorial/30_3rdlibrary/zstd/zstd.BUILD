@@ -1,5 +1,24 @@
 # vim: ft=bzl
 
+# load("@rules_foreign_cc//tools/build_defs:make.bzl", "make")
+
+# filegroup(
+#     name = "all",
+#     srcs = glob(["**"]),
+# )
+
+# # test passed for Linux
+# make(
+#     name = "zstd",
+#     lib_source = "@zstd//:all",
+#     out_include_dir = "include",
+#     out_lib_dir = "lib",
+#     static_libraries = [
+#         "libzstd.a",
+#     ],
+#     visibility = ["//visibility:public"],
+# )
+
 licenses(["restricted"])  # GPLv2
 
 exports_files([

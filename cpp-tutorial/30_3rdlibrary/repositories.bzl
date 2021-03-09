@@ -32,6 +32,8 @@ load("//jemalloc:repositories.bzl", "jemalloc_repo")
 load("//bzip2:repositories.bzl", "bzip2_repo")
 load("//lz4:repositories.bzl", "lz4_repo")
 load("//liburing:repositories.bzl", "liburing_repo")
+load("//spdlog:repositories.bzl", "spdlog_repo")
+
 
 
 
@@ -68,6 +70,7 @@ def repositories():
     bzip2_repo()
     lz4_repo()
     liburing_repo()
+    spdlog_repo()
 
 
     maybe(

@@ -1,16 +1,21 @@
-cc_library(
-    name = "db_engine",
+cc_test(
+    name = "simple_example",
     srcs = [
-        "db_engine.cc",
-    ],
-    hdrs = [
-        "db_engine.h",
-        "key.h",
-        "val.h",
+        "simple_example.cc",
     ],
     deps = [
-        "@rocksdb//:rocksdb",
-        "@msgpack//:msgpack",
-        "@zstd//:zstd",
+        "@rocksdb",
+    ],
+)
+
+cc_test(
+    name = "rocksdb_test",
+    srcs = [
+        "RocksDbTest.cpp",
+    ],
+    deps = [
+        "@com_google_googletest//:gtest",
+        "@com_google_googletest//:gtest_main",
+        "@rocksdb",
     ],
 )
