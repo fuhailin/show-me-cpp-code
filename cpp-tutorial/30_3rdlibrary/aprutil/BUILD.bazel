@@ -2,7 +2,7 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
 exports_files(
     [
-        "rocksdb.BUILD",
+        "aprutil.BUILD",
     ],
     visibility = ["//visibility:public"],
 )
@@ -10,9 +10,7 @@ exports_files(
 build_test(
     name = "build_test",
     targets = [
-        "@com_github_facebook_rocksdb//:rocksdb",
-        # "@com_github_facebook_rocksdb//:rocksdb_tools_lib",
-        # "@com_github_facebook_rocksdb//:db_stress",
+        "@apache_aprutil//:aprutil",
     ],
     visibility = ["//:__pkg__"],
 )

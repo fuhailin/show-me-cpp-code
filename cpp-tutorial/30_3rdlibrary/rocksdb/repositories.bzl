@@ -21,6 +21,6 @@ def rocksdb_repo():
         new_git_repository,
         name = "com_github_facebook_rocksdb",
         build_file = Label("//rocksdb:rocksdb.BUILD"),
-        tag = "v6.15.5",
+        tag = "v5.15.10",
         remote = "https://github.com.cnpmjs.org/facebook/rocksdb.git",
     )

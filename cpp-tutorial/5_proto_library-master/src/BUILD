@@ -50,11 +50,30 @@ proto_library(
 proto_library(
     name = "address_proto",
     srcs = ["address.proto"],
-    deps = [":zip_code_proto"],
+    deps = [":zip_code_proto",
+    "train_data_proto"],
     visibility = ["//__pkg__"],
 )
 
 proto_library(
     name = "zip_code_proto",
     srcs = ["zip_code.proto"],
+)
+
+proto_library(
+    name = "feature_proto",
+    srcs = ["feature.proto"],
+    deps = [
+        # Well known protos should be included as deps in the
+        # proto_library rules of the source files importing them.
+        # A list of all @com_google_protobuf well known protos can
+        # seen with:
+        # `bazel query 'kind(proto_library, @com_google_protobuf//:all)'`
+        "@com_google_protobuf//:any_proto",
+    ],
+)
+
+proto_library(
+    name = "train_data_proto",
+    srcs = ["train_data.proto"],
 )

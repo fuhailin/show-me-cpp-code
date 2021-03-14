@@ -23,7 +23,6 @@ load("//gtest:gtest_repositories.bzl", "gtest_repositories")
 load("//gflags:gflags_repositories.bzl", "gflags_repositories")
 load("//glog:glog_repositories.bzl", "glog_repositories")
 load("//abseil:abseil_repositories.bzl", "abseil_repositories")
-load("//zeromq:zeromq_repositories.bzl", "zeromq_repositories")
 load("//msgpack:repositories.bzl", "msgpack_repo")
 load("//rocksdb:repositories.bzl", "rocksdb_repo")
 load("//zstd:repositories.bzl", "zstd_repo")
@@ -33,9 +32,16 @@ load("//bzip2:repositories.bzl", "bzip2_repo")
 load("//lz4:repositories.bzl", "lz4_repo")
 load("//liburing:repositories.bzl", "liburing_repo")
 load("//spdlog:repositories.bzl", "spdlog_repo")
-
-
-
+load("//boost:repositories.bzl", "boost_repo")
+load("//bison:repositories.bzl", "bison_repo")
+load("//m4:repositories.bzl", "m4_repo")
+load("//pslite:repositories.bzl", "pslite_repo")
+load("//protobuf:repositories.bzl", "protobuf_repo")
+load("//thrift:repositories.bzl", "thrift_repo")
+load("//zeromq:repositories.bzl", "zeromq_repo")
+load("//apr:repositories.bzl", "apr_repo")
+load("//aprutil:repositories.bzl", "aprutil_repo")
+load("//expat:repositories.bzl", "expat_repo")
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
@@ -61,7 +67,6 @@ def repositories():
     gflags_repositories()
     glog_repositories()
     abseil_repositories()
-    zeromq_repositories()
     msgpack_repo()
     rocksdb_repo()
     zstd_repo()
@@ -71,7 +76,16 @@ def repositories():
     lz4_repo()
     liburing_repo()
     spdlog_repo()
-
+    boost_repo()
+    bison_repo()
+    m4_repo()
+    thrift_repo()
+    pslite_repo()
+    protobuf_repo()
+    zeromq_repo()
+    apr_repo()
+    aprutil_repo()
+    expat_repo()
 
     maybe(
         http_archive,

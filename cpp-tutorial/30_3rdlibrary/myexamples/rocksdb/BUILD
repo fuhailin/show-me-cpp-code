@@ -4,7 +4,7 @@ cc_test(
         "simple_example.cc",
     ],
     deps = [
-        "@rocksdb",
+        "@com_github_facebook_rocksdb//:rocksdb",
     ],
 )
 
@@ -14,8 +14,8 @@ cc_test(
         "RocksDbTest.cpp",
     ],
     deps = [
+        "@com_github_facebook_rocksdb//:rocksdb",
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
-        "@rocksdb",
     ],
 )
