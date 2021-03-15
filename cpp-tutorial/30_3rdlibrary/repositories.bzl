@@ -42,6 +42,9 @@ load("//zeromq:repositories.bzl", "zeromq_repo")
 load("//apr:repositories.bzl", "apr_repo")
 load("//aprutil:repositories.bzl", "aprutil_repo")
 load("//expat:repositories.bzl", "expat_repo")
+load("//log4cxx:repositories.bzl", "log4cxx_repo")
+load("//json:repositories.bzl", "json_repo")
+
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
@@ -86,6 +89,9 @@ def repositories():
     apr_repo()
     aprutil_repo()
     expat_repo()
+    log4cxx_repo()
+    json_repo()
+
 
     maybe(
         http_archive,

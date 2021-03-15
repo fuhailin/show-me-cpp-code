@@ -69,3 +69,7 @@ cc_binary(
 ### 构建项目
 
 `bazel build //demo:demo` 即可。
+
+
+Reforences:
+https://github.com/hcoona/one/blob/42b23b6c3e/third_party/rocksdb/rocksdb.BUILD

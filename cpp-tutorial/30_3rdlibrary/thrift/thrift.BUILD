@@ -1,3 +1,5 @@
+# https://github.com/hcoona/one/blob/42b23b6c3e/third_party/thrift/thrift.BUILD
+
 # https://khjtony.github.io/programming/2018/12/31/Add-external-library-to-bazel.html
 load("@rules_foreign_cc//tools/build_defs:cmake.bzl", "cmake_external")
 

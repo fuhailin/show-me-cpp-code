@@ -1,10 +1,9 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 
-
 cc_binary(
-    name = "hello-world",
+    name = "hello-json",
     srcs = ["hello-world.cc"],
     deps = [
-        "//include:nlohmann_json",
+        "@nlohmann_json//:json",
     ],
 )
