@@ -8,6 +8,5 @@ cc_library(
         "include/**/*.hpp",
     ]),
     includes = ["include"],
-    visibility = ["//visibility:public"],
     alwayslink = 1,
 )

@@ -4,10 +4,10 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_foreign_cc",
-    strip_prefix = "rules_foreign_cc-master",
+    strip_prefix = "rules_foreign_cc-0.1.0",
     urls = [
-        "https://github.com.cnpmjs.org/bazelbuild/rules_foreign_cc/archive/master.zip",
-        "https://github.com/bazelbuild/rules_foreign_cc/archive/master.zip",
+        "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/rules_foreign_cc-0.1.0.tar.gz",
+        "https://github.com/bazelbuild/rules_foreign_cc/archive/0.1.0.zip",
     ],
 )
 
@@ -23,3 +23,7 @@ repositories()
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
 protobuf_deps()
+
+load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+
+boost_deps()
