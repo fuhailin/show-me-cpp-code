@@ -1,0 +1,3 @@
+```
+bazel test //leetcode_cc/...
+```

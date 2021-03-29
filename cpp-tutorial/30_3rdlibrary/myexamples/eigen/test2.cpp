@@ -11,6 +11,20 @@ MatrixXf softmax_grad(MatrixXf x) {
     return mat - test;
 }
 
+// 先定义softmax函数，使用最大值做rescale，让数值更稳定
+MatrixXf softmax_fn(MatrixXf x) {
+    auto softmax = x.array().exp();
+    VectorXf sorfmax_rowsum = softmax.rowwise().sum();
+    return softmax.array().colwise() / sorfmax_rowsum.array();  //行归一化
+}
+
+MatrixXf stablesoftmax_fn(MatrixXf x) {
+    auto shiftx = x.array() - x.maxCoeff();
+    auto exps = shiftx.array().exp();
+    VectorXf sorfmax_rowsum = exps.rowwise().sum();
+    return exps.array().colwise() / sorfmax_rowsum.array();  //行归一化
+}
+
 template <typename T>
 MatrixXf softmax_grad1(T x) {
     VectorXf vec = Map<const VectorXf>(x.data(), x.size());

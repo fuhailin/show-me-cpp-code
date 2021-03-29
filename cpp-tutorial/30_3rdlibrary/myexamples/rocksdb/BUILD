@@ -3,6 +3,10 @@ cc_test(
     srcs = [
         "simple_example.cc",
     ],
+    copts = [
+        "-fpic",
+    ],
+    linkopts = ["-lpthread"],
     deps = [
         "@com_github_facebook_rocksdb//:rocksdb",
     ],

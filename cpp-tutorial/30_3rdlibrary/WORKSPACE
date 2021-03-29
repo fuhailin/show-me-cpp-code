@@ -1,0 +1,30 @@
+workspace(name = "cc_third_party")
+
+load("//third_party:repositories.bzl", "repositories")
+
+repositories()
+
+load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+
+# Don't use preinstalled tools to ensure builds are as hermetic as possible
+rules_foreign_cc_dependencies(register_preinstalled_tools = False)
+
+# load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+
+# protobuf_deps()
+
+# load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+
+# boost_deps()
+
+
+# load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
+# rules_proto_dependencies()
+# rules_proto_toolchains()
+
+# load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
+# grpc_deps()
+
+# Not mentioned in official docs... mentioned here https://github.com/grpc/grpc/issues/20511
+# load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+# grpc_extra_deps()

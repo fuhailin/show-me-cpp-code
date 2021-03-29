@@ -1,36 +1,27 @@
+#include <Eigen/Dense>
+// #include <ctime>
 #include <iostream>
-#include <vector>
 
-#include "Eigen/Core"
 using namespace std;
-using namespace Eigen;
 
-int main(int argc, char** argv) {
-    //     vector<double> a{2, 3};
-    //     VectorXd A = Eigen::Map<VectorXd, Unaligned>(a.data(), a.size());
-    MatrixXd A(2, 2);
-    A << 2, 3, 4, 5;
+int main() {
+    srand(1);
+    Eigen::MatrixXd randvalue = (Eigen::MatrixXd::Random(4, 4)).array().abs() * 2 * M_PI;
+    std::cout << randvalue << std::endl;
+    cout << endl;
 
-    //     vector<double> b{1, 1};
-    //     VectorXd B = Eigen::Map<VectorXd, Unaligned>(b.data(), b.size());
-    //     MatrixXd B(2, 2);
-    //     B << 1, 0, 0, 1;
+    auto test = randvalue.block(0, 1, 1, -1);
+    std::cout << randvalue << std::endl;
 
-    VectorXd B = VectorXd::Ones(A.cols());
-    cout << "A: \n"
-         << A << endl;
-    cout << "B: \n"
-         << B << endl;
+    srand(1);
+    Eigen::MatrixXd randvalue1 = (Eigen::MatrixXd::Random(4, 4)).array().abs() * 2 * M_PI;
+    std::cout << randvalue1 << std::endl;
+    cout << endl;
 
-    Eigen::MatrixXd v1;
-    v1 = A.transpose();      // Copy #1
-    v1.resize(A.size(), 1);  // No copy
-    cout << "v1: \n"
-         << v1 << endl;
+    Eigen::MatrixXcd randvalue2 = Eigen::MatrixXcd::Random(4, 4);
+    std::cout << randvalue2 << std::endl;
+    cout << endl;
 
-    auto res = v1 * B.transpose();
-    cout << "res: \n"
-         << res << endl;
-
-    return 0;
+    Eigen::MatrixXcd randvalue3 = Eigen::MatrixXcd::Random(4, 4);
+    std::cout << randvalue3 << std::endl;
 }
