@@ -13,18 +13,36 @@ rules_foreign_cc_dependencies(register_preinstalled_tools = False)
 
 # protobuf_deps()
 
-# load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+boost_deps()
 
-# boost_deps()
+# load("@com_github_jupp0r_prometheus_cpp//bazel:repositories.bzl", "prometheus_cpp_repositories")
+# prometheus_cpp_repositories()
 
 
-# load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
-# rules_proto_dependencies()
-# rules_proto_toolchains()
+# load("//third_party/grpc:grpc_deps.bzl", "load_grpc_deps")
+# load_grpc_deps()
 
-# load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
-# grpc_deps()
+load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 
-# Not mentioned in official docs... mentioned here https://github.com/grpc/grpc/issues/20511
-# load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
-# grpc_extra_deps()
+rules_proto_dependencies()
+rules_proto_toolchains()
+
+load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps", "grpc_test_only_deps")
+
+grpc_deps()
+grpc_test_only_deps()
+
+load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+
+grpc_extra_deps()
+
+# load("@com_github_brpc//:bazel/brpc.bzl", "brpc_proto_library")
+# brpc_proto_library()
+
+load("@rules_cc//cc:repositories.bzl", "rules_cc_dependencies")
+rules_cc_dependencies()
+
+load("@rules_java//java:repositories.bzl", "rules_java_dependencies", "rules_java_toolchains")
+rules_java_dependencies()
+rules_java_toolchains()

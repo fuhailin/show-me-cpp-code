@@ -54,18 +54,3 @@ filegroup(
     output_group = "gen_dir",
     visibility = ["//visibility:public"],
 )
-
-
-# configure_make(
-#     name = "openssl",
-#     configure_command = "config",
-#     configure_env_vars = configure_env_vars,
-#     configure_options = [
-#         "no-shared",
-#     ],
-#     lib_source = "@openssl//:all",
-#     static_libraries = [
-#         "libcrypto.a",
-#         "libssl.a",
-#     ],
-# )

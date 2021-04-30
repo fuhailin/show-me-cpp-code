@@ -13,5 +13,5 @@ def repo():
         strip_prefix = "m4-1.4.18",
         build_file = Label("//m4:m4.BUILD"),
         patch_args = ["-p1"],
-        patches = ["//m4:m4.patch"],
+        patches = ["//third_party/m4:m4.patch"],
     )

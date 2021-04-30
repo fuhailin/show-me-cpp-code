@@ -13,5 +13,5 @@ def repo():
             "https://github.com/google/snappy/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "snappy-" + COMMIT,
-        build_file = Label("//snappy:snappy.BUILD"),
+        build_file = Label("//third_party/snappy:snappy.BUILD"),
     )

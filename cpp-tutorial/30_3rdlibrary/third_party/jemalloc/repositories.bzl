@@ -14,5 +14,5 @@ def repo():
             "https://github.com/jemalloc/jemalloc/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "jemalloc-" + COMMIT,
-        build_file = Label("//jemalloc:jemalloc.BUILD"),
+        build_file = Label("//third_party/jemalloc:jemalloc.BUILD"),
     )

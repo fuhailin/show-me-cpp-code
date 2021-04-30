@@ -2,19 +2,19 @@
 
 #include <vector>
 
-#include "include/ListNode.h"
+#include "include/LinkedList.h"
 
 class Solution {
    public:
     ListNode* reverseList(ListNode* head) {
-        ListNode *cur = NULL, *pre = head;
-        while (pre != NULL) {
-            ListNode* t = pre->next;
-            pre->next = cur;
-            cur = pre;
-            pre = t;
+        ListNode *cur = head, *pre = NULL, *next = NULL;
+        while (cur) {
+            next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = next;
         }
-        return cur;
+        return pre;
     }
 };
 

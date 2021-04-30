@@ -1,15 +1,15 @@
-"""A module defining the third party dependency boost"""
-
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
 def repo():
+    COMMIT = "c13a880269cc044c4b5e90046625339836771d77"
     maybe(
         http_archive,
-        name = "boost",
+        name = "com_github_nelhage_rules_boost",
         urls = [
-            "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/boost_1_75_0.tar.gz",
+            "https://github.com.cnpmjs.org/nelhage/rules_boost/archive/{commit}.tar.gz".format(commit = COMMIT),
+            "https://hub.fastgit.org/nelhage/rules_boost/archive/{commit}.tar.gz".format(commit = COMMIT),
+            "https://github.com/nelhage/rules_boost/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
-        strip_prefix = "boost_1_75_0",
-        build_file = Label("//third_party/boost:boost.BUILD"),
+        strip_prefix = "rules_boost-" + COMMIT,
     )

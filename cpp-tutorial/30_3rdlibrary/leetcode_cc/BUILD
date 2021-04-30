@@ -16,7 +16,7 @@ package(
         ],
         deps = [
             "@com_google_googletest//:gtest_main",
-            "//include:ListNode"
+            "//include:LinkedList"
         ],
     )
     for f in glob(["*.cc"])

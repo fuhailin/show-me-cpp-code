@@ -1,22 +1,16 @@
-load("@rules_foreign_cc//tools/build_defs:configure.bzl", "configure_make")
-load("@rules_foreign_cc//tools/build_defs:make.bzl", "make")
+load("@rules_cc//cc:defs.bzl", "cc_library")
 
 package(default_visibility = ["//visibility:public"])
 
-filegroup(
-    name = "all",
-    srcs = glob(["**"]),
-)
-
-make(
+cc_library(
     name = "pslite",
-    lib_source = "@pslite//:all",
-    out_include_dir = "include",
-    out_lib_dir = "lib",
-    static_libraries = [
-        "libpslite.a",
-    ],
-    deps = [
-        "@com_google_protobuf//:protobuf_lite",
-    ]
+    srcs = glob([
+        "src/**/*.cpp",
+    ]),
+    hdrs = glob([
+        "**/*.h",
+    ]) + glob([
+        "include/**/*.(h|hpp)",
+    ]),
+    includes = ["include"],
 )

@@ -12,7 +12,16 @@ filegroup(
 # test passed for Linux
 cmake(
     name = "zstd",
+    build_args = [
+        "--verbose",
+        "-j 12",
+    ],
     lib_source = "@zstd//:all",
+    # out_include_dir = "include",
+    # out_lib_dir = "lib",
+    out_static_libs = [
+        "libzstd.a",
+    ],
     # make_commands = [
     #     # The correct path to the ninja tool is detected from the selected ninja_toolchain.
     #     # and "ninja" will be replaced with that path if needed
@@ -20,107 +29,4 @@ cmake(
     #     "make",
     # ],
     working_directory = "build/cmake",
-    # out_include_dir = "include",
-    # out_lib_dir = "lib",
-    out_static_libs = [
-        "libzstd.a",
-    ],
 )
-
-# licenses(["restricted"])  # GPLv2
-
-# exports_files([
-#     "LICENSE",
-#     "COPYING",
-# ])
-
-# cc_library(
-#     name = "zstd",
-#     visibility = ["//visibility:public"],
-#     deps = [
-#         ":common",
-#         ":compress",
-#         ":decompress",
-#         ":deprecated",
-#         ":zdict",
-#     ],
-# )
-
-# cc_library(
-#     name = "common",
-#     srcs = glob(["lib/common/*.c"]),
-#     hdrs = [
-#         "lib/common/bitstream.h",
-#         "lib/common/compiler.h",
-#         "lib/common/cpu.h",
-#         "lib/common/debug.h",
-#         "lib/common/error_private.h",
-#         "lib/common/fse.h",
-#         "lib/common/huf.h",
-#         "lib/common/mem.h",
-#         "lib/common/pool.h",
-#         "lib/common/threading.h",
-#         "lib/common/xxhash.h",
-#         "lib/common/zstd_errors.h",
-#         "lib/common/zstd_internal.h",
-#         "lib/zstd.h",
-#     ],
-#     copts = ["-w"],
-#     includes = [
-#         "lib",
-#         "lib/common",
-#     ],
-# )
-
-# cc_library(
-#     name = "zdict",
-#     srcs = glob(["lib/dictBuilder/*.c"]),
-#     hdrs = glob(["lib/dictBuilder/*.h"]),
-#     copts = ["-w"],
-#     includes = ["lib/dictBuilder"],
-#     deps = [":common"],
-# )
-
-# cc_library(
-#     name = "compress",
-#     srcs = glob(["lib/compress/*.c"]),
-#     hdrs = glob(["lib/compress/*.h"]),
-#     copts = ["-w"],
-#     includes = ["lib/common"],
-#     deps = [":common"],
-# )
-
-# cc_library(
-#     name = "legacy",
-#     srcs = glob(["lib/legacy/*.c"]),
-#     hdrs = glob(["lib/legacy/*.h"]),
-#     copts = ["-w"],
-#     includes = ["lib/common"],
-#     local_defines = [
-#         "ZSTD_LEGACY_SUPPORT=4",
-#     ],
-#     deps = [":common"],
-# )
-
-# cc_library(
-#     name = "decompress",
-#     srcs = glob(["lib/decompress/*.c"]),
-#     hdrs = glob(["lib/decompress/*.h"]),
-#     copts = ["-w"],
-#     includes = [
-#         "lib/common",
-#     ],
-#     deps = [
-#         ":common",
-#         ":legacy",
-#     ],
-# )
-
-# cc_library(
-#     name = "deprecated",
-#     srcs = glob(["lib/deprecated/*.c"]),
-#     hdrs = glob(["lib/deprecated/*.h"]),
-#     copts = ["-w"],
-#     includes = ["lib/common"],
-#     deps = [":common"],
-# )

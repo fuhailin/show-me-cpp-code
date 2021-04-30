@@ -1,16 +1,14 @@
-"""A module defining the third party dependency curl"""
-
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
 def repo():
+    COMMIT = "af900a78d4f18db468cab28cd5af9d0b37c47058"
     maybe(
         http_archive,
-        name = "curl",
+        name = "double-conversion",
         urls = [
-            "https://curl.se/download/curl-7.74.0.tar.gz",
-            "https://github.com/curl/curl/releases/download/curl-7_74_0/curl-7.74.0.tar.gz",
+            "https://github.91chifun.workers.dev/https://github.com//google/double-conversion/archive/{commit}.tar.gz".format(commit = COMMIT),
+            "https://github.com/google/double-conversion/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
-        strip_prefix = "curl-7.74.0",
-        build_file = Label("//curl:curl.BUILD"),
+        strip_prefix = "double-conversion-" + COMMIT,
     )

@@ -1,16 +1,9 @@
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
-exports_files(
-    [
-        "BUILD.curl.bazel",
-    ],
-    visibility = ["//visibility:public"],
-)
-
 build_test(
     name = "build_test",
     targets = [
-        "@curl//:curl",
+        "@com_github_curl//:curl",
     ],
     visibility = ["//:__pkg__"],
 )

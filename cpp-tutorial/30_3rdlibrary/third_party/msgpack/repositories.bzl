@@ -14,5 +14,5 @@ def repo():
             "https://github.com/msgpack/msgpack/archive/{commit}.tar.gz".format(commit = MSGPACK_COMMIT),
         ],
         strip_prefix = "msgpack-" + MSGPACK_COMMIT,
-        build_file = Label("//msgpack:msgpack.BUILD"),
+        build_file = Label("//third_party/msgpack:msgpack.BUILD"),
     )

@@ -6,7 +6,7 @@ load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 def repo():
     maybe(
         http_archive,
-        name = "curl",
+        name = "com_github_curl",
         urls = [
             "https://curl.se/download/curl-7.74.0.tar.gz",
             "https://github.com/curl/curl/releases/download/curl-7_74_0/curl-7.74.0.tar.gz",

@@ -1,7 +1,4 @@
 # buildifier: disable=module-docstring
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
-
 load("//third_party/bison:repositories.bzl", bison = "repo")
 load("//third_party/cares:repositories.bzl", cares = "repo")
 load("//third_party/curl:repositories.bzl", curl = "repo")
@@ -19,12 +16,13 @@ load("//third_party/cityhash:repositories.bzl", cityhash = "repo")
 load("//third_party/openblas:repositories.bzl", openblas = "repo")
 load("//third_party/eigen:repositories.bzl", eigen = "repo")
 load("//third_party/libevent:repositories.bzl", libevent = "repo")
-load("//third_party/gtest:repositories.bzl", gtest = "repo")
+load("//third_party/googletest:repositories.bzl", googletest = "repo")
 load("//third_party/gflags:repositories.bzl", gflags = "repo")
 load("//third_party/glog:repositories.bzl", glog = "repo")
 load("//third_party/abseil:repositories.bzl", abseil = "repo")
 load("//third_party/msgpack:repositories.bzl", msgpack = "repo")
 load("//third_party/rocksdb:repositories.bzl", rocksdb = "repo")
+load("//third_party/leveldb:repositories.bzl", leveldb = "repo")
 load("//third_party/zstd:repositories.bzl", zstd = "repo")
 load("//third_party/snappy:repositories.bzl", snappy = "repo")
 load("//third_party/jemalloc:repositories.bzl", jemalloc = "repo")
@@ -32,8 +30,7 @@ load("//third_party/bzip2:repositories.bzl", bzip2 = "repo")
 load("//third_party/lz4:repositories.bzl", lz4 = "repo")
 load("//third_party/liburing:repositories.bzl", liburing = "repo")
 load("//third_party/spdlog:repositories.bzl", spdlog = "repo")
-load("//third_party/boost:repositories.bzl", boost = "repo")
-
+# load("//third_party/boost:repositories.bzl", boost = "repo")
 load("//third_party/m4:repositories.bzl", m4 = "repo")
 load("//third_party/pslite:repositories.bzl", pslite = "repo")
 load("//third_party/protobuf:repositories.bzl", protobuf = "repo")
@@ -46,22 +43,30 @@ load("//third_party/log4cxx:repositories.bzl", log4cxx = "repo")
 load("//third_party/json:repositories.bzl", json = "repo")
 load("//third_party/flatbuffers:repositories.bzl", flatbuffers = "repo")
 load("//third_party/grpc:repositories.bzl", grpc = "repo")
-load("//third_party/rules:repositories.bzl", "rules_cc_repo", "rules_foreign_cc_repo", "rules_proto_repo", "rules_boost_repo")
+load("//third_party/brpc:repositories.bzl", brpc = "repo")
 
+load("//third_party/rules:repositories.bzl", "rules_boost_repo", "rules_cc_repo", "rules_foreign_cc_repo", "rules_proto_repo")
 load("//third_party/llvm:repositories.bzl", llvm = "repo")
 load("//third_party/llvm_openmp:repositories.bzl", llvm_openmp = "repo")
-
 load("//third_party/zookeeper:repositories.bzl", zookeeper = "repo")
+load("//third_party/hiredis:repositories.bzl", hiredis = "repo")
+load("//third_party/fmt:repositories.bzl", fmt = "repo")
+load("//third_party/double_conversion:repositories.bzl", double_conversion = "repo")
+load("//third_party/folly:repositories.bzl", folly = "repo")
+load("//third_party/prometheus:repositories.bzl", prometheus = "repo")
+
+
 
 # load("//third_party/rapidcsv:repositories.bzl", "rapidcsv_repo")
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
+
     # load rules
     rules_cc_repo()
     rules_foreign_cc_repo()
-    # rules_proto_repo()
-    # rules_boost_repo()
+    rules_proto_repo()
+    rules_boost_repo()
 
     # bison_repositories()
     cares()
@@ -80,12 +85,13 @@ def repositories():
     openblas()
     eigen()
     libevent()
-    gtest()
+    googletest()
     gflags()
     glog()
     abseil()
     msgpack()
     rocksdb()
+    leveldb()
     zstd()
     snappy()
     jemalloc()
@@ -93,7 +99,7 @@ def repositories():
     lz4()
     liburing()
     spdlog()
-    boost()
+    # boost()
     bison()
     m4()
     thrift()
@@ -106,7 +112,8 @@ def repositories():
     log4cxx()
     json()
     flatbuffers()
-    # grpc()
+    grpc()
+    brpc()
 
     # rapidcsv()
 
@@ -114,3 +121,8 @@ def repositories():
     # llvm()
 
     zookeeper()
+    hiredis()
+    fmt()
+    double_conversion()
+    folly()
+    prometheus()

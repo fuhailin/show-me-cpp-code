@@ -5,9 +5,12 @@ _COPTS = [
 ]
 
 cc_library(
-    name = "ListNode",
+    name = "LinkedList",
+    srcs = [
+        "LinkedList.cpp",
+    ],
     hdrs = [
-        "ListNode.h",
+        "LinkedList.h",
     ],
     copts = _COPTS,
 )

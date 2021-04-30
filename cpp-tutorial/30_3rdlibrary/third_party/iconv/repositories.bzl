@@ -13,5 +13,5 @@ def repo():
         type = "tar.gz",
         sha256 = "f7729999a9f2adc8c158012bc4bc8d69bea5dec88c8203cdd62067f91ed60b43",
         strip_prefix = "libiconv-59/libiconv",
-        build_file = Label("//iconv:iconv.BUILD"),
+        build_file = Label("//third_party/iconv:iconv.BUILD"),
     )

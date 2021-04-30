@@ -1,19 +1,28 @@
-load("//thrift:thrift.bzl", "thrift_cc_library")
-
-thrift_cc_library(
-    name = "thrift_lib",
-    srcs = ["a.thrift"],
-    visibility = ["//visibility:public"],
+fbthrift_compile(
+    name = "echo",
+    src = "echo.thrift",
+    services = [
+        "EchoService",
+    ],
+    options = [
+        "reflection",
+    ],
 )
 
-# thrift_java_library(
-#   name="a-thrift-java-lib",
-#   thrift_library="a-thrift-lib",
-#   visibility=["//visibility:public"],
-# )
-
-# thrift_library(
-#   name="b-thrift-lib",
-#   srcs=["b.thrift"],
-#   visibility=["//visibility:public"],
-# )
+fbthrift_cc_library(
+    name = "echo_lib",
+    src = "echo.thrift",
+    services = [
+        "EchoService",
+    ],
+    options = [
+        "reflection",
+    ],
+    copts = [
+        "-std=c++14",
+    ],
+    deps = [
+        "@fbthrift//:thriftcpp2",
+    ],
+    visibility = ["//visibility:public"],
+)

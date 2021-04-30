@@ -9,18 +9,21 @@ using namespace std;
 using namespace Eigen;
 
 int main(int argc, char* argv[]) {
-    Eigen::MatrixXf x(3, 3);
-    x << 2, 4, 4, 4, 16, 12, 4, 12, 10;
+    Eigen::MatrixXf label(9, 1);
+    label << 1, 2, 3, 4, 5, 6, 7, 8, 9;
 
-    cout << "x: " << endl
-         << x << endl;
+    cout << "label: " << endl
+         << label << endl;
 
-    cout << "softmax_fn: " << endl
-         << stablesoftmax_fn(x) << endl;
+    Eigen::MatrixXf input_message(9, 1);
+    input_message << 1.2, 2.1, 3.3, 4.4, 5.1, 5.9, 6.7, 6.8, 7.9;
 
-    std::cout << "softmax_backward: " << softmax_grad1(x.row(1)) << std::endl;
+    cout << "input_message: " << endl
+         << input_message << endl;
 
-    std::cout << "softmax_backward for matrix: " << softmax_grad_martix(x) << std::endl;
+    float loss_ = 0.5 * ((input_message - label).squaredNorm()) / label.rows();
+//     float loss_ = (input_message - label).squaredNorm();
+    cout << "loss_: " << loss_ << endl;
 
     // auto cache = forward(x, y);
     // cout << "cache: " << endl

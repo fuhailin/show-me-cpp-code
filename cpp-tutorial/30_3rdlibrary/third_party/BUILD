@@ -592,3 +592,22 @@ config_setting(
     flag_values = {":enable_registration_v2": "True"},
     visibility = ["//visibility:public"],
 )
+
+alias(
+    name = "apple",
+    actual = select(
+        {
+            ":darwin": ":darwin",
+            ":darwin_x86_64": ":darwin_x86_64",
+            ":ios_arm64": ":ios_arm64",
+            ":ios_arm64e": ":ios_arm64e",
+            ":ios_armv7": ":ios_armv7",
+            ":ios_armv7s": ":ios_armv7s",
+            ":ios_i386": ":ios_i386",
+            ":ios_x86_64": ":ios_x86_64",
+            # If we're not on an apple platform return a value that will never match in the select() statement calling this
+            # since it would have already been matched above.
+            "//conditions:default": ":darwin",
+        },
+    ),
+)

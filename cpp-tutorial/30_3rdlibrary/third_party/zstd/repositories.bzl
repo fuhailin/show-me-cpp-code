@@ -13,5 +13,5 @@ def repo():
             "https://github.com/facebook/zstd/archive/v{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "zstd-" + COMMIT,
-        build_file = Label("//zstd:zstd.BUILD"),
+        build_file = Label("//third_party/zstd:zstd.BUILD"),
     )

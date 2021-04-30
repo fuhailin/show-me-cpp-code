@@ -7,7 +7,7 @@ def repo():
     maybe(
         http_archive,
         name = "liburing",
-        build_file = Label("//liburing:liburing.BUILD"),
+        build_file = Label("//third_party/liburing:liburing.BUILD"),
         urls = [
             "https://github.com.cnpmjs.org/axboe/liburing/archive/liburing-0.6.tar.gz",
             "https://github.com/axboe/liburing/archive/liburing-0.6.tar.gz"],
@@ -16,6 +16,6 @@ def repo():
             "-p0",
         ],
         patches = [
-            Label("//liburing:liburing.patch"),
+            Label("//third_party/liburing:liburing.patch"),
         ],
     )

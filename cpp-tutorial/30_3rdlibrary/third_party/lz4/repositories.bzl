@@ -13,5 +13,5 @@ def repo():
             "https://github.com/lz4/lz4/archive/v{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "lz4-" + COMMIT,
-        build_file = Label("//lz4:lz4.BUILD"),
+        build_file = Label("//third_party/lz4:lz4.BUILD"),
     )

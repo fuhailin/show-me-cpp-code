@@ -11,5 +11,5 @@ def repo():
             "https://mirrors.tuna.tsinghua.edu.cn/apache/logging/log4cxx/0.11.0/apache-log4cxx-0.11.0.tar.gz",
         ],
         strip_prefix = "apache-log4cxx-0.11.0",
-        build_file = Label("//log4cxx:log4cxx.BUILD"),
+        build_file = Label("//third_party/log4cxx:log4cxx.BUILD"),
     )

@@ -13,5 +13,5 @@ def repo():
             "https://github.com/dmlc/ps-lite/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "ps-lite-" + COMMIT,
-        build_file = Label("//pslite:pslite.BUILD"),
+        build_file = Label("//third_party/pslite:pslite.BUILD"),
     )
