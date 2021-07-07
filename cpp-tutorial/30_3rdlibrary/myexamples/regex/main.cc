@@ -6,10 +6,10 @@
 // #include "regex.hpp"
 
 int main() {
-    std::string pattern{"click"};  // fixed telephone
+    std::string pattern{"ctr0|ctr1|ctr2|ctr3|ctr4|ctr5|ctr6|ctr7|ctr8|ctr9"};  // fixed telephone
     std::regex re(pattern);
 
-    std::vector<std::string> str{"click", "play", "oracle_pred_click", "oracle_pred_play", "CTR", "CVR"};
+    std::vector<std::string> str{"ctr0", "ctr1", "ctr2", "ctr3", "ctr4", "ctr5"};
 
     /* std::regex_match:
 		判断一个正则表达式(参数re)是否匹配整个字符序列str,它主要用于验证文本

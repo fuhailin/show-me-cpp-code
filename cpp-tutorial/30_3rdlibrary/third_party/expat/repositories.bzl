@@ -8,6 +8,7 @@ def repo():
         http_archive,
         name = "libexpat",
         urls = [
+            "https://github.com.cnpmjs.org/libexpat/libexpat/releases/download/R_2_2_10/expat-2.2.10.tar.gz",
             "https://github.com/libexpat/libexpat/releases/download/R_2_2_10/expat-2.2.10.tar.gz",
         ],
         strip_prefix = "expat-2.2.10",

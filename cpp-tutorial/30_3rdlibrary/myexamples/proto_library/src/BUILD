@@ -1,6 +1,7 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 load("@rules_java//java:defs.bzl", "java_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@com_google_protobuf//:protobuf.bzl", "py_proto_library")
 
 # Convention:
 # A java_proto_library that wraps a proto_library named foo_proto
@@ -73,4 +74,15 @@ proto_library(
         # `bazel query 'kind(proto_library, @com_google_protobuf//:all)'`
         "@com_google_protobuf//:any_proto",
     ],
+)
+
+
+
+py_proto_library(
+    name = "a_py_proto",
+    # srcs = ["zip_code.proto"],
+    visibility = ["//visibility:public"],
+    protoc = "@com_google_protobuf//:protoc",
+    default_runtime = "@com_google_protobuf//:protobuf_python",
+    deps = [":zip_code_proto"],
 )

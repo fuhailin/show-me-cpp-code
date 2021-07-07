@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 
-
 struct DLinkedNode {
     int key, value;
     DLinkedNode *prev;
@@ -10,9 +9,20 @@ struct DLinkedNode {
 };
 
 class LRUCache {
+   private:
+    int capacity;
+    unordered_map<int, DLinkedNode *> cache;
+    DLinkedNode *head;
+    DLinkedNode *tail;
+    int size;
+
    public:
-    LRUCache(int capacity) {
-        private 
+    // 构造函数初始化列表
+    LRUCache(int _capacity) : capacity(_capacity), size(0) {
+        head = new DLinkedNode();
+        tail = new DLinkedNode();
+        head->next = tail;
+        tail->prev = head;
     }
 
     int get(int key) {
@@ -23,7 +33,7 @@ class LRUCache {
 };
 
 TEST(leetcode, LRU 缓存机制) {
-    *LRUCache* obj = new LRUCache(capacity);
+    *LRUCache *obj = new LRUCache(capacity);
     auto keys = [ "LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get" ];
     auto values = [ [2], [ 1, 1 ], [ 2, 2 ], [1], [ 3, 3 ], [2], [ 4, 4 ], [1], [3], [4] ];
 

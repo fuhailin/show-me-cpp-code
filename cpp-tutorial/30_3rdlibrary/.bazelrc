@@ -1,0 +1,6 @@
+# Print more information on failures.
+build --verbose_failures
+test --test_output errors
+
+# analyze-profile: 分析每次构建的耗时
+build --profile=bazel-profile

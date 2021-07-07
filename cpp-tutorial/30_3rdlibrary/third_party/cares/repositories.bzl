@@ -19,6 +19,7 @@ def repo():
         sha256 = "62dd12f0557918f89ad6f5b759f0bf4727174ae9979499f5452c02be38d9d3e8",
         strip_prefix = "c-ares-cares-1_14_0",
         urls = [
+            "https://github.com.cnpmjs.org/c-ares/c-ares/archive/cares-1_14_0.tar.gz",
             "https://mirror.bazel.build/github.com/c-ares/c-ares/archive/cares-1_14_0.tar.gz",
             "https://github.com/c-ares/c-ares/archive/cares-1_14_0.tar.gz",
         ],

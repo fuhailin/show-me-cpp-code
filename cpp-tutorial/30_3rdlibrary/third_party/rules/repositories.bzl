@@ -17,7 +17,7 @@ def rules_cc_repo():
     )
 
 def rules_foreign_cc_repo():
-    COMMIT = "ede2c80a51030c8b5b965680c32768b5acb03f95"
+    COMMIT = "a7f1c9e6046a98b6006e183f0112f4815bf2ebc0"
     maybe(
         http_archive,
         name = "rules_foreign_cc",
@@ -46,12 +46,12 @@ def rules_proto_repo():
     )
 
 def rules_boost_repo():
-    COMMIT = "c13a880269cc044c4b5e90046625339836771d77"
+    COMMIT = "652b21e35e4eeed5579e696da0facbe8dba52b1f"
     maybe(
         http_archive,
         name = "com_github_nelhage_rules_boost",
         urls = [
-            "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/rules_boost-{commit}.tar.gz".format(commit = COMMIT),
+            "https://github.com.cnpmjs.org/nelhage/rules_boost/archive/{commit}.tar.gz".format(commit = COMMIT),
             "https://github.com/nelhage/rules_boost/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "rules_boost-" + COMMIT,
@@ -59,11 +59,12 @@ def rules_boost_repo():
 
 # rules_java defines rules for generating Java code from Protocol Buffers.
 def rules_java_repo():
-    COMMIT = "d7bf804c8731edd232cb061cb2a9fe003a85d8ee"
+    COMMIT = "6076aa3dd8a669d48abc3a1c282beeed1ecc68d2"
     maybe(
         http_archive,
         name = "rules_java",
         urls = [
+            "https://github.com.cnpmjs.org/bazelbuild/rules_java/archive/{commit}.tar.gz".format(commit = COMMIT),
             "https://github.com/bazelbuild/rules_java/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "rules_java-" + COMMIT,

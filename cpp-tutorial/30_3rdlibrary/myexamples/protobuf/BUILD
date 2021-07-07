@@ -8,6 +8,22 @@ load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_proto_library")
 
 # load("@com_google_protobuf//:protobuf.bzl", "cc_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
+# https://github.com/rnburn/bazel-cookbook/blob/master/protobuf-py/BUILD
+load("@com_google_protobuf//:protobuf.bzl", "py_proto_library")
+py_proto_library(
+    name = "a_py_proto",
+    srcs = ["addressbook.proto"],
+    visibility = ["//visibility:public"],
+    protoc = "@com_google_protobuf//:protoc",
+    default_runtime = "@com_google_protobuf//:protobuf_python",
+    deps = ["@com_google_protobuf//:timestamp_proto"],
+)
+
+py_binary(
+	name = "t",
+	srcs = ["t.py"],
+	deps = [":a_py_proto"],
+)
 
 # For each .proto file, a proto_library target should be defined. This target
 # is not bound to any particular language. Instead, it defines the dependency
