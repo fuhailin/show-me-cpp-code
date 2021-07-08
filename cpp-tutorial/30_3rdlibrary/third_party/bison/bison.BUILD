@@ -1,39 +1,22 @@
-load("@rules_foreign_cc//tools/build_defs:configure.bzl", "configure_make")
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 
 package(default_visibility = ["//visibility:public"])
 
 filegroup(
-    name = "all",
+    name = "all_srcs",
     srcs = glob(["**"]),
 )
 
-# I tested and this builds only for me on Linux
+# I tested and this builds for me on MAC and Linux, did not check Windows thouigh
 configure_make(
     name = "bison",
-    binaries = [
+    args = [
+        "-j `nproc`",
+    ],
+    lib_source = ":all_srcs",
+    out_binaries = [
         "bison",
         "yacc",
     ],
-    configure_env_vars = {
-        "M4": "$$EXT_BUILD_DEPS$$/m4/bin/m4",
-        "CC_FOR_BUILD": "$$CC$$",
-    },
-    lib_source = "@org_gnu_bison//:all",
-    static_libraries = ["liby.a"],
-    deps = ["@org_gnu_m4//:m4"],
+    out_static_libs = ["liby.a"],
 )
-
-
-
-# configure_make(
-#     name = "bison",
-#     binaries = [
-#         "bison",
-#         "yacc",
-#     ],
-#     configure_env_vars = configure_env_vars,
-#     lib_source = "@bison//:all",
-#     static_libraries = [
-#         "liby.a",
-#     ],
-# )

@@ -11,5 +11,5 @@ def repo():
             "https://hub.fastgit.org/nlohmann/json/releases/download/v3.9.1/include.zip",
             "https://github.com/nlohmann/json/releases/download/v3.9.1/include.zip",
         ],
-        build_file = Label("//third_party/nlohmann_json:nlohmann_json.BUILD"),
+        build_file = Label("//third_party/serializer/nlohmann_json:nlohmann_json.BUILD"),
     )

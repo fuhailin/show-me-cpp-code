@@ -19,11 +19,10 @@ CONFIGURE_OPTIONS = [
 
 configure_make(
     name = "openssl",
+    args = [
+        "-j `nproc`",
+    ],
     configure_command = "config",
-    configure_env_vars = select({
-        "@platforms//os:macos": {"AR": ""},
-        "//conditions:default": {},
-    }),
     configure_in_place = True,
     configure_options = select({
         "@platforms//os:macos": [
@@ -36,14 +35,18 @@ configure_make(
             "no-shared",
         ] + CONFIGURE_OPTIONS,
     }),
+    env = select({
+        "@platforms//os:macos": {"AR": ""},
+        "//conditions:default": {},
+    }),
     lib_source = ":all_srcs",
-    make_commands = [
-        "make build_libs",
-        "make install_dev",
-    ],
     out_static_libs = [
         "libcrypto.a",
         "libssl.a",
+    ],
+    targets = [
+        "build_libs",
+        "install_dev",
     ],
     visibility = ["//visibility:public"],
 )

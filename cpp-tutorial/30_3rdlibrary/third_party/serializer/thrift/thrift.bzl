@@ -14,8 +14,18 @@
 
 # Description:
 #   Apache Thrift library
-
+# load("@org_tensorflow//tensorflow:tensorflow.bzl", "clean_dep")
 package(default_visibility = ["//visibility:public"])
+
+def clean_dep(target):
+    """Returns string to 'target' in @org_tensorflow repository.
+    Use this function when referring to targets in the @org_tensorflow
+    repository from macros that may be called from external repositories.
+    """
+
+    # A repo-relative label is resolved relative to the file in which the
+    # Label() call appears, i.e. @org_tensorflow.
+    return str(Label(target))
 
 licenses(["notice"])  # Apache 2.0
 
@@ -40,7 +50,7 @@ cc_library(
     # boost needs functions in librt.so if built with glibc<2.17 (which is the
     # case in our manylinux docker image).
     linkopts = select({
-        "@platforms//os:macos": None,
+        clean_dep("@org_tensorflow//tensorflow:macos"): None,
         "//conditions:default": ["-lrt"],
     }),
     textual_hdrs = [

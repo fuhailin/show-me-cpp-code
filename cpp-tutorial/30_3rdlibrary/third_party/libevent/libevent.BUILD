@@ -24,22 +24,15 @@ config_setting(
     values = {"cpu": "x64_windows"},
 )
 
-configure_env_vars = select({
-    ":macos": {
-        "AR": "/usr/bin/ar",
-    },
-    "//conditions:default": {},
-})
-
 filegroup(
-    name = "all",
+    name = "all_srcs",
     srcs = glob(["**"]),
 )
 
 cmake(
     name = "libevent",
     build_args = [
-        "-j 12",
+        "-j `nproc`",
     ],
     cache_entries = {
         "EVENT__DISABLE_OPENSSL": "on",
@@ -55,13 +48,13 @@ cmake(
         # More details https://github.com/lyft/envoy-mobile/issues/116
         "_GNU_SOURCE": "on",
     },
-    env_vars = configure_env_vars,
-    generate_args = [
-        "--enable-shared=no",
-        "--disable-libevent-regress",
-        "--disable-openssl",
-    ],
-    lib_source = "@libevent//:all",
+    env = select({
+        ":macos": {
+            "AR": "/usr/bin/ar",
+        },
+        "//conditions:default": {},
+    }),
+    lib_source = ":all_srcs",
     out_static_libs = select({
         # macOS organization of libevent is different from Windows/Linux.
         # Including libevent_core is a requirement on those platforms, but

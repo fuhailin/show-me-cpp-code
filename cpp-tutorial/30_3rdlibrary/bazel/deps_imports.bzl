@@ -6,7 +6,7 @@ load("@compressor//bazel:repositories.bzl", "repositories")
 load("@compressor//bazel:deps_imports.bzl", "easycompressor_deps")
 
 def dependency_imports():
-    rules_foreign_cc_dependencies(register_preinstalled_tools = False)
+    rules_foreign_cc_dependencies()
     protobuf_deps()
     boost_deps()
     rules_cc_dependencies()

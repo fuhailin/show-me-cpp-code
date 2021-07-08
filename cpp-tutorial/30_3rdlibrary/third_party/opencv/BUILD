@@ -2,7 +2,7 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
 exports_files(
     [
-        "nlohmann_json.BUILD",
+        "opencv.BUILD",
     ],
     visibility = ["//visibility:public"],
 )
@@ -10,7 +10,6 @@ exports_files(
 build_test(
     name = "build_test",
     targets = [
-        "@nlohmann_json//:json",
+        "@opencv//:opencv",
     ],
-    visibility = ["//:__pkg__"],
 )

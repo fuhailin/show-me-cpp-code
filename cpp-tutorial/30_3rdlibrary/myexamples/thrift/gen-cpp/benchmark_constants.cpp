@@ -12,6 +12,3 @@ const benchmarkConstants g_benchmark_constants;
 
 benchmarkConstants::benchmarkConstants() {
 }
-
-
-

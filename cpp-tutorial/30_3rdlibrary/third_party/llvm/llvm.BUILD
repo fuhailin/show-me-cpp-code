@@ -11,7 +11,7 @@ cmake(
     name = "llvm",
     build_args = [
         "--verbose",
-        "-j 12",
+        "-j `nproc`",
     ],
     cache_entries = {
         # Disable both: BUILD and INCLUDE, since some of the INCLUDE
@@ -56,7 +56,7 @@ cmake(
             # engine lto mcparser mirparser orcjit passes runtimedyld
             # support x86asmparser x86desc
             "libLLVMOrcJIT.a",
-            "libLLVMOrcError.a",
+            # "libLLVMOrcError.a",
             "libLLVMJITLink.a",
             "libLLVMMIRParser.a",
             "libLLVMLTO.a",
@@ -82,7 +82,7 @@ cmake(
             "libLLVMBitWriter.a",
             "libLLVMX86Desc.a",
             "libLLVMMCDisassembler.a",
-            "libLLVMX86Utils.a",
+            # "libLLVMX86Utils.a",
             "libLLVMX86Info.a",
             "libLLVMMCJIT.a",
             "libLLVMExecutionEngine.a",

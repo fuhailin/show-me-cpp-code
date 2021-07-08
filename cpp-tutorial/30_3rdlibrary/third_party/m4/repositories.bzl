@@ -11,7 +11,7 @@ def repo():
             "https://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.gz",
         ],
         strip_prefix = "m4-1.4.18",
-        build_file = Label("//m4:m4.BUILD"),
+        build_file = Label("//third_party/m4:m4.BUILD"),
         patch_args = ["-p1"],
         patches = ["//third_party/m4:m4.patch"],
     )
