@@ -1,4 +1,4 @@
-load("@rules_foreign_cc//tools/build_defs:configure.bzl", "configure_make")
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -10,6 +10,9 @@ filegroup(
 # I tested and this builds only for me on Linux
 configure_make(
     name = "apr",
+    args = [
+        "-j `nproc`",
+    ],
     # configure_env_vars = {
     #     "AR": "",
     # },
@@ -18,5 +21,5 @@ configure_make(
         "--with-pic",
     ],
     lib_source = "@apache_apr//:all",
-    static_libraries = ["libapr-1.a"],
+    out_static_libs = ["libapr-1.a"],
 )

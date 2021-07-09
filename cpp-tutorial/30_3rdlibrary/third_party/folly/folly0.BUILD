@@ -10,8 +10,8 @@ filegroup(
 cmake(
     name = "folly",
     build_args = [
-        # "--verbose",
-        "-j 12",
+        "--verbose",
+        "-j `nproc`",
     ],
     # env_vars = {
     #     "Boost_INCLUDE_DIR": "$EXT_BUILD_DEPS/include/",

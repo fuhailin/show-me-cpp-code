@@ -2,7 +2,7 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
 exports_files(
     [
-        "apr.BUILD",
+        "log4cxx.BUILD",
     ],
     visibility = ["//visibility:public"],
 )
@@ -10,7 +10,7 @@ exports_files(
 build_test(
     name = "build_test",
     targets = [
-        "@apache_apr//:apr",
+        "@apache_log4cxx//:log4cxx",
     ],
     visibility = ["//:__pkg__"],
 )

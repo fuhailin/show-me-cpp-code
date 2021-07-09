@@ -1,5 +1,5 @@
 # vim: ft=bzl
-# load("@rules_foreign_cc//tools/build_defs:configure.bzl", "configure_make")
+# load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 
 # filegroup(
 #     name = "all",
@@ -17,7 +17,7 @@
 #     lib_source = "@jemalloc//:all",
 #     out_include_dir = "include",
 #     out_lib_dir = "lib",
-#     static_libraries = [
+#     out_static_libs = [
 #         "libjemalloc.a",
 #     ],
 #     visibility = ["//visibility:public"],

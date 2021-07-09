@@ -29,7 +29,7 @@ make(
         # Solution for https://github.com/bazelbuild/rules_foreign_cc/issues/185
         "AR": "/usr/bin/ar",
     },
-    static_libraries = ["librocksdb.a"],
+    out_static_libs = ["librocksdb.a"],
     deps = [
         # "@com_github_gflags_gflags//:gflags",
         "@bzip2",
@@ -100,6 +100,6 @@ make(
 #         },
 #         no_match_error = "Unsupported platform. MacOS or Linux only.",
 #     ),
-#     static_libraries = ["librocksdb.a"],
+#     out_static_libs = ["librocksdb.a"],
 #     visibility = ["//visibility:public"],
 # )

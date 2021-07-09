@@ -1,7 +1,7 @@
 # vim: ft=bzl
 
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
-load("@rules_foreign_cc//tools/build_defs:configure.bzl", "configure_make")
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -37,7 +37,7 @@ configure_make(
     #     "make -j `nproc`",
     #     "make install",
     # ],
-    # static_libraries = ["liblog4cxx.a"],
+    # out_static_libs = ["liblog4cxx.a"],
     # deps = [
     #     "@apache_apr//:apr",
     #     "@apache_aprutil//:aprutil",vim

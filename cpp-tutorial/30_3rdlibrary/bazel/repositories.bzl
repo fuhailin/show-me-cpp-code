@@ -28,9 +28,9 @@ load("//third_party/db/hiredis:repositories.bzl", hiredis = "repo")
 
 
 
-load("//third_party/log/glog:repositories.bzl", glog = "repo")
-load("//third_party/log/spdlog:repositories.bzl", spdlog = "repo")
-load("//third_party/log/log4cxx:repositories.bzl", log4cxx = "repo")
+load("//third_party/logger/glog:repositories.bzl", glog = "repo")
+load("//third_party/logger/spdlog:repositories.bzl", spdlog = "repo")
+load("//third_party/logger/log4cxx:repositories.bzl", log4cxx = "repo")
 
 
 # load("//third_party/boost:repositories.bzl", boost = "repo")
@@ -89,14 +89,17 @@ def repositories():
     libevent()
     googletest()
     gflags()
-    glog()
+    
     abseil()
     msgpack()
     rocksdb()
     leveldb()
     jemalloc()
     liburing()
+    
+    glog()
     spdlog()
+    log4cxx()
 
     bison()
     m4()
@@ -107,7 +110,7 @@ def repositories():
     apr()
     aprutil()
     expat()
-    log4cxx()
+    
     nlohmann_json()
     flatbuffers()
     grpc()

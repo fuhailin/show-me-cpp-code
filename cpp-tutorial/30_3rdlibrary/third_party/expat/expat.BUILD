@@ -1,9 +1,9 @@
-load("@rules_foreign_cc//tools/build_defs:configure.bzl", "configure_make")
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
 
 package(default_visibility = ["//visibility:public"])
 
 filegroup(
-    name = "all",
+    name = "all_srcs",
     srcs = glob(["**"]),
 )
 
@@ -18,8 +18,8 @@ configure_make(
     # configure_options = [
     #     "--with-apr=$EXT_BUILD_DEPS/apr",
     # ],
-    lib_source = "@libexpat//:all",
-    static_libraries = ["libexpat.a"],
+    lib_source = ":all_srcs",
+    out_static_libs = ["libexpat.a"],
     # deps = [
     #     "@apache_apr//:apr",
     # ],

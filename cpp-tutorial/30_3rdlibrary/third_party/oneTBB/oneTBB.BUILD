@@ -10,7 +10,7 @@ cmake(
     build_args = [
         "--verbose",
         # "--",  # <- Pass remaining options to the native tool.
-        "-j 10",
+        "-j `nproc`",
     ],
     # cache_entries = {
     #     "BUILD_WITHOUT_LAPACK": "no",
