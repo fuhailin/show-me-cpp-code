@@ -10,9 +10,11 @@ filegroup(
 # I tested and this builds only for me on Linux
 configure_make(
     name = "expat",
-    autogen = True,
-    autogen_command = "buildconf.sh",
-    # configure_env_vars = {
+    args = [
+        "-j `nproc`",
+    ],
+    # For macos
+    # env = {
     #     "AR": "",
     # },
     # configure_options = [

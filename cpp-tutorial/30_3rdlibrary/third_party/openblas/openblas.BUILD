@@ -1,22 +1,31 @@
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
 
+package(default_visibility = ["//visibility:public"])
+
 filegroup(
-    name = "all",
+    name = "all_srcs",
     srcs = glob(["**"]),
 )
 
 cmake(
     name = "openblas",
     build_args = [
-        "--verbose",
-        # "--",  # <- Pass remaining options to the native tool.
-        "-j 10",
+        # "--verbose",
+        "-j `nproc`",
     ],
+    # Values to be passed as -Dkey=value on the CMake command line;
+    # here are serving to provide some CMake script configuration options
     cache_entries = {
-        "BUILD_WITHOUT_LAPACK": "no",
         "NOFORTRAN": "on",
+        "BUILD_WITHOUT_LAPACK": "no",
+        "USE_OPENMP": "1",
     },
-    lib_source = "@openblas//:all",
+    lib_source = "all_srcs",
+    # linkopts = ["-lpthread"],
+    # We are selecting the resulting static library to be passed in C/C++ provider
+    # as the result of the build;
+    # However, the cmake_external dependants could use other artefacts provided by the build,
+    # according to their CMake script
     out_static_libs = ["libopenblas.a"],
-    visibility = ["//visibility:public"],
+    alwayslink = True,
 )
