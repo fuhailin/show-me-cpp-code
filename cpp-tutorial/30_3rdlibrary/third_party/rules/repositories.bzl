@@ -17,7 +17,7 @@ def rules_cc_repo():
     )
 
 def rules_foreign_cc_repo():
-    COMMIT = "a7f1c9e6046a98b6006e183f0112f4815bf2ebc0"
+    COMMIT = "main"
     maybe(
         http_archive,
         name = "rules_foreign_cc",

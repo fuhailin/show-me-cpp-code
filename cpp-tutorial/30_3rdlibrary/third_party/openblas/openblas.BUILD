@@ -10,7 +10,7 @@ filegroup(
 cmake(
     name = "openblas",
     build_args = [
-        # "--verbose",
+        "--verbose",
         "-j `nproc`",
     ],
     # Values to be passed as -Dkey=value on the CMake command line;
@@ -18,9 +18,8 @@ cmake(
     cache_entries = {
         "NOFORTRAN": "on",
         "BUILD_WITHOUT_LAPACK": "no",
-        "USE_OPENMP": "1",
     },
-    lib_source = "all_srcs",
+    lib_source = ":all_srcs",
     # linkopts = ["-lpthread"],
     # We are selecting the resulting static library to be passed in C/C++ provider
     # as the result of the build;

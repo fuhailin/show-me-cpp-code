@@ -9,6 +9,10 @@ filegroup(
 
 cmake(
     name = "eigen",
+    build_args = [
+        "--verbose",
+        "-j `nproc`",
+    ],
     # These options help CMake to find prebuilt OpenBLAS, which will be copied into
     # $EXT_BUILD_DEPS/openblas by the cmake_external script
     cache_entries = {
