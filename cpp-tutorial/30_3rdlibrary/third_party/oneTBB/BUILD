@@ -10,7 +10,13 @@ exports_files(
 build_test(
     name = "build_test",
     targets = [
-        "@oneTBB//:oneTBB",
+        "@oneTBB//:tbb",
     ],
     visibility = ["//:__pkg__"],
+)
+
+cc_binary(
+    name = "Demo",
+    srcs = ["main.cpp"],
+    deps = ["@oneTBB//:tbb"],
 )
