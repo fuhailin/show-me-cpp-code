@@ -9,6 +9,9 @@ filegroup(
 
 cmake(
     name = "hiredis",
+    build_args = [
+        "-j `nproc`",
+    ],
     cache_entries = {
         "BUILD_SHARED_LIBS": "off",
     },

@@ -9,6 +9,9 @@ filegroup(
 
 cmake(
     name = "cares",
+    build_args = [
+        "-j `nproc`",
+    ],
     cache_entries = {
         "CARES_BUILD_TOOLS": "off",
         "CARES_SHARED": "off",

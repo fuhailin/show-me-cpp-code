@@ -11,6 +11,9 @@ filegroup(
 
 cmake(
     name = "pcre",
+    build_args = [
+        "-j `nproc`",
+    ],
     cache_entries = {
         "CMAKE_C_FLAGS": "-fPIC",
     },

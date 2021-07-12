@@ -19,6 +19,9 @@ _LINUX_CACHE_ENTRIES = dict(_CACHE_ENTRIES.items() + {
 
 cmake(
     name = "libssh2",
+    build_args = [
+        "-j `nproc`",
+    ],
     cache_entries = select({
         "@platforms//os:linux": _LINUX_CACHE_ENTRIES,
         "//conditions:default": _CACHE_ENTRIES,
