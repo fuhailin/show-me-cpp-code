@@ -1,0 +1,3 @@
+export LD_LIBRARY_PATH=/export/apps/anaconda2/2.4.1/lib/:$LD_LIBRARY_PATH
+
+bazel build main --action_env=LIBRARY_PATH=:/home/myaccount/boost_1_68_0/release/lib/

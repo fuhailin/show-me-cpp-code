@@ -1,0 +1,1 @@
+bazel run //:hello_bazel

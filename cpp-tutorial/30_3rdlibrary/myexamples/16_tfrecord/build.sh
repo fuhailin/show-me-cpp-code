@@ -1,0 +1,1 @@
+bazel build //lib:example_cc_proto
