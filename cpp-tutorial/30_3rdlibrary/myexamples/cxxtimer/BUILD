@@ -5,9 +5,3 @@ cc_binary(
         "//cxxtimer",
     ],
 )
-
-cc_binary(
-    name = "zlib_usage_example",
-    srcs = ["zlib-example.cpp"],
-    deps = ["@zlib"],
-)

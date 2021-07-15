@@ -5,7 +5,6 @@ load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
 def repo():
     COMMIT = "5.2.1"
-    SHA256 = "..."
     maybe(
         http_archive,
         name = "jemalloc",

@@ -23,6 +23,9 @@ load("//third_party/jemalloc:repositories.bzl", jemalloc = "repo")
 load("//third_party/liburing:repositories.bzl", liburing = "repo")
 load("//third_party/db/leveldb:repositories.bzl", leveldb = "repo")
 load("//third_party/db/rocksdb:repositories.bzl", rocksdb = "repo")
+load("//third_party/db/terarkdb:repositories.bzl", terarkdb = "repo")
+
+
 load("//third_party/db/hiredis:repositories.bzl", hiredis = "repo")
 load("//third_party/logger/glog:repositories.bzl", glog = "repo")
 load("//third_party/logger/spdlog:repositories.bzl", spdlog = "repo")
@@ -58,12 +61,11 @@ load("//third_party/cryptopp:repositories.bzl", cryptopp = "repo")
 load("//third_party/sctp:repositories.bzl", sctp = "repo")
 load("//third_party/xfs:repositories.bzl", xfs = "repo")
 load("//third_party/uuid:repositories.bzl", uuid = "repo")
+load("//third_party/seastar:repositories.bzl", seastar = "repo")
 load("//third_party/systemtap:repositories.bzl", systemtap = "repo")
 load("//third_party/ragel:repositories.bzl", ragel = "repo")
 load("//third_party/colm:repositories.bzl", colm = "repo")
-
-
-
+load("//third_party/oneDNN:repositories.bzl", oneDNN = "repo")
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
@@ -96,6 +98,7 @@ def repositories():
     abseil()
     msgpack()
     rocksdb()
+    terarkdb()
     leveldb()
     jemalloc()
     liburing()
@@ -130,6 +133,7 @@ def repositories():
     folly()
     prometheus()
     oneTBB()
+    oneDNN()
     compressor()
 
     jbeder_yaml()
@@ -139,6 +143,7 @@ def repositories():
     sctp()
     xfs()
     uuid()
+    seastar()
     systemtap()
     ragel()
     colm()

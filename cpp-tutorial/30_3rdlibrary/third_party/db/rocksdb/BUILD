@@ -11,8 +11,6 @@ build_test(
     name = "build_test",
     targets = [
         "@com_github_facebook_rocksdb//:rocksdb",
-        # "@com_github_facebook_rocksdb//:rocksdb_tools_lib",
-        # "@com_github_facebook_rocksdb//:db_stress",
     ],
     visibility = ["//:__pkg__"],
 )
