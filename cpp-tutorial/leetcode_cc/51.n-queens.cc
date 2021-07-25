@@ -1,0 +1,61 @@
+#include <gtest/gtest.h>
+
+#include <vector>
+using namespace std;
+
+class Solution {
+   private:
+    vector<vector<string>> result;
+    void backtrack() {
+    }
+
+    /* 是否可以在 board[row][col] 放置皇后？ */
+    bool isValid(vector<string>& board, int row, int col) {
+        int n = board.size();
+        // 检查列是否有皇后互相冲突
+        for (int i = 0; i < n; i++) {
+            if (board[i][col] == 'Q')
+                return false;
+        }
+        // 检查右上方是否有皇后互相冲突
+        for (int i = row - 1, j = col + 1;
+             i >= 0 && j < n; i--, j++) {
+            if (board[i][j] == 'Q')
+                return false;
+        }
+        // 检查左上方是否有皇后互相冲突
+        for (int i = row - 1, j = col - 1;
+             i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] == 'Q')
+                return false;
+        }
+        return true;
+    }
+
+   public:
+    vector<vector<string>> solveNQueens(int n) {
+        // '.' 表示空，'Q' 表示皇后，初始化空棋盘。
+        vector<string> board(n, string(n, '.'));
+        backtrack(n, used)
+    }
+};
+
+TEST(LeetCode, N皇后) {
+    Solution s;
+    {
+        std::vector<std::vector<int>> inputs = {
+            {1, 2, 3},
+            {0, 1},
+            {1}};
+
+        vector<vector<vector<int>>> outputs = {
+            {{{1, 2, 3}, {1, 3, 2}, {2, 1, 3}, {2, 3, 1}, {3, 1, 2}, {3, 2, 1}},
+             {{0, 1}, {1, 0}},
+             {{1}}};
+
+        for (int i = 0; i < inputs.size(); ++i) {
+            vector<vector<int>> ret = s.permute(inputs[i]);
+            EXPECT_EQ(ret, outputs[i]);
+        }
+    }
+}
