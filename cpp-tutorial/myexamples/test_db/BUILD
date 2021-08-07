@@ -17,3 +17,13 @@ cc_test(
         "@com_github_facebook_rocksdb//:rocksdb",
     ],
 )
+
+cc_test(
+    name = "leveldb",
+    srcs = [
+        "test_leveldb.cc",
+    ],
+    deps = [
+        "@com_github_google_leveldb//:leveldb",
+    ],
+)

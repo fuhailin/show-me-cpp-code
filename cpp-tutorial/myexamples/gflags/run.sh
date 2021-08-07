@@ -1,1 +1,1 @@
-bazel run -- :bazel_test --name fuhailin
+bazel run -- :bazel_test --name=fuhailin --age=27

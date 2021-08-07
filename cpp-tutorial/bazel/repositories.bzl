@@ -24,8 +24,6 @@ load("//third_party/liburing:repositories.bzl", liburing = "repo")
 load("//third_party/db/leveldb:repositories.bzl", leveldb = "repo")
 load("//third_party/db/rocksdb:repositories.bzl", rocksdb = "repo")
 load("//third_party/db/terarkdb:repositories.bzl", terarkdb = "repo")
-
-
 load("//third_party/db/hiredis:repositories.bzl", hiredis = "repo")
 load("//third_party/logger/glog:repositories.bzl", glog = "repo")
 load("//third_party/logger/spdlog:repositories.bzl", spdlog = "repo")
@@ -47,7 +45,14 @@ load("//third_party/zeromq:repositories.bzl", zeromq = "repo")
 load("//third_party/apr:repositories.bzl", apr = "repo")
 load("//third_party/aprutil:repositories.bzl", aprutil = "repo")
 load("//third_party/expat:repositories.bzl", expat = "repo")
-load("//third_party/rules:repositories.bzl", "rules_boost_repo", "rules_cc_repo", "rules_foreign_cc_repo", "rules_proto_repo")
+load(
+    "//third_party/rules:repositories.bzl",
+    "rules_boost_repo",
+    "rules_cc_repo",
+    "rules_foreign_cc_repo",
+    "rules_jvm_repo",
+    "rules_proto_repo",
+)
 load("//third_party/llvm:repositories.bzl", llvm = "repo")
 load("//third_party/zookeeper:repositories.bzl", zookeeper = "repo")
 load("//third_party/fmt:repositories.bzl", fmt = "repo")
@@ -66,6 +71,9 @@ load("//third_party/systemtap:repositories.bzl", systemtap = "repo")
 load("//third_party/ragel:repositories.bzl", ragel = "repo")
 load("//third_party/colm:repositories.bzl", colm = "repo")
 load("//third_party/oneDNN:repositories.bzl", oneDNN = "repo")
+load("//third_party/pybind11:repositories.bzl", "pybind11_repo", "pybind11_bazel_repo")
+
+
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
@@ -75,6 +83,7 @@ def repositories():
     rules_foreign_cc_repo()
     rules_proto_repo()
     rules_boost_repo()
+    rules_jvm_repo()
 
     # bison_repositories()
     cares()
@@ -147,3 +156,6 @@ def repositories():
     systemtap()
     ragel()
     colm()
+
+    pybind11_repo()
+    pybind11_bazel_repo()

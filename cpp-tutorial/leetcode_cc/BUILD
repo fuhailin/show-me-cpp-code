@@ -15,8 +15,8 @@ package(
             "-w",
         ],
         deps = [
+            "//include:LinkedList",
             "@com_google_googletest//:gtest_main",
-            "//include:LinkedList"
         ],
     )
     for f in glob(["*.cc"])

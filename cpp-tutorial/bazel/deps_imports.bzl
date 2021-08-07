@@ -4,6 +4,7 @@ load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
 load("@rules_cc//cc:repositories.bzl", "rules_cc_dependencies")
 load("@compressor//bazel:repositories.bzl", "repositories")
 load("@compressor//bazel:deps_imports.bzl", "easycompressor_deps")
+load("@pybind11_bazel//:python_configure.bzl", "python_configure")
 
 def dependency_imports():
     rules_foreign_cc_dependencies()
@@ -12,3 +13,4 @@ def dependency_imports():
     rules_cc_dependencies()
     repositories()
     easycompressor_deps()
+    python_configure(name = "local_config_python")

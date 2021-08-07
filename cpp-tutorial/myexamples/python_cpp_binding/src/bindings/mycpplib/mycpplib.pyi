@@ -1,0 +1,4 @@
+
+def myPrint():
+    print("HHHH")
+    ...
