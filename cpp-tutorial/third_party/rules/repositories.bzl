@@ -23,9 +23,8 @@ def rules_foreign_cc_repo():
         name = "rules_foreign_cc",
         strip_prefix = "rules_foreign_cc-" + COMMIT,
         urls = [
-            # "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/rules_foreign_cc-{commit}.tar.gz".format(commit = COMMIT),
+            "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/rules/rules_foreign_cc-{commit}.zip".format(commit = COMMIT),
             "https://github.com.cnpmjs.org/bazelbuild/rules_foreign_cc/archive/{commit}.zip".format(commit = COMMIT),
-            "https://github.91chifun.workers.dev//https://github.com/bazelbuild/rules_foreign_cc/archive/{commit}.zip".format(commit = COMMIT),
             "https://hub.fastgit.org/bazelbuild/rules_foreign_cc/archive/{commit}.zip".format(commit = COMMIT),
             "https://github.com/bazelbuild/rules_foreign_cc/archive/{commit}.zip".format(commit = COMMIT),
         ],
@@ -68,4 +67,17 @@ def rules_java_repo():
             "https://github.com/bazelbuild/rules_java/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "rules_java-" + COMMIT,
+    )
+
+def rules_jvm_repo():
+    RULES_JVM_EXTERNAL_TAG = "4.0"
+    RULES_JVM_EXTERNAL_SHA = "31701ad93dbfe544d597dbe62c9a1fdd76d81d8a9150c2bf1ecf928ecdf97169"
+    maybe(
+        http_archive,
+        name = "rules_jvm_external",
+        urls = [
+            "https://github.com.cnpmjs.org/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
+            "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
+        ],
+        strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
     )

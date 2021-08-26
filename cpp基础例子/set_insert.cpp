@@ -1,21 +1,39 @@
-#include <iostream>
-#include <set>
-#include <string>
+#include <stdio.h>
 #include <vector>
 using namespace std;
 
-int main() {
-    //创建并初始化set容器
-    std::set<int> myset;
-    // int a[5] = {1, 2, 3, 4, 5};
-    //通过数组a的地址初始化，注意地址是从0到5（左闭右开区间）
-    // std::vector<int> nums(a, a + 5);
-    std::vector<int> nums{0, 1, 2, 3, 4, 5};
+class Solution {
+    bool dfs(vector<vector<int>>& graph, vector<bool>& visited, int i) {
+        if (visited[i]) return false;
+        visited[i] = true;
+        for (auto neibor : graph[i]) {
+            if (!dfs(graph, visited, neibor)) return false;
+        }
+        visited[i] = false;
+        graph[i].clear();
+        return true;
+    }
 
-    myset.insert(nums.begin(), nums.end());
-    cout << "myset size =" << myset.size() << endl;
-    // for (auto x : myset) {
-    //     std::cout << x << " ";
-    // }
+public:
+    vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
+        int n = graph.size();
+        vector<bool> visited(n, false);
+
+        vector<int> ans;
+        for (int i = 0; i < n; i++) {
+            if (dfs(graph, visited, i))
+                ans.push_back(i);
+        }
+        return ans;
+    }
+};
+
+int main()
+{
+    Solution s;
+    // printf("Hello World");
+    vector<vector<int>> test = {{1,2},{2,3},{5},{0},{5},{},{}};
+    auto res = s.eventualSafeNodes(test);
+
     return 0;
 }

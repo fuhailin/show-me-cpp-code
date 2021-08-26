@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -14,7 +15,6 @@ class Solution {
         {'7', "pqrs"},
         {'8', "tuv"},
         {'9', "wxyz"}};
-    
 
     vector<string> result;
     string combination;
@@ -41,3 +41,13 @@ class Solution {
         return result;
     }
 };
+
+int main(int argc, char const* argv[]) {
+    string digits = "23";
+    Solution so;
+    auto res = so.letterCombinations(digits);
+    for (auto x : res) {
+        cout << x << endl;
+    }
+    return 0;
+}
