@@ -23,9 +23,6 @@ def rules_foreign_cc_repo():
         name = "rules_foreign_cc",
         strip_prefix = "rules_foreign_cc-" + COMMIT,
         urls = [
-            "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/rules/rules_foreign_cc-{commit}.zip".format(commit = COMMIT),
-            "https://github.com.cnpmjs.org/bazelbuild/rules_foreign_cc/archive/{commit}.zip".format(commit = COMMIT),
-            "https://hub.fastgit.org/bazelbuild/rules_foreign_cc/archive/{commit}.zip".format(commit = COMMIT),
             "https://github.com/bazelbuild/rules_foreign_cc/archive/{commit}.zip".format(commit = COMMIT),
         ],
     )

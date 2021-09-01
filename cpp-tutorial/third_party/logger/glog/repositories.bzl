@@ -9,7 +9,6 @@ def repo():
         http_archive,
         name = "com_github_google_glog",
         urls = [
-            "https://github.91chifun.workers.dev/https://github.com//google/glog/archive/{commit}.tar.gz".format(commit = COMMIT),
             "https://github.com/google/glog/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "glog-" + COMMIT,

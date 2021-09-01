@@ -48,7 +48,7 @@ cc_library(
         "lib/cpp/src/thrift/protocol/TCompactProtocol.tcc",
     ],
     deps = [
-        "@boost//:geometry",
+        "@boost",
     ],
 )
 

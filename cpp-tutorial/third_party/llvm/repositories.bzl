@@ -10,8 +10,6 @@ def repo(commit = "12.0.0"):
         name = "org_llvm_llvm",
         build_file = Label("//third_party/llvm:llvm.BUILD"),
         urls = [
-            "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/llvm/llvm-12.0.0.src.tar.xz",
-            "https://github.com.cnpmjs.org/llvm/llvm-project/releases/download/llvmorg-{commit}/llvm-{commit}.src.tar.xz".format(commit = commit),
             "https://github.com/llvm/llvm-project/releases/download/llvmorg-{commit}/llvm-{commit}.src.tar.xz".format(commit = commit),
         ],
         strip_prefix = "llvm-{commit}.src".format(commit = commit),

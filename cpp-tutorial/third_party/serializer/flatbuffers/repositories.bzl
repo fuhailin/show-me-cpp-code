@@ -9,8 +9,6 @@ def repo():
         http_archive,
         name = "com_github_google_flatbuffers",
         urls = [
-            "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/flatbuffers-{commit}.tar.gz".format(commit = COMMIT),
-            "https://hub.fastgit.org/google/flatbuffers/archive/v{commit}.tar.gz".format(commit = COMMIT),
             "https://github.com/google/flatbuffers/archive/v{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "flatbuffers-" + COMMIT,

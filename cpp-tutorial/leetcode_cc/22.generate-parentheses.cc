@@ -1,19 +1,26 @@
+#include <stack>
 #include <string>
 #include <vector>
+using namespace std;
 
 class Solution {
     vector<string> result;
-    string combination;
-    void backtracking(int depth, int index) {
-        if (depth == index) {
-            result.emplace_back(combination);
+    string path;
+
+    void backtracking(int n, int left, int right) {
+        if (left == n && right == n) {
+            result.emplace_back(path);
             return;
         }
-
-        for (auto each :) {
-            combination;
-            backtracking(depth - 1);
-            combination;
+        if (left < n) {
+            path.push_back('(');
+            backtracking(n, left + 1, right);
+            path.pop_back();
+        }
+        if (left > right) {
+            path.push_back(')');
+            backtracking(n, left, right + 1);
+            path.pop_back();
         }
     }
 
@@ -22,6 +29,7 @@ class Solution {
         if (n < 1) {
             return result;
         }
-        backtracking(n, n);
+        backtracking(n, 0, 0);
+        return result;
     }
 };

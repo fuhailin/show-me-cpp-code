@@ -43,7 +43,7 @@ boost::mutex io_mutex;
 
 void count(int id) {
     for (int i = 0; i < 10; i++) {
-        boost::mutex::scoped_lock lock(io_mutex);
+        // boost::mutex::scoped_lock lock(io_mutex);
         std::cout << id << ":" << i << std::endl;
     }
 }
@@ -101,8 +101,8 @@ bind预先绑定的参数需要传具体的变量或值进去，对于预先绑�
 */
 
 int main(int argc, char* argv[]) {
-    //test_thread();
-    //test_thread_pool();
-    test_future();
+    test_thread();
+    // test_thread_pool();
+    // test_future();
     return 0;
 }

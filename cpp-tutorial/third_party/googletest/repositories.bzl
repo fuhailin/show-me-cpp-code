@@ -9,9 +9,6 @@ def repo():
         http_archive,
         name = "com_google_googletest",
         urls = [
-            # "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/googletest-df7fee587d442b372ef43bd66c6a2f5c9af8c5eb.tar.gz",
-            "https://github.com.cnpmjs.org/google/googletest/archive/{commit}.tar.gz".format(commit = COMMIT),
-            "https://github.91chifun.workers.dev/https://github.com//google/googletest/archive/{commit}.tar.gz".format(commit = COMMIT),
             "https://github.com/google/googletest/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "googletest-" + COMMIT,

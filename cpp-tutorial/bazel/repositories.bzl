@@ -39,6 +39,9 @@ load("//third_party/serializer/flatbuffers:repositories.bzl", flatbuffers = "rep
 load("//third_party/serializer/protobuf:repositories.bzl", protobuf = "repo")
 load("//third_party/serializer/thrift:repositories.bzl", thrift = "repo")
 load("//third_party/serializer/jbeder_yaml:repositories.bzl", jbeder_yaml = "repo")
+load("//third_party/serializer/rapidjson:repositories.bzl", rapidjson = "repo")
+
+
 load("//third_party/rpc/grpc:repositories.bzl", grpc = "repo")
 load("//third_party/rpc/brpc:repositories.bzl", brpc = "repo")
 load("//third_party/zeromq:repositories.bzl", zeromq = "repo")
@@ -72,6 +75,15 @@ load("//third_party/ragel:repositories.bzl", ragel = "repo")
 load("//third_party/colm:repositories.bzl", colm = "repo")
 load("//third_party/oneDNN:repositories.bzl", oneDNN = "repo")
 load("//third_party/pybind11:repositories.bzl", "pybind11_repo", "pybind11_bazel_repo")
+load("//third_party/arrow:repositories.bzl", arrow = "repo")
+load("//third_party/boringssl:repositories.bzl", boringssl = "repo")
+load("//third_party/xsimd:repositories.bzl", xsimd = "repo")
+load("//third_party/brotli:repositories.bzl", brotli = "repo")
+load("//third_party/boost:repositories.bzl", boost = "repo")
+load("//third_party/xz:repositories.bzl", xz = "repo")
+
+
+
 
 
 
@@ -82,7 +94,7 @@ def repositories():
     rules_cc_repo()
     rules_foreign_cc_repo()
     rules_proto_repo()
-    rules_boost_repo()
+    # rules_boost_repo()
     rules_jvm_repo()
 
     # bison_repositories()
@@ -132,6 +144,7 @@ def repositories():
     brpc()
 
     # rapidcsv()
+    rapidjson()
 
     llvm()
 
@@ -159,3 +172,10 @@ def repositories():
 
     pybind11_repo()
     pybind11_bazel_repo()
+
+    arrow()
+    boringssl()
+    xsimd()
+    brotli()
+    boost()
+    xz()

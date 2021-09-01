@@ -20,11 +20,19 @@ cmake(
         "WITH_EXAMPLE": "OFF",
     },
     lib_source = "all",
-    out_shared_libs = [
-        "libmkldnn.so.1.0",
-        "libmkldnn.so.1",
-        "libmkldnn.so",
-    ],
+    out_shared_libs = select({
+        "@platforms//os:macos": [
+            "libmkldnn.dylib",
+        ],
+        "@platforms//os:linux": [
+            "libmkldnn.so.1.0",
+            "libmkldnn.so.1",
+            "libmkldnn.so",
+        ],
+        "@platforms//os:windows": [
+            "libmkldnn.dll",
+        ],
+    }),
     visibility = ["//visibility:public"],
     alwayslink = True,
 )

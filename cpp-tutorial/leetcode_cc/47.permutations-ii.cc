@@ -12,7 +12,7 @@ class Solution {
         }
 
         for (int i = 0; i < nums.size(); i++) {
-            if (visited[i] || i > 0 && nums[i] == nums[i - 1 && !visited[i]]) {
+            if (visited[i] || i > 0 && nums[i] == nums[i - 1] && !visited[i]) {
                 continue;  // path里已经收录的元素，直接跳过
             }
             visited[i] = true;

@@ -18,6 +18,16 @@ configure_make(
         "--enable-prof-libunwind",
     ],
     lib_source = ":all_srcs",
-    out_shared_libs = ["libjemalloc.so"],
+    out_shared_libs = select({
+        "@platforms//os:macos": [
+            "libjemalloc.dylib",
+        ],
+        "@platforms//os:linux": [
+            "libjemalloc.so",
+        ],
+        "@platforms//os:windows": [
+            "libjemalloc.dll",
+        ],
+    }),
     # out_static_libs = ["libjemalloc.so"],
 )

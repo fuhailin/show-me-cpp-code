@@ -2,7 +2,7 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 
 exports_files(
     [
-        "zstd.BUILD",
+        "rapidjson.BUILD",
     ],
     visibility = ["//visibility:public"],
 )
@@ -10,7 +10,7 @@ exports_files(
 build_test(
     name = "build_test",
     targets = [
-        "@zstd//:zstd",
+        "@rapidjson//:rapidjson",
     ],
     visibility = ["//:__pkg__"],
 )

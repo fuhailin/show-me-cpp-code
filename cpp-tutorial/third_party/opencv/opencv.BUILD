@@ -21,11 +21,25 @@ cmake(
         "ninja install",
     ],
     out_include_dir = "include/opencv4",
-    out_shared_libs = [
-        "libopencv_core.so",
-        "libopencv_highgui.so",
-        "libopencv_imgcodecs.so",
-        "libopencv_imgproc.so",
-    ],
+    out_shared_libs = select({
+        "@platforms//os:macos": [
+            "libopencv_core.dylib",
+            "libopencv_highgui.dylib",
+            "libopencv_imgcodecs.dylib",
+            "libopencv_imgproc.dylib",
+        ],
+        "@platforms//os:linux": [
+            "libopencv_core.so",
+            "libopencv_highgui.so",
+            "libopencv_imgcodecs.so",
+            "libopencv_imgproc.so",
+        ],
+        "@platforms//os:windows": [
+            "libopencv_core.dll",
+            "libopencv_highgui.dll",
+            "libopencv_imgcodecs.dll",
+            "libopencv_imgproc.dll",
+        ],
+    }),
     visibility = ["//visibility:public"],
 )

@@ -11,6 +11,6 @@ def repo():
     maybe(
         native.local_repository,
         name = "compressor",
-        # path = "/root/fuhailin/projects/EasyCompressor",
-        path = "/Users/vincent/Documents/projects/EasyCompressor",
+        path = "/home/fuhailin/projects/EasyCompressor",
+        # path = "/Users/vincent/Documents/projects/EasyCompressor",
     )

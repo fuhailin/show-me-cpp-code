@@ -7,7 +7,6 @@ def repo():
         http_archive,
         name = "com_github_grpc_grpc",
         urls = [
-            "https://3rdcpp-1256340525.cos.ap-beijing.myqcloud.com/grpc-{commit}.tar.gz".format(commit = COMMIT),
             "https://github.com/grpc/grpc/archive/v{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "grpc-" + COMMIT,
