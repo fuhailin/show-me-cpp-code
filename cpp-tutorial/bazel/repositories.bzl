@@ -29,7 +29,6 @@ load("//third_party/logger/glog:repositories.bzl", glog = "repo")
 load("//third_party/logger/spdlog:repositories.bzl", spdlog = "repo")
 load("//third_party/logger/log4cxx:repositories.bzl", log4cxx = "repo")
 
-# load("//third_party/boost:repositories.bzl", boost = "repo")
 load("//third_party/m4:repositories.bzl", m4 = "repo")
 load("//third_party/pslite:repositories.bzl", pslite = "repo")
 
@@ -50,7 +49,7 @@ load("//third_party/aprutil:repositories.bzl", aprutil = "repo")
 load("//third_party/expat:repositories.bzl", expat = "repo")
 load(
     "//third_party/rules:repositories.bzl",
-    "rules_boost_repo",
+    # "rules_boost_repo",
     "rules_cc_repo",
     "rules_foreign_cc_repo",
     "rules_jvm_repo",

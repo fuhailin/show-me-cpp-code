@@ -5,7 +5,6 @@ cc_binary(
         "-std=c++11",
     ],
     deps = [
-        "@boost//:algorithm",
-        # "@boost//:lexical_cast",
+        "@boost",
     ],
 )

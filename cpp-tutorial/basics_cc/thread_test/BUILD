@@ -7,8 +7,6 @@ cc_binary(
     linkopts = ["-lpthread"],
 )
 
-
-
 cc_binary(
     name = "thread1",
     srcs = ["thread_test1.cc"],
@@ -17,12 +15,8 @@ cc_binary(
 cc_binary(
     name = "thread_pool_test",
     srcs = ["thread_pool_test.cc"],
+    linkopts = ["-lpthread"],
     deps = [
-        # "@boost",
-        "@boost//:asio",
-        "@boost//:thread",
+        "@boost",
     ],
-    # copts = [
-    #     "-std=c++14",
-    # ],
 )

@@ -13,7 +13,7 @@ cc_binary(
         "-std=c++11",
     ],
     deps = [
-        "@boost//:regex",
+        "@boost",
         # "@boost//:lexical_cast",
     ],
 )

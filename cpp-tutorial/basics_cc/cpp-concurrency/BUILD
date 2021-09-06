@@ -37,7 +37,6 @@ cc_binary(
     srcs = ["semaphore_test.cc"],
     deps = [
         "@boost//:boost",
-        # "@boost//:thread",
         "@com_github_google_glog//:glog",
     ],
 )

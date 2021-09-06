@@ -15,7 +15,7 @@ boost_build(
         "libboost_program_options.so.1.76.0",
         "libboost_regex.so.1.76.0",
         "libboost_system.so.1.76.0",
-        # "libboost_thread.so.1.76.0",
+        "libboost_thread.so.1.76.0",
     ],
     user_options = [
         "-j`nproc`",
@@ -23,7 +23,7 @@ boost_build(
         "--with-program_options",
         "--with-regex",
         "--with-system",
-        # "--with-thread",
+        "--with-thread",
         "variant=release",
         "link=shared",
         "threading=multi",
