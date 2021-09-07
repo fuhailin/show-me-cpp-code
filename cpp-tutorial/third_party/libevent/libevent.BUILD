@@ -10,20 +10,6 @@ licenses(["notice"])  # BSD
 
 exports_files(["LICENSE"])
 
-config_setting(
-    name = "macos",
-    values = {
-        "apple_platform_type": "macos",
-        "cpu": "darwin",
-    },
-    visibility = ["//visibility:public"],
-)
-
-config_setting(
-    name = "windows_x86_64",
-    values = {"cpu": "x64_windows"},
-)
-
 filegroup(
     name = "all_srcs",
     srcs = glob(["**"]),
@@ -49,7 +35,7 @@ cmake(
         "_GNU_SOURCE": "on",
     },
     env = select({
-        ":macos": {
+        "@platforms//os:macos": {
             "AR": "/usr/bin/ar",
         },
         "//conditions:default": {},
@@ -60,11 +46,11 @@ cmake(
         # Including libevent_core is a requirement on those platforms, but
         # results in duplicate symbols when built on macOS.
         # See https://github.com/lyft/envoy-mobile/issues/677 for details.
-        ":macos": [
+        "@platforms//os:macos": [
             "libevent.a",
             "libevent_pthreads.a",
         ],
-        ":windows_x86_64": [
+        "@platforms//os:windows": [
             "event.lib",
             "event_core.lib",
         ],

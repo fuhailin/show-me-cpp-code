@@ -28,7 +28,6 @@ load("//third_party/db/hiredis:repositories.bzl", hiredis = "repo")
 load("//third_party/logger/glog:repositories.bzl", glog = "repo")
 load("//third_party/logger/spdlog:repositories.bzl", spdlog = "repo")
 load("//third_party/logger/log4cxx:repositories.bzl", log4cxx = "repo")
-
 load("//third_party/m4:repositories.bzl", m4 = "repo")
 load("//third_party/pslite:repositories.bzl", pslite = "repo")
 
@@ -39,8 +38,6 @@ load("//third_party/serializer/protobuf:repositories.bzl", protobuf = "repo")
 load("//third_party/serializer/thrift:repositories.bzl", thrift = "repo")
 load("//third_party/serializer/jbeder_yaml:repositories.bzl", jbeder_yaml = "repo")
 load("//third_party/serializer/rapidjson:repositories.bzl", rapidjson = "repo")
-
-
 load("//third_party/rpc/grpc:repositories.bzl", grpc = "repo")
 load("//third_party/rpc/brpc:repositories.bzl", brpc = "repo")
 load("//third_party/zeromq:repositories.bzl", zeromq = "repo")
@@ -62,7 +59,7 @@ load("//third_party/double_conversion:repositories.bzl", double_conversion = "re
 load("//third_party/folly:repositories.bzl", folly = "repo")
 load("//third_party/prometheus:repositories.bzl", prometheus = "repo")
 load("//third_party/oneTBB:repositories.bzl", oneTBB = "repo")
-load("//third_party/EasyCompressor:repositories.bzl", compressor = "repo")
+load("//third_party/rules_compressor:repositories.bzl", rules_compressor = "repo")
 load("//third_party/readerwriterqueue:repositories.bzl", readerwriterqueue = "repo")
 load("//third_party/cryptopp:repositories.bzl", cryptopp = "repo")
 load("//third_party/sctp:repositories.bzl", sctp = "repo")
@@ -73,18 +70,12 @@ load("//third_party/systemtap:repositories.bzl", systemtap = "repo")
 load("//third_party/ragel:repositories.bzl", ragel = "repo")
 load("//third_party/colm:repositories.bzl", colm = "repo")
 load("//third_party/oneDNN:repositories.bzl", oneDNN = "repo")
-load("//third_party/pybind11:repositories.bzl", "pybind11_repo", "pybind11_bazel_repo")
+load("//third_party/pybind11:repositories.bzl", "pybind11_bazel_repo", "pybind11_repo")
 load("//third_party/arrow:repositories.bzl", arrow = "repo")
 load("//third_party/boringssl:repositories.bzl", boringssl = "repo")
 load("//third_party/xsimd:repositories.bzl", xsimd = "repo")
 load("//third_party/brotli:repositories.bzl", brotli = "repo")
 load("//third_party/boost:repositories.bzl", boost = "repo")
-load("//third_party/xz:repositories.bzl", xz = "repo")
-
-
-
-
-
 
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
@@ -93,6 +84,7 @@ def repositories():
     rules_cc_repo()
     rules_foreign_cc_repo()
     rules_proto_repo()
+
     # rules_boost_repo()
     rules_jvm_repo()
 
@@ -155,7 +147,7 @@ def repositories():
     prometheus()
     oneTBB()
     oneDNN()
-    compressor()
+    rules_compressor()
 
     jbeder_yaml()
     readerwriterqueue()
@@ -177,4 +169,3 @@ def repositories():
     xsimd()
     brotli()
     boost()
-    xz()

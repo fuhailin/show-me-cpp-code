@@ -7,13 +7,20 @@ filegroup(
     srcs = glob(["**"]),
 )
 
-cmake(
+# cmake(
+#     name = "fmt",
+#     build_args = [
+#         "--verbose",
+#         "-j `nproc`",
+#     ],
+#     defines = ["FMT_HEADER_ONLY"],
+#     lib_source = "@com_github_fmtlib_fmt//:all_srcs",
+#     out_headers_only = True,
+# )
+
+cc_library(
     name = "fmt",
-    build_args = [
-        "--verbose",
-        "-j `nproc`",
-    ],
+    hdrs = glob(["include/fmt/*.h"]),
     defines = ["FMT_HEADER_ONLY"],
-    lib_source = "@com_github_fmtlib_fmt//:all_srcs",
-    out_headers_only = True,
+    includes = ["include"],
 )

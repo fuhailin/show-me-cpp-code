@@ -8,10 +8,7 @@ def repo():
         http_archive,
         name = "libevent",
         urls = [
-            "https://github.91chifun.workers.dev/https://github.com//libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz",
             "https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz",
-            # "https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz",
-            # "https://mirror.bazel.build/github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz",
         ],
         strip_prefix = "libevent-2.1.12-stable",
         build_file = Label("//third_party/libevent:libevent.BUILD"),

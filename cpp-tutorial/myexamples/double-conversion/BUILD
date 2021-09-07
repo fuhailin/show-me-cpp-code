@@ -6,7 +6,7 @@ cc_binary(
     # ],
     deps = [
         ":cctest",
-        "@double-conversion//:double-conversion",
+        "@com_github_google_double_conversion//:double-conversion",
     ],
 )
 
@@ -14,6 +14,6 @@ cc_library(
     name = "cctest",
     hdrs = ["cctest.h"],
     deps = [
-        "@double-conversion//:double-conversion",
+        "@com_github_google_double_conversion//:double-conversion",
     ],
 )

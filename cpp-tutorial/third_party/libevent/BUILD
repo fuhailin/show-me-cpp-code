@@ -12,8 +12,6 @@ build_test(
     targets = [
         "@libevent//:libevent",
     ],
-    visibility = ["//:__pkg__"],
 )
-
 
 # bazel build build_test --verbose_failures --sandbox_debug --cpu=darwin

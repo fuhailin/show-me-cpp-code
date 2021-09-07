@@ -117,7 +117,7 @@ cc_library(
         "@boringssl//:crypto",
         "@brotli",
         "@bzip2",
-        "@double-conversion",
+        "@com_github_google_double_conversion//:double-conversion",
         "@lz4//:lz4",
         "@rapidjson",
         "@snappy",

@@ -5,9 +5,10 @@ build_test(
     targets = [
         "@bzip2//:bzip2",
         "@lz4//:lz4",
-        "@lz4//:lz4_hc",
         "@snappy//:snappy",
         "@zlib//:zlib",
+        "@org_lzma_lzma//:lzma",
+        "@zstd//:zstd",
     ],
     visibility = ["//:__pkg__"],
 )

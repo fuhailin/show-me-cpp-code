@@ -8,3 +8,14 @@ cc_binary(
         "@boost",
     ],
 )
+
+cc_binary(
+    name = "context_test",
+    srcs = ["context_test.cc"],
+    copts = [
+        "-std=c++11",
+    ],
+    deps = [
+        "@boost",
+    ],
+)
