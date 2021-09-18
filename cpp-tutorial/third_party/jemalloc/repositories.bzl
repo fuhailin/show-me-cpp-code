@@ -9,7 +9,6 @@ def repo():
         http_archive,
         name = "jemalloc",
         urls = [
-            "https://github.com.cnpmjs.org/jemalloc/jemalloc/archive/{commit}.tar.gz".format(commit = COMMIT),
             "https://github.com/jemalloc/jemalloc/archive/{commit}.tar.gz".format(commit = COMMIT),
         ],
         strip_prefix = "jemalloc-" + COMMIT,

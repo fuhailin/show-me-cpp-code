@@ -8,7 +8,6 @@ def repo(commit = "5.0.0"):
         http_archive,
         name = "apache_arrow",
         urls = [
-            "https://github.com.cnpmjs.org/apache/arrow/archive/refs/tags/apache-arrow-{}.tar.gz".format(commit),
             "https://github.com/apache/arrow/archive/refs/tags/apache-arrow-{}.tar.gz".format(commit),
         ],
         strip_prefix = "arrow-apache-arrow-{}".format(commit),

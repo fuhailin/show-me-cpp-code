@@ -9,14 +9,11 @@ filegroup(
 
 configure_make(
     name = "jemalloc",
-    configure_command = "autogen.sh",
+    autogen = True,
     configure_in_place = True,
-    configure_options = [
-        "--disable-debug",
-        "--with-jemalloc-prefix=",
-        "--enable-prof",
-        "--enable-prof-libunwind",
-    ],
+    env = {
+        "AR": "",
+    },
     lib_source = ":all_srcs",
     out_shared_libs = select({
         "@platforms//os:macos": [
@@ -29,5 +26,12 @@ configure_make(
             "libjemalloc.dll",
         ],
     }),
-    # out_static_libs = ["libjemalloc.so"],
+    out_static_libs = [
+        "libjemalloc.a",
+    ],
+    targets = [
+        "dist",
+        "",
+        "install",
+    ],
 )
