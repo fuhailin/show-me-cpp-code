@@ -6,7 +6,8 @@ package(
 
 [
     cc_test(
-        name = "%s" % f[0:f.rfind(".")],
+        # name = "%s" % f[0:f.rfind(".")],
+        name = f.split(".")[0],
         srcs = [
             "%s" % f,
         ],

@@ -15,9 +15,9 @@ cmake(
     cache_entries = {
         "BUILD_SHARED_LIBS": "off",
     },
-    generate_args = [
-        "--enable-shared=no",
-    ],
+    # generate_args = [
+    #     "--enable-shared=no",
+    # ],
     lib_source = "@hiredis//:all_srcs",
     out_static_libs = ["libhiredis_static.a"],
     # out_shared_libs = ["libhiredis.1.0.1-dev.dylib"],

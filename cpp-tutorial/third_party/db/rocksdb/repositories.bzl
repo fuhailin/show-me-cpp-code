@@ -8,7 +8,6 @@ def repo(COMMIT = "6.22.1"):
         http_archive,
         name = "com_github_facebook_rocksdb",
         urls = [
-            "https://github.91chifun.workers.dev/https://github.com//facebook/rocksdb/archive/refs/tags/v{}.tar.gz".format(COMMIT),
             "https://github.com/facebook/rocksdb/archive/refs/tags/v{}.tar.gz".format(COMMIT),
         ],
         strip_prefix = "rocksdb-" + COMMIT,

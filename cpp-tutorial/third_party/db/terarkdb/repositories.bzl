@@ -8,7 +8,6 @@ def repo(COMMIT = "1.3.6"):
         http_archive,
         name = "com_github_bytedance_terarkdb",
         urls = [
-            "https://github.91chifun.workers.dev/https://github.com//bytedance/terarkdb/archive/refs/tags/v{}.tar.gz".format(COMMIT),
             "https://github.com/bytedance/terarkdb/archive/refs/tags/v{}.tar.gz".format(COMMIT),
         ],
         strip_prefix = "terarkdb-" + COMMIT,

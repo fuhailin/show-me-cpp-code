@@ -3,13 +3,14 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
-def repo(COMMIT = "0.2.3"):
+def repo(COMMIT = "3.5.9"):
     maybe(
         http_archive,
-        name = "Apache_ZooKeeper",
+        name = "apache_zookeeper",
         urls = [
-            "https://github.com/tgockel/zookeeper-cpp/archive/refs/tags/v{}.tar.gz".format(COMMIT),
+            "https://dlcdn.apache.org/zookeeper/zookeeper-3.5.9/apache-zookeeper-3.5.9.tar.gz",
+            # "https://dlcdn.apache.org/zookeeper/zookeeper-{0}/apache-zookeeper-{0}.tar.gz".format(COMMIT),
         ],
-        strip_prefix = "zookeeper-cpp-" + COMMIT,
+        strip_prefix = "apache-zookeeper-" + COMMIT,
         build_file = Label("//third_party/zookeeper:zookeeper.BUILD"),
     )

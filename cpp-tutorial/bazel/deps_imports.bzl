@@ -8,9 +8,9 @@ load("@pybind11_bazel//:python_configure.bzl", "python_configure")
 
 def dependency_imports():
     rules_foreign_cc_dependencies()
-    # protobuf_deps()
+    protobuf_deps()
     # boost_deps()
     rules_cc_dependencies()
-    # rules_compressor_repo()
-    # rules_compressor_deps()
-    # python_configure(name = "local_config_python")
+    rules_compressor_repo()
+    rules_compressor_deps()
+    python_configure(name = "local_config_python")

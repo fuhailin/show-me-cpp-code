@@ -25,6 +25,8 @@ load("//third_party/db/leveldb:repositories.bzl", leveldb = "repo")
 load("//third_party/db/rocksdb:repositories.bzl", rocksdb = "repo")
 load("//third_party/db/terarkdb:repositories.bzl", terarkdb = "repo")
 load("//third_party/db/hiredis:repositories.bzl", hiredis = "repo")
+load("//third_party/db/redispp:repositories.bzl", redispp = "repo")
+
 load("//third_party/logger/glog:repositories.bzl", glog = "repo")
 load("//third_party/logger/spdlog:repositories.bzl", spdlog = "repo")
 load("//third_party/logger/log4cxx:repositories.bzl", log4cxx = "repo")
@@ -77,9 +79,11 @@ load("//third_party/xsimd:repositories.bzl", xsimd = "repo")
 load("//third_party/brotli:repositories.bzl", brotli = "repo")
 load("//third_party/boost:repositories.bzl", boost = "repo")
 
+load("//third_party/cpp3rd_lib:repositories.bzl", cpp3rd_lib = "repo")
+
 def repositories():
     """Load all repositories needed for the targets of rules_foreign_cc_examples_third_party"""
-
+    cpp3rd_lib()
     # load rules
     rules_cc_repo()
     rules_foreign_cc_repo()
@@ -141,6 +145,7 @@ def repositories():
 
     zookeeper()
     hiredis()
+    redispp()
     fmt()
     double_conversion()
     folly()

@@ -9,6 +9,9 @@ filegroup(
 
 configure_make(
     name = "jemalloc",
+    args = [
+        "-j `nproc`",
+    ],
     autogen = True,
     configure_in_place = True,
     env = {
@@ -29,9 +32,9 @@ configure_make(
     out_static_libs = [
         "libjemalloc.a",
     ],
-    targets = [
-        "dist",
-        "",
-        "install",
-    ],
+    # targets = [
+    #     "dist",
+    #     "",
+    #     "install",
+    # ],
 )
