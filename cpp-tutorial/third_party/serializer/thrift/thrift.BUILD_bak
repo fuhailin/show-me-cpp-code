@@ -58,7 +58,7 @@ cc_binary(
     copts = ["-Iinclude"],
     linkopts = ["-lexpat"],
     deps = [
-        "@cpp3rd_lib//thrift_0.12.0:thrift",
+        "@apache_thrift//:thrift",
     ],
 )
 
@@ -68,6 +68,6 @@ cc_binary(
     copts = ["-Iinclude"],
     linkopts = ["-lexpat"],
     deps = [
-        "@cpp3rd_lib//thrift_0.12.0:thrift",
+        "@apache_thrift//:thrift",
     ],
 )

@@ -16,7 +16,6 @@ def repo():
         http_archive,
         name = "cityhash",
         urls = [
-            "https://github.com.cnpmjs.org/google/cityhash/archive/8af9b8c2b889d80c22d6bc26ba0df1afb79a30db.tar.gz",
             "https://github.com/google/cityhash/archive/8af9b8c2b889d80c22d6bc26ba0df1afb79a30db.tar.gz",
         ],
         type = "tar.gz",

@@ -26,10 +26,10 @@ int main() {
     fmt::print("Default format: {} {}\n", 42s, 100ms);
     fmt::print("strftime-like format: {:%H:%M:%S}\n", 3h + 15min + 30s);
 
-    std::string s = fmt::format("The answer is {}.", 42);
+    std::string s = fmt::format("The answer is {}.\n", 42);
     // s == "The answer is 42."
     fmt::print(s);
-    std::string s1 = fmt::format("I'd rather be {1} than {0}.", "right", "happy");
+    std::string s1 = fmt::format("I'd rather be {1} than {0}.\n", "right", "happy");
     // s == "I'd rather be happy than right."
     fmt::print(s1);
 }

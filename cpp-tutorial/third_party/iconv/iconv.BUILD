@@ -9,6 +9,9 @@ filegroup(
 
 configure_make(
     name = "iconv",
+    args = [
+        "-j `nproc`",
+    ],
     configure_env_vars = select({
         "@platforms//os:macos": {"AR": ""},
         "//conditions:default": {},

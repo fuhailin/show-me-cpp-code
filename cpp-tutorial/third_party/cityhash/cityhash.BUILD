@@ -7,12 +7,15 @@ filegroup(
 
 configure_make(
     name = "cityhash",
-    configure_env_vars = {
-        "AR": "",
-    },
+    args = [
+        "-j `nproc`",
+    ],
     configure_options = [
         "--enable-shared=no",
     ],
+    env = {
+        "AR": "",
+    },
     install_prefix = "lib",
     lib_source = "@cityhash//:all",
     out_lib_dir = "lib",

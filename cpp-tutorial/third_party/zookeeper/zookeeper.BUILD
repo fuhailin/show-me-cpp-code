@@ -10,9 +10,9 @@ filegroup(
 
 configure_make(
     name = "zookeeper",
-    # args = [
-    #     "-j `nproc`",
-    # ],
+    args = [
+        "-j `nproc`",
+    ],
     # configure_in_place = True,
     configure_options = [
         "--without-cppunit",

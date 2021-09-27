@@ -20,6 +20,10 @@ cmake(
         "BUILD_WITHOUT_LAPACK": "no",
     },
     lib_source = ":all_srcs",
+    out_lib_dir = select({
+        "@platforms//os:linux": "lib64",
+        "//conditions:default": "lib",
+    }),
     # linkopts = ["-lpthread"],
     # We are selecting the resulting static library to be passed in C/C++ provider
     # as the result of the build;

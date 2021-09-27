@@ -8,7 +8,6 @@ def repo(commit = "0.3.16"):
         http_archive,
         name = "openblas",
         urls = [
-            "https://github.91chifun.workers.dev/https://github.com//xianyi/OpenBLAS/releases/download/v{commit}/OpenBLAS-{commit}.tar.gz".format(commit = commit),
             "https://github.com/xianyi/OpenBLAS/releases/download/v{commit}/OpenBLAS-{commit}.tar.gz".format(commit = commit),
         ],
         type = "tar.gz",

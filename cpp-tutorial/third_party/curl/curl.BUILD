@@ -8,9 +8,12 @@ filegroup(
 _CACHE_ENTRIES = {
     "BUILD_CURL_EXE": "off",
     "BUILD_SHARED_LIBS": "off",
-    "CMAKE_PREFIX_PATH": ";$EXT_BUILD_DEPS/openssl",
+    "CMAKE_BUILD_TYPE": "RELEASE",
+    "CMAKE_PREFIX_PATH": "$$EXT_BUILD_DEPS$$/openssl",
+    "CMAKE_USE_OPENSSL": "on",
     # TODO: ldap should likely be enabled
     "CURL_DISABLE_LDAP": "on",
+    "OPENSSL_ROOT_DIR": "$$EXT_BUILD_DEPS$$/openssl",
 }
 
 _MACOS_CACHE_ENTRIES = dict(_CACHE_ENTRIES.items() + {
@@ -25,6 +28,7 @@ _LINUX_CACHE_ENTRIES = dict(_CACHE_ENTRIES.items() + {
 cmake(
     name = "curl",
     build_args = [
+        "--verbose",
         "-j `nproc`",
     ],
     cache_entries = select({
@@ -32,21 +36,21 @@ cmake(
         "@platforms//os:macos": _MACOS_CACHE_ENTRIES,
         "//conditions:default": _CACHE_ENTRIES,
     }),
-    cmake_options = select({
+    generate_args = select({
         "@platforms//os:windows": ["-GNinja"],
         "//conditions:default": [],
     }),
     generate_crosstool_file = False,
     lib_source = ":all_srcs",
-    make_commands = select({
-        "@platforms//os:windows": [
-            "ninja",
-            "ninja install",
+    linkopts = select({
+        "@platforms//os:linux": [
+            "-lpthread",
         ],
-        "//conditions:default": [
-            "make",
-            "make install",
-        ],
+        "//conditions:default": [],
+    }),
+    out_lib_dir = select({
+        "@platforms//os:linux": "lib64",
+        "//conditions:default": "lib",
     }),
     out_static_libs = select({
         "@platforms//os:windows": ["libcurl.lib"],
@@ -54,11 +58,7 @@ cmake(
     }),
     visibility = ["//visibility:public"],
     deps = [
-        "@zlib//:zlib",
-    ] + select({
-        "@platforms//os:windows": [],
-        "//conditions:default": [
-            "@openssl//:openssl",
-        ],
-    }),
+        "@openssl",
+        "@zlib",
+    ],
 )

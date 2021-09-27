@@ -31,7 +31,7 @@ make(
         "@com_github_gflags_gflags//:gflags",
         "@bzip2",
         # "@com_google_googletest//:gtest",
-        # "@lz4",
+        "@lz4",
         "@snappy",
         "@zlib",
         # "@zstd",
