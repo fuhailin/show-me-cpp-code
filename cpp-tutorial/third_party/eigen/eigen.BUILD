@@ -20,6 +20,9 @@ cmake(
         "BLAS_LIBRARIES": "$EXT_BUILD_DEPS/openblas/lib/libopenblas.a",
     },
     lib_source = ":all_srcs",
+    linkopts = [
+        "-pthread",
+    ],
     out_headers_only = True,
     out_include_dir = "include/eigen3",
     # Dependency on other cmake_external rule; can also depend on cc_import, cc_library rules
