@@ -3,14 +3,20 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
-def repo():
+def repo(commit = "4.5.3"):
     maybe(
         http_archive,
-        name = "opencv",
-        build_file = Label("//third_party/opencv:opencv.BUILD"),
-        strip_prefix = "opencv-4.3.0",
+        name = "com_github_opencv",
+        strip_prefix = "opencv-{}".format(commit),
         urls = [
-            "https://github.com.cnpmjs.org/opencv/opencv/archive/4.3.0.zip",
-            "https://github.com/opencv/opencv/archive/4.3.0.zip",
+            "https://github.com/opencv/opencv/archive/refs/tags/{}.tar.gz".format(commit),
         ],
+        build_file = Label("//third_party/opencv:opencv.BUILD"),
     )
+
+    # maybe(
+    #     native.new_local_repository,
+    #     name = "com_github_opencv",
+    #     build_file = "//third_party/opencv:opencv.BUILD",
+    #     path = "/Users/vincent/Downloads/opencv-4.5.3",
+    # )

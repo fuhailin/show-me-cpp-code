@@ -16,20 +16,20 @@ cc_binary(
     deps = [":mylib"],
 )
 
-cc_library(
-    name = "mylib",
-    srcs = ["libtestStudent.a"],
-    hdrs = ["Student.h"],
-)
+# cc_library(
+#     name = "mylib",
+#     srcs = ["libtestStudent.a"],
+#     hdrs = ["Student.h"],
+# )
 
-cc_binary(
-    name = "main",
-    srcs = ["libtest.cpp"],
-    #   hrds = ["include/add.h", "include/answer.h"]
-    copts = [
-        # "-Iinclude/",
-        # "-Llib/",
-    ],
-    linkstatic = 1,
-    deps = [":mylib"],
-)
+# cc_binary(
+#     name = "main",
+#     srcs = ["libtest.cpp"],
+#     #   hrds = ["include/add.h", "include/answer.h"]
+#     copts = [
+#         # "-Iinclude/",
+#         # "-Llib/",
+#     ],
+#     linkstatic = 1,
+#     deps = [":mylib"],
+# )

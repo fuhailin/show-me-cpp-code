@@ -10,6 +10,7 @@ exports_files(
 build_test(
     name = "build_test",
     targets = [
-        "@opencv//:opencv",
+        "@com_github_opencv//:opencv",
     ],
+    visibility = ["//:__pkg__"],
 )

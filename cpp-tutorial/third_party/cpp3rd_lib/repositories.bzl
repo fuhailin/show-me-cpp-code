@@ -11,6 +11,6 @@ def repo():
     maybe(
         native.local_repository,
         name = "cpp3rd_lib",
-        # path = "/root/fuhailin/projects/rules_compressor",
+        # path = "/root/fuhailin/projects/cpp3rd_lib",
         path = "/Users/vincent/Documents/projects/cpp3rd_lib",
     )

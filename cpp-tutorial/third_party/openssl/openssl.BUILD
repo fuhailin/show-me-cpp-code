@@ -75,6 +75,9 @@ configure_make_variant(
 
 configure_make(
     name = "openssl_default",
+    args = [
+        "-j `nproc`",
+    ],
     configure_command = "config",
     configure_in_place = True,
     configure_options = CONFIGURE_OPTIONS,

@@ -27,6 +27,10 @@ cmake(
         "//conditions:default": _CACHE_ENTRIES,
     }),
     lib_source = ":all_srcs",
+    out_lib_dir = select({
+        "@platforms//os:linux": "lib64",
+        "//conditions:default": "lib",
+    }),
     out_static_libs = select({
         # TODO: I'm guessing at this name. Needs to be checked on windows.
         "@platforms//os:windows": ["ssh2.lib"],

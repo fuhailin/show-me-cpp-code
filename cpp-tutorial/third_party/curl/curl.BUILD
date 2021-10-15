@@ -1,64 +1,104 @@
 load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
 
 filegroup(
-    name = "all_srcs",
+    name = "all",
     srcs = glob(["**"]),
+    visibility = ["//visibility:public"],
 )
 
-_CACHE_ENTRIES = {
-    "BUILD_CURL_EXE": "off",
-    "BUILD_SHARED_LIBS": "off",
-    "CMAKE_BUILD_TYPE": "RELEASE",
-    "CMAKE_PREFIX_PATH": "$$EXT_BUILD_DEPS$$/openssl",
-    "CMAKE_USE_OPENSSL": "on",
-    # TODO: ldap should likely be enabled
-    "CURL_DISABLE_LDAP": "on",
-    "OPENSSL_ROOT_DIR": "$$EXT_BUILD_DEPS$$/openssl",
-}
-
-_MACOS_CACHE_ENTRIES = dict(_CACHE_ENTRIES.items() + {
-    "CMAKE_AR": "",
-    "CMAKE_C_ARCHIVE_CREATE": "",
-}.items())
-
-_LINUX_CACHE_ENTRIES = dict(_CACHE_ENTRIES.items() + {
-    "CMAKE_C_FLAGS": "-fPIC",
-}.items())
-
 cmake(
-    name = "curl",
+    name = "libcurl",
     build_args = [
-        "--verbose",
         "-j `nproc`",
     ],
-    cache_entries = select({
-        "@platforms//os:linux": _LINUX_CACHE_ENTRIES,
-        "@platforms//os:macos": _MACOS_CACHE_ENTRIES,
-        "//conditions:default": _CACHE_ENTRIES,
-    }),
-    generate_args = select({
-        "@platforms//os:windows": ["-GNinja"],
+    cache_entries = {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_SHARED_LIBS": "OFF",
+        "BUILD_TESTING": "OFF",
+        "CMAKE_USE_OPENSSL": "FALSE",
+        "CURL_DISABLE_LDAP": "TRUE",
+    },
+    defines = select({
+        "@bazel_tools//src/conditions:windows": ["CURL_STATICLIB"],
         "//conditions:default": [],
     }),
-    generate_crosstool_file = False,
-    lib_source = ":all_srcs",
+    lib_source = "//:all",
     linkopts = select({
-        "@platforms//os:linux": [
-            "-lpthread",
+        "@bazel_tools//src/conditions:windows": [
+            "WS2_32.Lib",
+            "Advapi32.lib",
+            "Iphlpapi.lib",
+            "Userenv.lib",
+            "User32.lib",
         ],
-        "//conditions:default": [],
+        "@bazel_tools//src/conditions:darwin": [],
+        "//conditions:default": [
+            "-ldl",
+            "-lz",
+        ],
     }),
     out_lib_dir = select({
         "@platforms//os:linux": "lib64",
         "//conditions:default": "lib",
     }),
     out_static_libs = select({
-        "@platforms//os:windows": ["libcurl.lib"],
+        "@bazel_tools//src/conditions:windows": [
+            "libcurl.lib",
+        ],
         "//conditions:default": ["libcurl.a"],
     }),
     visibility = ["//visibility:public"],
     deps = [
+        "@libssh2",
+    ],
+)
+
+cmake(
+    # name = "libcurl_openssl",
+    name = "curl",
+    build_args = [
+        "-j `nproc`",
+    ],
+    cache_entries = {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_SHARED_LIBS": "OFF",
+        "BUILD_TESTING": "OFF",
+        "CMAKE_USE_OPENSSL": "TRUE",
+        "CURL_DISABLE_LDAP": "TRUE",
+        "OPENSSL_ROOT_DIR": "$$EXT_BUILD_DEPS$$/openssl",
+    },
+    defines = select({
+        "@bazel_tools//src/conditions:windows": ["CURL_STATICLIB"],
+        "//conditions:default": [],
+    }),
+    lib_source = "//:all",
+    linkopts = select({
+        "@bazel_tools//src/conditions:windows": [
+            "WS2_32.Lib",
+            "Advapi32.lib",
+            "Iphlpapi.lib",
+            "Userenv.lib",
+            "User32.lib",
+        ],
+        "@bazel_tools//src/conditions:darwin": [],
+        "//conditions:default": [
+            "-ldl",
+            "-lz",
+        ],
+    }),
+    out_lib_dir = select({
+        "@platforms//os:linux": "lib64",
+        "//conditions:default": "lib",
+    }),
+    out_static_libs = select({
+        "@bazel_tools//src/conditions:windows": [
+            "libcurl.lib",
+        ],
+        "//conditions:default": ["libcurl.a"],
+    }),
+    visibility = ["//visibility:public"],
+    deps = [
+        "@libssh2",
         "@openssl",
-        "@zlib",
     ],
 )
