@@ -9,7 +9,7 @@
 #include "tensorflow/core/framework/tensor.h"
 
 DEFINE_string(path,
-              "/Users/vincent/Documents/projects/show-me-cpp-code/cpp-tutorial/myexamples/test_tf/data/normalized_car_features.csv",
+              "/Users/vincent/Documents/projects/show-me-cpp-code/cpp-tutorial/myexamples/test_tf/data/",
               "filepath");
 DEFINE_string(filename,
               "normalized_car_features.csv", "filename");

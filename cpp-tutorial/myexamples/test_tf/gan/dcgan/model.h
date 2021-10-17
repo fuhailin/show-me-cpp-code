@@ -13,7 +13,8 @@ limitations under the License.
 
 #include "tensorflow/cc/framework/ops.h"
 #include "tensorflow/cc/framework/scope.h"
-#include "tensorflow/cc/ops/tf_ops.h"
+// #include "tensorflow/cc/ops/tf_ops.h"
+#include "myexamples/test_tf/gan/dcgan/tf_ops.h"
 #include "tensorflow/core/framework/tensor.h"
 #include "tensorflow/core/framework/tensor_shape.h"
 #include "tensorflow/core/framework/types.h"
@@ -23,39 +24,39 @@ namespace tensorflow {
 namespace ops {
 
 class Generator {
- public:
-  explicit Generator(const ::tensorflow::Scope& scope);
+   public:
+    explicit Generator(const ::tensorflow::Scope& scope);
 
-  Output Build(const ::tensorflow::Scope& scope, const int batch_size,
-               bool training, bool use_seed = false);
+    Output Build(const ::tensorflow::Scope& scope, const int batch_size,
+                 bool training, bool use_seed = false);
 
-  ::tensorflow::Output seed;
+    ::tensorflow::Output seed;
 
- private:
-  ::tensorflow::Output w1;
-  ::tensorflow::Output filter;
-  ::tensorflow::Output filter2;
-  ::tensorflow::Output filter3;
+   private:
+    ::tensorflow::Output w1;
+    ::tensorflow::Output filter;
+    ::tensorflow::Output filter2;
+    ::tensorflow::Output filter3;
 
-  TFBatchNormalization batchnorm_op;
-  TFFusedBatchNorm batchnorm1_op;
-  TFFusedBatchNorm batchnorm2_op;
+    TFBatchNormalization batchnorm_op;
+    TFFusedBatchNorm batchnorm1_op;
+    TFFusedBatchNorm batchnorm2_op;
 };
 
 class Discriminator {
- public:
-  explicit Discriminator(const ::tensorflow::Scope& scope);
+   public:
+    explicit Discriminator(const ::tensorflow::Scope& scope);
 
-  Output Build(const ::tensorflow::Scope& scope,
-               const ::tensorflow::Input& inputs, const int batch_size);
+    Output Build(const ::tensorflow::Scope& scope,
+                 const ::tensorflow::Input& inputs, const int batch_size);
 
- private:
-  ::tensorflow::Output conv1_weights;
-  ::tensorflow::Output conv1_biases;
-  ::tensorflow::Output conv2_weights;
-  ::tensorflow::Output conv2_biases;
-  ::tensorflow::Output fc1_weights;
-  ::tensorflow::Output fc1_biases;
+   private:
+    ::tensorflow::Output conv1_weights;
+    ::tensorflow::Output conv1_biases;
+    ::tensorflow::Output conv2_weights;
+    ::tensorflow::Output conv2_biases;
+    ::tensorflow::Output fc1_weights;
+    ::tensorflow::Output fc1_biases;
 };
 
 }  // namespace ops
