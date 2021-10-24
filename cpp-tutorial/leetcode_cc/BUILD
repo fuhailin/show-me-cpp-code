@@ -16,6 +16,7 @@ package(
             "-w",
         ],
         deps = [
+            "//bits:stdcxx",
             "//include:LinkedList",
             "@com_google_googletest//:gtest_main",
         ],
