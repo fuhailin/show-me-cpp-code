@@ -79,6 +79,7 @@ load("//third_party/boringssl:repositories.bzl", boringssl = "repo")
 load("//third_party/xsimd:repositories.bzl", xsimd = "repo")
 load("//third_party/brotli:repositories.bzl", brotli = "repo")
 load("//third_party/boost:repositories.bzl", boost = "repo")
+load("//third_party/kafka:repositories.bzl", kafka = "repo")
 
 load("//third_party/cpp3rd_lib:repositories.bzl", cpp3rd_lib = "repo")
 
@@ -176,3 +177,4 @@ def repositories():
     xsimd()
     brotli()
     boost()
+    kafka()
