@@ -1,9 +1,0 @@
-load("@bazel_skylib//rules:build_test.bzl", "build_test")
-
-build_test(
-    name = "build_test",
-    targets = [
-        "@com_google_absl//absl/strings",
-    ],
-    visibility = ["//:__pkg__"],
-)

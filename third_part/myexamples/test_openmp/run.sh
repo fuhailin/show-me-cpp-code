@@ -1,0 +1,1 @@
+g++ main.cc -fopenmp -o main && ./main
