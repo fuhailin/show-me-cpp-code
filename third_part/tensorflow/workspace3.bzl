@@ -57,14 +57,20 @@ def workspace():
         ],
     )
 
-    # native.local_repository(
-    #     name = "rules_compressor",
-    #     path = "/root/fuhailin/projects/rules_compressor",
-    # )
     git_repository(
         name = "rules_compressor",
         branch = "main",
         remote = "https://github.com/fuhailin/rules_compressor.git",
+    )
+
+    # native.local_repository(
+    #     name = "ps-lite",
+    #     path = "/root/fuhailin/projects/ps-lite",
+    # )
+    git_repository(
+        name = "ps-lite",
+        branch = "master",
+        remote = "https://github.com/fuhailin/ps-lite.git",
     )
 
     # Load the raw llvm-project.  llvm does not have build rules set up by default,

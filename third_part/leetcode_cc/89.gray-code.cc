@@ -2,10 +2,12 @@
 using namespace std;
 
 class Solution {
-    vector<int>
 
-public:
-    vector<int> grayCode(int n) {
+        public : vector<int> grayCode(int n)
+    {
 
+        vector<int> res;
+        int i = 0;
+        
     }
 };

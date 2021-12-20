@@ -7,8 +7,9 @@ load("@build_bazel_rules_swift//swift:repositories.bzl", "swift_rules_dependenci
 load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
 load("@local_config_android//:android.bzl", "android_workspace")
 load("@rules_cc//cc:repositories.bzl", "rules_cc_toolchains")
-load("@rules_compressor//tensorflow:workspace2.bzl", "tf_workspace2")
-
+load("@rules_compressor//tensorflow:workspace2.bzl", rules_compressor_deps = "tf_workspace2")
+load("@ps-lite//bazel:workspace2.bzl", pslite_deps = "tf_workspace2")
+load("@com_github_jupp0r_prometheus_cpp//bazel:repositories.bzl", "prometheus_cpp_repositories")
 
 def _tf_bind():
     """Bind targets for some external repositories"""
@@ -114,13 +115,16 @@ def workspace():
     swift_rules_dependencies()
 
     android_workspace()
-    tf_workspace2()
+
     # If a target is bound twice, the later one wins, so we have to do tf bindings
     # at the end of the WORKSPACE file.
     _tf_bind()
 
     grpc_extra_deps()
     config_googleapis()
+    rules_compressor_deps()
+    pslite_deps()
+    prometheus_cpp_repositories()
 
 # Alias so it can be loaded without assigning to a different symbol to prevent
 # shadowing previous loads and trigger a buildifier warning.

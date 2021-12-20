@@ -8,6 +8,6 @@ cc_binary(
         "-ldl",
     ],
     deps = [
-        "@com_github_curl//:libcurl_openssl",
+        "@com_github_curl//:curl",
     ],
 )

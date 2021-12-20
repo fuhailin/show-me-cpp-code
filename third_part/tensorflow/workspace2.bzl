@@ -54,7 +54,6 @@ load("@tf_toolchains//toolchains/clang6:repo.bzl", "clang6_configure")
 load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
 
-
 def _initialize_third_party():
     """ Load third party repositories.  See above load() statements. """
     FP16()
@@ -833,7 +832,7 @@ def _tf_repositories():
     )
 
     tf_http_archive(
-        name = "nlohmann_json_lib",
+        name = "nlohmann_json",
         build_file = "//third_party:nlohmann_json.BUILD",
         sha256 = "c377963a95989270c943d522bfefe7b889ef5ed0e1e15d535fd6f6f16ed70732",
         strip_prefix = "json-3.4.0",
@@ -1012,6 +1011,31 @@ def _tf_repositories():
         build_file = Label("//third_party/db:terarkdb.BUILD"),
     )
 
+    http_archive(
+        name = "zeromq",
+        sha256 = "805e3feab885c027edad3d09c4ac1a7e9bba9a05eac98f36127520e7af875010",
+        strip_prefix = "libzmq-4.3.4",
+        build_file = Label("//third_party:zeromq.BUILD"),
+        urls = ["https://github.com/zeromq/libzmq/archive/v4.3.4.zip"],
+    )
+
+    http_archive(
+        name = "com_github_jupp0r_prometheus_cpp",
+        urls = [
+            "https://github.com/jupp0r/prometheus-cpp/archive/v1.0.0.zip",
+        ],
+        strip_prefix = "prometheus-cpp-1.0.0",
+    )
+
+    http_archive(
+        name = "librdkafka",
+        urls = [
+            "https://github.com/edenhill/librdkafka/archive/refs/tags/v{}.tar.gz".format("1.8.2"),
+        ],
+        strip_prefix = "librdkafka-1.8.2",
+        build_file = Label("//third_party:kafka.BUILD"),
+    )
+
 def workspace():
     # Check the bazel version before executing any repository rules, in case
     # those rules rely on the version we require here.
@@ -1037,7 +1061,6 @@ def workspace():
     rules_pkg_dependencies()
 
     rules_foreign_cc_dependencies()
-
 
 # Alias so it can be loaded without assigning to a different symbol to prevent
 # shadowing previous loads and trigger a buildifier warning.

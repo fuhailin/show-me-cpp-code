@@ -32,20 +32,13 @@ build_test(
         "@com_github_gflags_gflags//:gflags",
         "@com_github_google_glog//:glog",
         "@com_github_google_double_conversion//:double-conversion",
-    ],
-    visibility = ["//:__pkg__"],
-)
-
-
-build_test(
-    name = "build_test_rules_compressor",
-    targets = [
-        "@rules_compressor//example:zlib_usage_example",
         "@lz4",
         "@org_lzma_lzma//:lzma",
-        "@snappy",
-        "@zlib",
-        # "@zstd//:zstd",
+        "@zstd//:zstd",
+        "@ps-lite//:ps-lite",
+        "@rules_compressor//example:zlib_usage_example",
+        "@boost",
+        "@librdkafka//:kafka",
     ],
     visibility = ["//:__pkg__"],
 )

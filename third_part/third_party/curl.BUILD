@@ -35,10 +35,11 @@ cmake(
         "//conditions:default": [
             "-ldl",
             "-lz",
+            "-lidn",
         ],
     }),
     out_lib_dir = select({
-        "@platforms//os:linux": "lib64",
+        "@platforms//os:linux": "lib",
         "//conditions:default": "lib",
     }),
     out_static_libs = select({
@@ -54,7 +55,6 @@ cmake(
 )
 
 cmake(
-    # name = "libcurl_openssl",
     name = "curl",
     build_args = [
         "-j `nproc`",
@@ -84,10 +84,11 @@ cmake(
         "//conditions:default": [
             "-ldl",
             "-lz",
+            "-lidn2",
         ],
     }),
     out_lib_dir = select({
-        "@platforms//os:linux": "lib64",
+        "@platforms//os:linux": "lib",
         "//conditions:default": "lib",
     }),
     out_static_libs = select({
