@@ -77,6 +77,22 @@ def workspace():
     # but provides a script for setting up build rules via overlays.
     llvm("llvm-raw")
 
+    http_archive(
+        name = "com_grail_bazel_compdb",
+        strip_prefix = "bazel-compilation-database-0.5.2",
+        urls = ["https://github.com/grailbio/bazel-compilation-database/archive/0.5.2.tar.gz"],
+    )
+
+    # native.local_repository(
+    #     name = "cpp3rd_lib",
+    #     path = "/Users/vincent/Documents/projects/cpp3rd_lib",
+    # )
+    git_repository(
+        name = "cpp3rd_lib",
+        branch = "master",
+        remote = "https://gitee.com/fuhailin/cpp3rd_lib.git",
+    )
+
 # Alias so it can be loaded without assigning to a different symbol to prevent
 # shadowing previous loads and trigger a buildifier warning.
 tf_workspace3 = workspace

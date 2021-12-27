@@ -15,8 +15,8 @@ public:
             return 0;
         
         auto &v = memo[value];
-        auto r = upper_bound(v.begin(), v.end(), right); // 大于
-        auto l = lower_bound(v.begin(), v.end(), left); // 大于等于
+        auto r = upper_bound(v.begin(), v.end(), right); // 大于目标元素的第一个数/位置
+        auto l = lower_bound(v.begin(), v.end(), left); // 大于等于 目标元素 的数值和下标
         return r - l;
     }
 };

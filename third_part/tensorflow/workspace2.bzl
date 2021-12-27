@@ -53,6 +53,7 @@ load("@tf_toolchains//toolchains/remote:configure.bzl", "remote_execution_config
 load("@tf_toolchains//toolchains/clang6:repo.bzl", "clang6_configure")
 load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+load("@com_grail_bazel_compdb//:deps.bzl", "bazel_compdb_deps")
 
 def _initialize_third_party():
     """ Load third party repositories.  See above load() statements. """
@@ -1036,6 +1037,15 @@ def _tf_repositories():
         build_file = Label("//third_party:kafka.BUILD"),
     )
 
+    http_archive(
+        name = "cppunit",
+        urls = [
+            "https://github.com/freedesktop/libreoffice-cppunit/archive/{}.tar.gz".format("d7049a6dd98ef12f0949f3ccfbc8ff4dbd63df2e"),
+        ],
+        strip_prefix = "libreoffice-cppunit-d7049a6dd98ef12f0949f3ccfbc8ff4dbd63df2e",
+        build_file = Label("//third_party:cppunit.BUILD"),
+    )
+
 def workspace():
     # Check the bazel version before executing any repository rules, in case
     # those rules rely on the version we require here.
@@ -1061,6 +1071,7 @@ def workspace():
     rules_pkg_dependencies()
 
     rules_foreign_cc_dependencies()
+    bazel_compdb_deps()
 
 # Alias so it can be loaded without assigning to a different symbol to prevent
 # shadowing previous loads and trigger a buildifier warning.
