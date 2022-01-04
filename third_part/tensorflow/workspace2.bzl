@@ -837,9 +837,9 @@ def _tf_repositories():
     tf_http_archive(
         name = "nlohmann_json",
         build_file = "//third_party:nlohmann_json.BUILD",
-        sha256 = "c377963a95989270c943d522bfefe7b889ef5ed0e1e15d535fd6f6f16ed70732",
-        strip_prefix = "json-3.4.0",
-        urls = tf_mirror_urls("https://github.com/nlohmann/json/archive/v3.4.0.tar.gz"),
+        sha256 = "c35d8c867f7cde3f6100c3f5dbe999667f77f075cd802bbd37080bd63ceb94c4",
+        strip_prefix = "json-3.10.1",
+        urls = tf_mirror_urls("https://github.com/nlohmann/json/archive/v3.10.1.tar.gz"),
     )
 
     tf_http_archive(
