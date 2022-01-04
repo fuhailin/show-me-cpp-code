@@ -4,7 +4,8 @@ cc_binary(
     name = "test1",
     srcs = ["test1.cpp"],
     deps = [
-        "@eigen",
+        # "@eigen",
+        "@eigen_archive//:eigen3",
     ],
 )
 
@@ -12,7 +13,8 @@ cc_binary(
     name = "main",
     srcs = ["main.cc"],
     deps = [
-        "@eigen",
+        # "@eigen",
+        "@eigen_archive//:eigen3",
     ],
 )
 
@@ -20,17 +22,8 @@ cc_binary(
     name = "test",
     srcs = ["test.cpp"],
     deps = [
-        "@eigen",
-    ],
-)
-
-cc_library(
-    name = "ps_util",
-    srcs = ["ps_util.cpp"],
-    hdrs = ["ps_util.h"],
-    deps = [
-        "@cityhash",
-        "@eigen",
+        # "@eigen",
+        "@eigen_archive//:eigen3",
     ],
 )
 

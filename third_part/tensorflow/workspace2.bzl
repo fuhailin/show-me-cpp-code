@@ -1,5 +1,7 @@
 """TensorFlow workspace initialization. Consult the WORKSPACE on how to use it."""
 
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
 # Import third party config rules.
 load("//tensorflow:version_check.bzl", "check_bazel_version_at_least")
 load("//third_party/gpus:cuda_configure.bzl", "cuda_configure")
@@ -994,13 +996,15 @@ def _tf_repositories():
         build_file = Label("//third_party/db:redispp.BUILD"),
     )
 
+    ROCKSDB_VERSION = "6.15.5"
+    ROCKSDB_SHA256 = "d7b994e1eb4dff9dfefcd51a63f86630282e1927fc42a300b93c573c853aa5d0"
+
     http_archive(
         name = "com_github_facebook_rocksdb",
-        urls = [
-            "https://github.com/facebook/rocksdb/archive/refs/tags/v{}.tar.gz".format("6.13.3"),
-        ],
-        strip_prefix = "rocksdb-" + "6.13.3",
         build_file = Label("//third_party/db:rocksdb.BUILD"),
+        sha256 = ROCKSDB_SHA256,
+        strip_prefix = "rocksdb-{version}".format(version = ROCKSDB_VERSION),
+        url = "https://github.com/facebook/rocksdb/archive/v{version}.tar.gz".format(version = ROCKSDB_VERSION),
     )
 
     http_archive(
@@ -1044,6 +1048,69 @@ def _tf_repositories():
         ],
         strip_prefix = "libreoffice-cppunit-d7049a6dd98ef12f0949f3ccfbc8ff4dbd63df2e",
         build_file = Label("//third_party:cppunit.BUILD"),
+    )
+
+    http_archive(
+        name = "spdlog",
+        urls = [
+            "https://github.com/gabime/spdlog/archive/v{}.tar.gz".format("1.9.2"),
+        ],
+        strip_prefix = "spdlog-1.9.2",
+        build_file = Label("//third_party:spdlog.BUILD"),
+    )
+
+    http_archive(
+        name = "apache_thrift",
+        urls = [
+            "https://mirrors.tuna.tsinghua.edu.cn/apache/thrift/{commit}/thrift-{commit}.tar.gz".format(commit = "0.12.0"),
+            "https://apache.cs.utah.edu/thrift/{commit}/thrift-{commit}.tar.gz".format(commit = "0.12.0"),
+        ],
+        strip_prefix = "thrift-0.12.0",
+        build_file = Label("//third_party:thrift.BUILD"),
+    )
+
+    http_archive(
+        name = "rapidjson",
+        urls = [
+            "https://github.com.cnpmjs.org/Tencent/rapidjson/archive/{}.tar.gz".format("00dbcf2c6e03c47d6c399338b6de060c71356464"),
+            "https://github.com/Tencent/rapidjson/archive/{}.tar.gz".format("00dbcf2c6e03c47d6c399338b6de060c71356464"),
+        ],
+        strip_prefix = "rapidjson-" + "00dbcf2c6e03c47d6c399338b6de060c71356464",
+        build_file = Label("//third_party:rapidjson.BUILD"),
+    )
+
+    http_archive(
+        name = "libevent",
+        urls = [
+            "https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz",
+        ],
+        strip_prefix = "libevent-2.1.12-stable",
+        build_file = Label("//third_party:libevent.BUILD"),
+    )
+
+    http_archive(
+        name = "com_google_absl",
+        urls = [
+            "https://github.com/abseil/abseil-cpp/archive/20200923.3.tar.gz",
+            "https://github.91chifun.workers.dev/https://github.com//abseil/abseil-cpp/archive/20200923.3.tar.gz",
+        ],
+        strip_prefix = "abseil-cpp-20200923.3",
+    )
+
+    http_archive(
+        name = "cityhash",
+        urls = [
+            "https://github.com/google/cityhash/archive/8af9b8c2b889d80c22d6bc26ba0df1afb79a30db.tar.gz",
+        ],
+        type = "tar.gz",
+        strip_prefix = "cityhash-8af9b8c2b889d80c22d6bc26ba0df1afb79a30db",
+        build_file = Label("//third_party:cityhash.BUILD"),
+    )
+
+    git_repository(
+        name = "oneTBB",
+        branch = "master",
+        remote = "https://github.com/oneapi-src/oneTBB/",
     )
 
 def workspace():

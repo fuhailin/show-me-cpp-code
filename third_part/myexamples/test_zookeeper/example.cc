@@ -1,71 +1,150 @@
-#include <zk/client.hpp>
-#include <zk/multi.hpp>
-#include <zk/server/configuration.hpp>
-#include <zk/server/server.hpp>
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-#include <exception>
-#include <iostream>
+#include <sys/socket.h>
+#include <unistd.h>
+#include <zookeeper.h>
 
-/** All result types are printable for debugging purposes. **/
-template <typename T>
-void print_thing(const zk::future<T>& result)
-{
-    try
-    {
-        // Unwrap the future value, which will not block (based on usage), but could throw.
-        T value(result.get());
-        std::cerr << value << std::endl;
+
+
+#ifdef THREADED
+class Zookeeper_readOnly : public CPPUNIT_NS::TestFixture {
+  CPPUNIT_TEST_SUITE(Zookeeper_readOnly);
+  CPPUNIT_TEST(testReadOnly);
+#ifdef HAVE_OPENSSL_H
+  CPPUNIT_TEST(testReadOnlyWithSSL);
+#endif
+  CPPUNIT_TEST_SUITE_END();
+
+  static void watcher(zhandle_t* zh, int type, int state, const char* path,
+                      void* v) {
+    watchctx_t* ctx = (watchctx_t*)v;
+
+    if (state == ZOO_CONNECTED_STATE || state == ZOO_READONLY_STATE) {
+      ctx->connected = true;
+    } else {
+      ctx->connected = false;
     }
-    catch (const std::exception& ex)
-    {
-        // Error "handling"
-        std::cerr << "Exception: " << ex.what() << std::endl;
+    if (type != ZOO_SESSION_EVENT) {
+      evt_t evt;
+      evt.path = path;
+      evt.type = type;
+      ctx->putEvent(evt);
     }
-}
+  }
 
-int main()
-{
-    // Start a ZK server running on localhost (not needed if you just want a client, but great for testing and
-    // demonstration purposes).
-    zk::server::server server(zk::server::configuration::make_minimal("zk-data", 2181));
+  FILE* logfile;
 
-    // zk::client::connect returns a future<zk::client>, which is delivered when the connection is established.
-    auto client = zk::client::connect("zk://127.0.0.1:2181")
-                             .get();
+ public:
+  Zookeeper_readOnly() { logfile = openlogfile("Zookeeper_readOnly"); }
 
-    // get_result has a zk::buffer and zk::stat.
-    client.get("/foo/bar")
-        .then(print_thing<zk::get_result>);
+  ~Zookeeper_readOnly() {
+    if (logfile) {
+      fflush(logfile);
+      fclose(logfile);
+      logfile = 0;
+    }
+  }
 
-    // get_children_result has a std::vector<std::string> for the path names and zk::stat for the parent stat.
-    client.get_children("/foo")
-        .then(print_thing<zk::get_children_result>);
+  void setUp() {
+    zoo_set_log_stream(logfile);
+    zoo_set_debug_level(ZOO_LOG_LEVEL_DEBUG);
+  }
 
-    // set_result has a zk::stat for the modified ZNode.
-    client.set("/foo/bar", "some data")
-        .then(print_thing<zk::set_result>);
+  void startReadOnly() {
+    char cmd[1024];
+    sprintf(cmd, "%s startCleanReadOnly", ZKSERVER_CMD);
+    CPPUNIT_ASSERT(system(cmd) == 0);
+  }
 
-    // More explicit: client.create("/foo/baz", "more data", zk::acls::open_unsafe(), zk::create_mode::normal);
-    client.create("/foo/baz", "more data")
-        .then(print_thing<zk::create_result>);
+  void stopPeer() {
+    char cmd[1024];
+    sprintf(cmd, "%s stop", ZKSERVER_CMD);
+    CPPUNIT_ASSERT(system(cmd) == 0);
+  }
 
-    client.get("/foo/bar")
-        .then([client] (const auto& get_res)
-        {
-            zk::version foo_bar_version = get_res.get().stat().data_version;
+  zhandle_t* connectReadOnly(const char* address, watchctx_t* watch) {
+    zhandle_t* zh =
+        zookeeper_init(address, watcher, 10000, NULL, watch, ZOO_READONLY);
+    watch->zh = zh;
+    CPPUNIT_ASSERT(zh != 0);
+    sleep(1);
+    return zh;
+  }
 
-            zk::multi_op txn =
-            {
-                zk::op::check("/foo", zk::version::any()),
-                zk::op::check("/foo/baz", foo_bar_version),
-                zk::op::create("/foo/bap", "hi", nullopt, zk::create_mode::sequential),
-                zk::op::erase("/foo/bzr"),
-            };
+  void assertCanRead(zhandle_t* zh, const char* znode_path) {
+    int len = 1024;
+    char buf[len];
+    int res = zoo_get(zh, znode_path, 0, buf, &len, 0);
+    CPPUNIT_ASSERT_EQUAL((int)ZOK, res);
+  }
 
-            // multi_res's type is zk::future<zk::multi_result>
-            client.commit(txn).then(print_thing<zk::multi_result>);
-        });
+  void assertCanNotWrite(zhandle_t* zh, const char* znode_path) {
+    char path[1024];
+    char buf[1024];
+    int res =
+        zoo_create(zh, znode_path, buf, 10, &ZOO_OPEN_ACL_UNSAFE, 0, path, 512);
+    CPPUNIT_ASSERT_EQUAL((int)ZNOTREADONLY, res);
+  }
 
-    // This is not strictly needed -- a client falling out of scope will auto-trigger close
-    client.close();
-}
+  void testReadOnly() {
+    startReadOnly();
+
+    watchctx_t watch;
+    zhandle_t* zh = connectReadOnly("localhost:22181", &watch);
+
+    assertCanRead(zh, "/");
+
+    assertCanNotWrite(zh, "/test");
+
+    stopPeer();
+  }
+
+#ifdef HAVE_OPENSSL_H
+
+  zhandle_t* connectReadOnlySSL(const char* address, const char* certs,
+                                watchctx_t* watch) {
+    zhandle_t* zh = zookeeper_init_ssl(address, certs, watcher, 10000, NULL,
+                                       watch, ZOO_READONLY);
+    watch->zh = zh;
+    CPPUNIT_ASSERT(zh != 0);
+    sleep(1);
+    return zh;
+  }
+
+  void testReadOnlyWithSSL() {
+    startReadOnly();
+
+    watchctx_t watch;
+    zhandle_t* zh =
+        connectReadOnlySSL("localhost:22281",
+                           "/tmp/certs/server.crt,/tmp/certs/client.crt,/tmp/"
+                           "certs/clientkey.pem,password",
+                           &watch);
+
+    assertCanRead(zh, "/");
+
+    assertCanNotWrite(zh, "/testSSL");
+
+    stopPeer();
+  }
+#endif
+};
+
+CPPUNIT_TEST_SUITE_REGISTRATION(Zookeeper_readOnly);
+#endif

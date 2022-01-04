@@ -21,6 +21,11 @@ cc_library(
 build_test(
     name = "build_test",
     targets = [
+        "@com_github_facebook_rocksdb//:rocksdb",
+        "@rapidjson//:rapidjson",
+        "@libevent//:libevent",
+        "@com_google_absl//absl/strings",
+        "@apache_thrift//:thrift",
         "@cppunit//:cppunit",
         "@cpp3rd_lib//zookeeper:zookeeper",
         "@cpp3rd_lib//tensorflow:tensorflow_cc",

@@ -8,3 +8,8 @@ cc_binary(
     #     "-std=c++14",
     # ],
 )
+
+cc_binary(
+    name = "test1",
+    srcs = ["test_map_access.cc"],
+)
