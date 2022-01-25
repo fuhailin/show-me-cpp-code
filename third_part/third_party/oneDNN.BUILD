@@ -25,8 +25,7 @@ cmake(
             "libmkldnn.dylib",
         ],
         "@platforms//os:linux": [
-            "libmkldnn.so.1.0",
-            "libmkldnn.so.1",
+            "libdnnl.so",
             "libmkldnn.so",
         ],
         "@platforms//os:windows": [

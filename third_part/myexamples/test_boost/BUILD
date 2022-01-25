@@ -19,3 +19,14 @@ cc_binary(
         "@boost",
     ],
 )
+
+cc_binary(
+    name = "bind",
+    srcs = ["test_bind.cc"],
+    copts = [
+        "-std=c++11",
+    ],
+    deps = [
+        "@boost",
+    ],
+)

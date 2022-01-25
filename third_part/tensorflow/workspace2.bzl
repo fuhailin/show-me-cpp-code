@@ -1113,6 +1113,15 @@ def _tf_repositories():
         remote = "https://github.com/oneapi-src/oneTBB/",
     )
 
+    http_archive(
+        name = "oneDNN",
+        build_file = Label("//third_party:oneDNN.BUILD"),
+        strip_prefix = "oneDNN-" + "2.5",
+        urls = [
+            "https://github.com//oneapi-src/oneDNN/archive/refs/tags/v{}.tar.gz".format("2.5"),
+        ],
+    )
+
 def workspace():
     # Check the bazel version before executing any repository rules, in case
     # those rules rely on the version we require here.
