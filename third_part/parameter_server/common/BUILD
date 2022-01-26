@@ -1,8 +1,6 @@
 cc_library(
     name = "common",
-    hdrs = ["logger.h"],
+    hdrs = glob(["**/*.h"]),
+    includes = ["include"],
     visibility = ["//visibility:public"],
-    deps = [
-        "@spdlog",
-    ],
 )

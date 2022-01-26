@@ -1,0 +1,1 @@
+bazel run getenv --run_under='export MYENV=skjdbfjsbjd && '

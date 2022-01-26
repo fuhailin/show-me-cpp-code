@@ -120,5 +120,5 @@ using namespace std;
 #endif
 
 // My needs
-#include <glog/logging.h>
-#include <glog/stl_logging.h>
+#include "glog/logging.h"
+#include "glog/stl_logging.h"

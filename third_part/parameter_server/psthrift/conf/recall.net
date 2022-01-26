@@ -1,0 +1,17 @@
+{
+    "net1":
+    {
+        "boss_fea":["boss_id", "job_id"],
+        "geek_fea":["geek_id"],
+        "method":"merge",
+        "dim":16
+    },
+
+    "net2":
+    {
+        "boss_fea":["boss_id", "job_id"],
+        "geek_fea":["list_time"],
+        "method":"sum",
+        "dim":16
+    }
+}

@@ -50,10 +50,10 @@ def workspace():
 
     http_archive(
         name = "rules_foreign_cc",
-        sha256 = "69023642d5781c68911beda769f91fcbc8ca48711db935a75da7f6536b65047f",
-        strip_prefix = "rules_foreign_cc-0.6.0",
+        sha256 = "bcd0c5f46a49b85b384906daae41d277b3dc0ff27c7c752cc51e43048a58ec83",
+        strip_prefix = "rules_foreign_cc-0.7.1",
         urls = [
-            "https://github.com/bazelbuild/rules_foreign_cc/archive/0.6.0.tar.gz",
+            "https://github.com/bazelbuild/rules_foreign_cc/archive/0.7.1.tar.gz",
         ],
     )
 
@@ -83,15 +83,15 @@ def workspace():
         urls = ["https://github.com/grailbio/bazel-compilation-database/archive/0.5.2.tar.gz"],
     )
 
-    # native.local_repository(
-    #     name = "cpp3rd_lib",
-    #     path = "/Users/vincent/Documents/projects/cpp3rd_lib",
-    # )
-    git_repository(
+    native.local_repository(
         name = "cpp3rd_lib",
-        branch = "master",
-        remote = "https://gitee.com/fuhailin/cpp3rd_lib.git",
+        path = "/root/fuhailin/projects/cpp3rd_lib",
     )
+    # git_repository(
+    #     name = "cpp3rd_lib",
+    #     commit = "10cec0e759d8048295e3fef6b32273bd455542e7",
+    #     remote = "https://gitee.com/fuhailin/cpp3rd_lib.git",
+    # )
 
 # Alias so it can be loaded without assigning to a different symbol to prevent
 # shadowing previous loads and trigger a buildifier warning.

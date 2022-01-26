@@ -1,0 +1,30 @@
+{
+    "psProxy":{
+
+        "thrift_thread_number":3,
+
+        "ps_proxy_info":{
+            "zk_url":"172.16.17.121:2181,172.16.17.121:2182,172.16.17.121:2183",
+            "zk_path":"/psProxy",
+            "pool_size":10,
+            "master_num":3,
+            "check_on_line":0,
+            "timeout":1200000,
+            "success_rate":70,
+            "switchover_check_times":10
+        }
+    },
+
+    "zookeeper":{
+        "zk_url":"172.16.17.121:2181,172.16.17.121:2182,172.16.17.121:2183",
+        "timeout":200000,
+
+        "registe":{
+            "zk_path":"/psProxy/tcmcp",
+            "info":{
+                "ip":"xxxx.xxx.xxxx.xxxx",
+                "port":-1
+            }
+        }
+    }
+}

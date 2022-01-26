@@ -13,6 +13,7 @@ cc_library(
         "LinkedList.h",
     ],
     copts = _COPTS,
+    # strip_include_prefix = "include",
 )
 
 cc_library(

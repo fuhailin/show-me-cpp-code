@@ -8,49 +8,50 @@
 
 /**
  * Definition for singly-linked list.
-*/
+ */
 struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+  int val;
+  ListNode *next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 namespace LinkedList {
 void printLinkedList(ListNode *head);
 
 ListNode *createLinkedList(std::vector<int> nodes);
-}  // namespace LinkedList
+} // namespace LinkedList
 
 class myLinkedList {
-   public:
-    // constructor
-    myLinkedList() {
-        head = NULL;  // set head to NULL
-        tail = NULL;
+public:
+  // constructor
+  myLinkedList() {
+    head = NULL; // set head to NULL
+    tail = NULL;
+  }
+
+  // destructor
+  ~myLinkedList() {
+    ListNode *next = head;
+
+    while (next) { // iterate over all elements
+      ListNode *deleteMe = next;
+      next = next->next; // save pointer to the next element
+      delete deleteMe;   // delete the current entry
     }
+  }
 
-    // destructor
-    ~myLinkedList() {
-        ListNode *next = head;
+  void addNode(int value);
 
-        while (next) {  // iterate over all elements
-            ListNode *deleteMe = next;
-            next = next->next;  // save pointer to the next element
-            delete deleteMe;    // delete the current entry
-        }
-    }
+  void display();
 
-    void addNode(int value);
+  // returns the first element in the list and deletes the Node.
+  // caution, no error-checking here!
+  int popValue();
+  ListNode *head;
 
-    void display();
-
-    // returns the first element in the list and deletes the Node.
-    // caution, no error-checking here!
-    int popValue();
-    ListNode *head;
-
-   private:
-    ListNode *tail;  //private member variable. It is just a pointer to the first & last Node
+private:
+  ListNode *tail; // private member variable. It is just a pointer to the first
+                  // & last Node
 };

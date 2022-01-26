@@ -1,0 +1,7 @@
+{
+    "zk_path":"/psProxy",
+    "zk_url":"10.0.18.217:2227,10.0.14.242:2181,10.0.14.243:2181",
+    "storage_type":"oss",
+    "storage_path":"oss:paramter-backend/models_backup",
+    "user_password":""
+}
