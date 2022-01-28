@@ -1122,6 +1122,43 @@ def _tf_repositories():
         ],
     )
 
+    http_archive(
+        name = "apache_apr",
+        urls = [
+            "https://ftp.wayne.edu/apache//apr/apr-1.7.0.tar.gz",
+        ],
+        strip_prefix = "apr-1.7.0",
+        build_file = Label("//third_party:apr.BUILD"),
+    )
+
+    http_archive(
+        name = "apache_aprutil",
+        urls = [
+            "https://ftp.wayne.edu/apache//apr/apr-util-1.6.1.tar.gz",
+        ],
+        strip_prefix = "apr-util-1.6.1",
+        build_file = Label("//third_party:aprutil.BUILD"),
+    )
+
+    http_archive(
+        name = "libexpat",
+        urls = [
+            "https://github.com//libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.gz",
+        ],
+        strip_prefix = "expat-{}".format("2.4.1"),
+        build_file = Label("//third_party:expat.BUILD"),
+    )
+
+    http_archive(
+        name = "apache_log4cxx",
+        urls = [
+            # "https://dlcdn.apache.org/logging/log4cxx/0.12.1/apache-log4cxx-0.12.1.zip",
+            "https://archive.apache.org/dist/logging/log4cxx/0.11.0/apache-log4cxx-0.11.0.zip",
+        ],
+        strip_prefix = "apache-log4cxx-0.11.0",
+        build_file = Label("//third_party:log4cxx.BUILD"),
+    )
+
 def workspace():
     # Check the bazel version before executing any repository rules, in case
     # those rules rely on the version we require here.
