@@ -24,7 +24,7 @@
 #include <utility>
 
 #include "external_util.h"
-#include "prometheus_util.h"
+#include "parameter_server/ParaServ/prometheus_util.h"
 #include "psProxyServ.h"
 #include "rocksdb/write_batch.h"
 #include "tbb/scalable_allocator.h"

@@ -10,12 +10,6 @@ cc_library(
     ],
 )
 
-cc_library(
-    name = "ParaServThrift",
-    srcs = glob(["ParaServThrift/*.cpp"]),
-    hdrs = glob(["ParaServThrift/*.h"]),
-)
-
 cc_binary(
     name = "ParaServ",
     srcs = [
@@ -40,9 +34,11 @@ cc_binary(
     ],
     copts = [
         "-Iparameter_server/ParaServ/include",
+        "-Iparameter_server/ParaServ",
         "-Iparameter_server/ParaServ/ParaServThrift",
         "-ggdb3",
         "-DNDBUG",
+        "-std=c++11",
     ],
     linkopts = [
         "-L/usr/local/lib",
@@ -55,9 +51,9 @@ cc_binary(
         # "-lstdc++",
     ],
     deps = [
-        ":ParaServThrift",
         ":prometheus_util",
-        "//parameter_server/common",
+        "//parameter_server/ParaServ/ParaServThrift:ParaServThrift_lib",
+        "//parameter_server/common:logger_lib",
         "@apache_thrift//:thrift",
         "@boost",
         "@cityhash",
@@ -144,5 +140,21 @@ cc_library(
     hdrs = ["prometheus_util.h"],
     deps = [
         "@com_github_jupp0r_prometheus_cpp//push",
+    ],
+)
+
+cc_library(
+    name = "psconfigure",
+    srcs = ["psconfigure.cpp"],
+    hdrs = [
+        "assert_exit.h",
+        "config.h",
+        "psconfigure.h",
+    ],
+    deps = [
+        "@com_github_facebook_rocksdb//:rocksdb",
+        "@cpp3rd_lib//tcmcp",
+        "@nlohmann_json//:json",
+        "@spdlog",
     ],
 )

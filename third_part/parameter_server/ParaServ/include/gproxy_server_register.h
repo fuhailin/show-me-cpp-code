@@ -8,8 +8,8 @@
 #include <string>
 #include <vector>
 
-#include "logger.h"
 #include "nlohmann/json.hpp"
+#include "parameter_server/common/logger.h"
 #include "zkclient.h"
 
 namespace gProxyServerRegister {

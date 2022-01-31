@@ -17,9 +17,9 @@
 #include <thread>
 
 #include "gproxy_server_register.h"
-#include "logger.h"
 #include "para_serv_handler.h"
-#include "prometheus_util.h"
+#include "parameter_server/ParaServ/prometheus_util.h"
+#include "parameter_server/common/logger.h"
 
 using namespace ::apache::thrift;
 using namespace ::apache::thrift::protocol;

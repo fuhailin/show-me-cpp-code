@@ -13,3 +13,12 @@ cc_binary(
     srcs = ["main.cpp"],
     deps = ["@oneTBB//:tbb"],
 )
+
+cc_binary(
+    name = "test",
+    srcs = ["test_malloc_pure_c.c"],
+    deps = [
+        "@oneTBB//:tbb",
+        "@oneTBB//:tbbmalloc",
+    ],
+)

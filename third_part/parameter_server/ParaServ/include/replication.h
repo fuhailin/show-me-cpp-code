@@ -26,8 +26,8 @@
 #include <thread>
 
 #include "config.h"
-#include "logger.h"
 #include "logger.hpp"
+#include "parameter_server/common/logger.h"
 #include "rocksdb/db.h"
 #include "rocksdb/utilities/checkpoint.h"
 #include "rocksdb/utilities/db_ttl.h"

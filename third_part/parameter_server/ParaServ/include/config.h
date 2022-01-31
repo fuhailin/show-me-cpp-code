@@ -17,10 +17,10 @@
 #include <vector>
 
 #include "assert_exit.h"
-#include "logger.h"
 #include "logger.hpp"
+#include "parameter_server/common/logger.h"
 #include "rocksdb/options.h"
-#include "table/block_based/block_based_table_factory.h"
+// #include "table/block_based/block_based_table_factory.h"
 
 struct Master2 {
   std::string ip;
@@ -104,24 +104,24 @@ struct BaseConfig {
     if (this->wal_size_limit_mb > 0)
       options.WAL_size_limit_MB = this->wal_size_limit_mb;
 
-    rocksdb::BlockBasedTableOptions table_options;
-    // change to 4 seems better
-    table_options.format_version = 4;
-    table_options.index_block_restart_interval = 16;
-    if (this->block_cache == 0) {
-      table_options.no_block_cache = true;
-    } else {
-      table_options.block_cache = rocksdb::NewLRUCache(this->block_cache);
-    }
-    if (this->filter_bits_per_key > 0) {
-      options.optimize_filters_for_hits = true;
-      table_options.filter_policy.reset(
-          rocksdb::NewBloomFilterPolicy(this->filter_bits_per_key, false));
-    }
+    // rocksdb::BlockBasedTableOptions table_options;
+    // // change to 4 seems better
+    // table_options.format_version = 4;
+    // table_options.index_block_restart_interval = 16;
+    // if (this->block_cache == 0) {
+    //   table_options.no_block_cache = true;
+    // } else {
+    //   table_options.block_cache = rocksdb::NewLRUCache(this->block_cache);
+    // }
+    // if (this->filter_bits_per_key > 0) {
+    //   options.optimize_filters_for_hits = true;
+    //   table_options.filter_policy.reset(
+    //       rocksdb::NewBloomFilterPolicy(this->filter_bits_per_key, false));
+    // }
 
-    table_options.block_size = this->block_size;
-    options.table_factory.reset(
-        new rocksdb::BlockBasedTableFactory(table_options));
+    // table_options.block_size = this->block_size;
+    // options.table_factory.reset(
+    //     new rocksdb::BlockBasedTableFactory(table_options));
 
     if (mkdir(data_dir) < 0 || mkdir(db_log_dir) < 0 || mkdir(wal_dir) < 0)
       return -1;

@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "external_util.h"
-#include "logger.h"
 #include "para_serv_handler.h"
+#include "parameter_server/common/logger.h"
 #include "port_holder.h"
 
 std::shared_ptr<spdlog::logger> logger;

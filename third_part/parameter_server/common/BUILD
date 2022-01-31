@@ -1,6 +1,5 @@
 cc_library(
-    name = "common",
-    hdrs = glob(["**/*.h"]),
-    includes = ["include"],
+    name = "logger_lib",
+    hdrs = ["logger.h"],
     visibility = ["//visibility:public"],
 )

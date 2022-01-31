@@ -15,7 +15,7 @@ cc_library(
 )
 
 cc_library(
-    name = "json",
+    name = "nlohmann_json",
     includes = ["include"],
     visibility = ["//visibility:public"],
     deps = ["nlohmann_json_lib"],

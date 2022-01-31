@@ -14,8 +14,8 @@
 #include <memory>
 
 #include "ParaServ.h"
-#include "logger.h"
 #include "para_serv_op.h"
+#include "parameter_server/common/logger.h"
 
 using namespace ::apache::thrift;
 using namespace ::apache::thrift::protocol;

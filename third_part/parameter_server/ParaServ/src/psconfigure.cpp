@@ -2,7 +2,7 @@
 
 #include <climits>
 
-#include "logger.h"
+#include "parameter_server/common/logger.h"
 
 using namespace ps;
 std::shared_ptr<Configure> Configure::instance;

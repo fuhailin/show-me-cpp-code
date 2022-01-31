@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "assert_exit.h"
-#include "config.h"
+// #include "config.h"
 #include "external_util.h"
 #include "para_serv_handler.h"
 using namespace std;
