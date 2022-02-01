@@ -1,23 +1,40 @@
-workspace(name = "org_tensorflow")
+workspace(name = "tf_serving")
 
-# Initialize the TensorFlow repository and all dependencies.
-#
-# The cascade of load() statements and tf_workspace?() calls works around the
-# restriction that load() statements need to be at the top of .bzl files.
-# E.g. we can not retrieve a new repository with http_archive and then load()
-# a macro from that repository in the same file.
-load("@//tensorflow:workspace3.bzl", "tf_workspace3")
+# ===== TensorFlow dependency =====
+load("//tensorflow_serving:repo.bzl", "tensorflow_http_archive")
 
-tf_workspace3()
+# tensorflow_http_archive(
+#     name = "org_tensorflow",
+#     git_commit = "58f16dd902fa84f8aa0fd452afb319c1ff65bc74",
+#     sha256 = "fcff1657c4cc669597ca5c1945e28e46ff583c86e29e21cc66bc68b4e4a30c73",
+# )
 
-load("@//tensorflow:workspace2.bzl", "tf_workspace2")
+local_repository(
+    name = "org_tensorflow",
+    path = "/Users/vincent/Documents/projects/rules_deps",
+)
 
-tf_workspace2()
+# Import all of TensorFlow Serving's external dependencies.
+# Downstream projects (projects importing TensorFlow Serving) need to
+# duplicate all code below in their WORKSPACE file in order to also initialize
+# those external dependencies.
+load("//tensorflow_serving:workspace.bzl", "tf_serving_workspace")
 
-load("@//tensorflow:workspace1.bzl", "tf_workspace1")
+tf_serving_workspace()
 
-tf_workspace1()
+# Initialize TensorFlow's external dependencies.
+load("@org_tensorflow//tensorflow:workspace3.bzl", "workspace")
 
-load("@//tensorflow:workspace0.bzl", "tf_workspace0")
+workspace()
 
-tf_workspace0()
+load("@org_tensorflow//tensorflow:workspace2.bzl", "workspace")
+
+workspace()
+
+load("@org_tensorflow//tensorflow:workspace1.bzl", "workspace")
+
+workspace()
+
+load("@org_tensorflow//tensorflow:workspace0.bzl", "workspace")
+
+workspace()
