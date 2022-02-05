@@ -1,4 +1,4 @@
-workspace(name = "tf_serving")
+workspace(name = "rules_deps_template")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
@@ -10,13 +10,13 @@ http_archive(
     ],
 )
 
-# Import all of TensorFlow Serving's external dependencies.
-# Downstream projects (projects importing TensorFlow Serving) need to
-# duplicate all code below in their WORKSPACE file in order to also initialize
+# Import all of rules_deps's external dependencies.
+# Downstream projects need to duplicate all code
+# below in their WORKSPACE file in order to also initialize
 # those external dependencies.
-load("//tensorflow_serving:workspace.bzl", "tf_serving_workspace")
+load("//mydeps:workspace.bzl", "mydeps_workspace")
 
-tf_serving_workspace()
+mydeps_workspace()
 
 # Initialize TensorFlow's external dependencies.
 load("@org_tensorflow//tensorflow:workspace3.bzl", "workspace")

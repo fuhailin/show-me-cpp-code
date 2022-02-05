@@ -1,7 +1,5 @@
-# Description: Tensorflow Serving.
-
 package(
-    default_visibility = ["//tensorflow_serving:internal"],
+    default_visibility = ["//mydeps:internal"],
 )
 
 licenses(["notice"])
@@ -12,7 +10,7 @@ exports_files(["LICENSE"])
 
 package_group(
     name = "internal",
-    packages = ["//tensorflow_serving/..."],
+    packages = ["//mydeps/..."],
 )
 
 filegroup(
