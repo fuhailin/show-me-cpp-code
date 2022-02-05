@@ -1,7 +1,0 @@
-{
-    "zk_path":"/psProxy-test",
-    "zk_url":"localhost:2181",
-    "storage_type":"scp",
-    "storage_path":"localhost:/data/2020/dbsnapbackup",
-    "user_password":"123123"
-}

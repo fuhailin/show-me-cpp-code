@@ -1,7 +1,0 @@
-{
-    "zk_path":"/psProxy",
-    "zk_url":"localhost:2181,localhost:2182,localhost:2183",
-    "storage_type":"oss",
-    "storage_path":"oss:paramter-backend/models_backup",
-    "user_password":"123123"
-}
