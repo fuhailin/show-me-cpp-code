@@ -8,4 +8,13 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 def mydeps_workspace():
     """All external dependencies."""
-    pass
+    # pass
+    http_archive(
+        name = "apache_thrift_12",
+        build_file = "//third_party:thrift.BUILD",
+        strip_prefix = "thrift-0.12.0",
+        urls = [
+            "https://mirrors.tuna.tsinghua.edu.cn/apache/thrift/{commit}/thrift-{commit}.tar.gz".format(commit = "0.12.0"),
+            "https://apache.cs.utah.edu/thrift/{commit}/thrift-{commit}.tar.gz".format(commit = "0.12.0"),
+        ],
+    )

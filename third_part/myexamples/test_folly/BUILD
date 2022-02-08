@@ -1,59 +1,90 @@
-load("@rules_cc//cc:defs.bzl", "cc_test")
+# package(features = ["fully_static_link"])
 
-package(
-    default_visibility = ["//visibility:public"],
-)
+_copts = [
+    "-std=gnu++17",
+    "-Wall",
+    "-Wextra",
+    "-Wcast-qual",
+    "-Wconversion-null",
+    "-Woverlength-strings",
+    "-Wpointer-arith",
+    "-Wno-unused-local-typedefs",
+    "-Wno-unused-parameter",
+    "-Wunused-result",
+    "-Wvarargs",
+    "-Wvla",
+    "-Wwrite-strings",
+    "-Wno-missing-field-initializers",
+    "-Wno-sign-compare",
+    "-msse3",
+    "-msse4",
+    "-msse4.1",
+    "-mpclmul",
+    "-fno-builtin-memcmp",
+]
 
-cc_test(
-    name = "chrono_test",
-    size = "small",
-    srcs = ["chrono_test.cc"],
+cc_binary(
+    name = "scope",
+    srcs = [
+        "scope.cc",
+    ],
+    copts = _copts,
     deps = [
-        "@com_google_googletest//:gtest_main",
-        "@folly",
+        "@com_github_facebook_folly//:folly",
     ],
 )
 
-cc_test(
-    name = "cpu_id_test",
-    size = "small",
-    srcs = ["cpu_id_test.cc"],
+cc_binary(
+    name = "future",
+    srcs = [
+        "future.cc",
+    ],
+    copts = _copts,
+    features = [
+        # "fully_static_link",
+    ],
+    linkopts = [
+        "-l:libstdc++.a",
+    ],
     deps = [
-        "@com_google_googletest//:gtest_main",
-        "@folly",
+        "@com_github_facebook_folly//:folly",
     ],
 )
 
-cc_test(
-    name = "fingerprint_test",
-    size = "small",
-    srcs = ["fingerprint_test.cc"],
+cc_binary(
+    name = "singleton",
+    srcs = [
+        "singleton.cc",
+        "singleton.h",
+    ],
+    copts = _copts,
+    features = [
+        "fully_static_link",
+    ],
+    linkopts = ["-l:libstdc++.a"],
     deps = [
-        "@com_github_gflags_gflags//:gflags",
-        "@com_github_google_glog//:glog",
-        "@com_google_googletest//:gtest_main",
-        "@folly",
+        "@com_github_facebook_folly//:folly",
     ],
 )
 
-cc_test(
-    name = "checksum_test",
-    size = "small",
-    srcs = ["checksum_test.cc"],
+cc_binary(
+    name = "test1",
+    srcs = [
+        "test1.cc",
+    ],
+    copts = _copts,
     deps = [
-        "@boost//:crc",
-        "@com_github_google_glog//:glog",
-        "@com_google_googletest//:gtest_main",
-        "@folly",
+        "@com_github_facebook_folly//:folly",
     ],
 )
 
-cc_test(
-    name = "random_test",
-    size = "small",
-    srcs = ["random_test.cc"],
+cc_binary(
+    name = "semaphore",
+    srcs = [
+        "semaphore.cc",
+    ],
+    copts = _copts,
     deps = [
-        "@com_google_googletest//:gtest_main",
-        "@folly",
+        "@com_github_facebook_folly//:folly",
     ],
 )

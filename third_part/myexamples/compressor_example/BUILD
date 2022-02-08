@@ -8,7 +8,7 @@ cc_library(
     name = "zstd_common",
     hdrs = ["common.h"],
     deps = [
-        "@zstd",
+        "@com_github_facebook_zstd//:zstd",
     ],
 )
 
@@ -17,6 +17,6 @@ cc_binary(
     srcs = ["simple_compression.cc"],
     deps = [
         ":zstd_common",
-        "@zstd",
+        "@com_github_facebook_zstd//:zstd",
     ],
 )
