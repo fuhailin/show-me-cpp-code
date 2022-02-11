@@ -3,13 +3,14 @@
 #include <dmlc/base.h>
 // #include <dmlc/data.h>
 // #include <dmlc/io.h>
-#include <algorithm>
 #include <dmlc/logging.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <stack>
-#include <stdlib.h>
-#include <unistd.h>
 #include <unordered_set>
 #include <vector>
 
@@ -53,7 +54,7 @@ struct LrParam : public dmlc::Parameter<LrParam> {
 // register it in cc file
 DMLC_REGISTER_PARAMETER(LrParam);
 
-void initLrParam(LrParam &param, int argc, char *argv[]) {
+void initLrParam(LrParam& param, int argc, char* argv[]) {
   map<string, string> kwargs;
   char name[256], val[256];
   for (int i = 0; i < argc; ++i) {
@@ -69,9 +70,9 @@ void initLrParam(LrParam &param, int argc, char *argv[]) {
 // =============================== LrModel
 // ======================================= //
 class LrModel {
-public:
-  LrModel(const unordered_set<index_t> &keySet, LrParam *param,
-          KVWorker<float> *kv) {
+ public:
+  LrModel(const unordered_set<index_t>& keySet, LrParam* param,
+          KVWorker<float>* kv) {
     srand(MyRank());
     kv_ = kv;
     param_ = param;
@@ -90,11 +91,11 @@ public:
     Postoffice::Get()->Barrier(kWorkerGroup);
   }
 
-  void train(const RowBlock<index_t> &batch) {
+  void train(const RowBlock<index_t>& batch) {
     kv_->Wait(kv_->Pull(keys_, &vals_));
     unordered_map<Key, float> grad;
     for (size_t i = 0; i < batch.size; ++i) {
-      const auto &sample = batch[i];
+      const auto& sample = batch[i];
       float sum = 0;
       for (size_t j = 0; j < sample.length; ++j) {
         sum += vals_[keys_[index_map_[sample.index[j]]]];
@@ -125,12 +126,12 @@ public:
     }
   }
 
-private:
-  KVWorker<float> *kv_;
+ private:
+  KVWorker<float>* kv_;
   vector<float> vals_;
   vector<Key> keys_;
   vector<int> lens_;
-  LrParam *param_;
+  LrParam* param_;
   unordered_map<index_t, index_t> index_map_;
 };
 // =============================== LrModel
@@ -138,9 +139,10 @@ private:
 
 // =============================== Server
 // ======================================= //
-template <typename Val> class KVStoreServer {
-public:
-  KVStoreServer(LrParam *param) {
+template <typename Val>
+class KVStoreServer {
+ public:
+  KVStoreServer(LrParam* param) {
     using namespace std::placeholders;
     ps_server_ = new ps::KVServer<float>(0);
     ps_server_->set_request_handle(
@@ -154,9 +156,9 @@ public:
     }
   }
 
-private:
-  void DataHandle(const KVMeta &req_meta, const KVPairs<Val> &req_data,
-                  KVServer<Val> *server) {
+ private:
+  void DataHandle(const KVMeta& req_meta, const KVPairs<Val>& req_data,
+                  KVServer<Val>* server) {
     size_t n = req_data.keys.size();
     cout << "key'length = " << n << endl;
     if (req_meta.push) {
@@ -177,7 +179,7 @@ private:
         cout << "dump_model" << endl;
         char path[256];
         sprintf(path, "%s/%05d", param_->model_path.c_str(), MyRank());
-        dmlc::Stream *fo = dmlc::Stream::Create(path, "w");
+        dmlc::Stream* fo = dmlc::Stream::Create(path, "w");
         {
           dmlc::ostream os(fo);
           for (auto it = weight_.begin(); it != weight_.end(); ++it) {
@@ -201,16 +203,16 @@ private:
   }
 
   unordered_map<Key, Val> weight_;
-  LrParam *param_;
-  KVServer<float> *ps_server_;
+  LrParam* param_;
+  KVServer<float>* ps_server_;
 };
 
-void RunServer(const LrParam &param) {
+void RunServer(const LrParam& param) {
   if (!IsServer()) {
     return;
   }
   std::cout << "is server" << std::endl;
-  auto server = new KVStoreServer<float>(const_cast<LrParam *>(&param));
+  auto server = new KVStoreServer<float>(const_cast<LrParam*>(&param));
   RegisterExitCallback([server]() {
     cout << "ended!" << endl;
     delete server;
@@ -221,7 +223,7 @@ void RunServer(const LrParam &param) {
 
 // =============================== Worker
 // ======================================= //
-void RunWorker(const LrParam &param) {
+void RunWorker(const LrParam& param) {
   if (!IsWorker()) {
     return;
   }
@@ -229,13 +231,13 @@ void RunWorker(const LrParam &param) {
   int rank = MyRank();
   int num_workers = NumWorkers();
   // read data
-  RowBlockIter<index_t> *data = RowBlockIter<index_t>::Create(
+  RowBlockIter<index_t>* data = RowBlockIter<index_t>::Create(
       param.train_path.c_str(), rank, num_workers, "libsvm");
   // getKeySet
   unordered_set<index_t> indexSet;
   data->BeforeFirst();
   while (data->Next()) {
-    const auto &batch = data->Value();
+    const auto& batch = data->Value();
     for (size_t i = 0; i < batch.size; ++i) {
       auto v = batch[i];
       for (size_t j = 0; j < v.length; ++j) {
@@ -244,13 +246,13 @@ void RunWorker(const LrParam &param) {
     }
   }
   cout << "indexSet = " << indexSet.size() << endl;
-  KVWorker<float> *kv = new KVWorker<float>(0);
+  KVWorker<float>* kv = new KVWorker<float>(0);
   vector<Key> keys(indexSet.size());
-  LrModel model(indexSet, const_cast<LrParam *>(&param), kv);
+  LrModel model(indexSet, const_cast<LrParam*>(&param), kv);
   for (size_t i = 0; i < param.max_iter; ++i) {
     data->BeforeFirst();
     while (data->Next()) {
-      const auto &batch = data->Value();
+      const auto& batch = data->Value();
       for (size_t i = 0; i + param.batch_size < batch.size;
            i += param.batch_size) {
         model.train(batch.Slice(i, i + param.batch_size));
@@ -281,11 +283,13 @@ struct SchedulerRequestHandle {
   int delay;
   stack<SimpleData> blockedReqs;
 
-  SchedulerRequestHandle(const LrParam &param)
-      : minIterCount(NumWorkers()), minIter(0), iterCount(NumWorkers()),
+  SchedulerRequestHandle(const LrParam& param)
+      : minIterCount(NumWorkers()),
+        minIter(0),
+        iterCount(NumWorkers()),
         delay(param.max_delay) {}
 
-  void operator()(const SimpleData &req, SimpleApp *app) {
+  void operator()(const SimpleData& req, SimpleApp* app) {
     if (req.head == ITER_FINISH) {
       int rank = Postoffice::Get()->IDtoRank(req.sender);
       int iter = ++iterCount[rank];
@@ -320,7 +324,7 @@ struct SchedulerRequestHandle {
   }
 };
 
-void RunScheduler(const LrParam &param) {
+void RunScheduler(const LrParam& param) {
   if (!IsScheduler()) {
     return;
   }
@@ -332,7 +336,7 @@ void RunScheduler(const LrParam &param) {
 // =============================== Scheduler
 // ======================================= //
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   LrParam param;
   initLrParam(param, argc, argv);
   RunServer(param);

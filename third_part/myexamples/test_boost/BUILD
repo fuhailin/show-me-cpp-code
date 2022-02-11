@@ -30,3 +30,16 @@ cc_binary(
         "@boost",
     ],
 )
+
+cc_test(
+    name = "iostreams_test",
+    size = "small",
+    srcs = ["iostreams_test.cc"],
+    linkopts = [
+        "-lz",
+        "-lzstd",
+    ],
+    deps = [
+        "@boost//:iostreams",
+    ],
+)

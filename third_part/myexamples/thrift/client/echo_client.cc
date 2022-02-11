@@ -1,17 +1,16 @@
-#include "test/thrift/if/gen-cpp2/EchoService.h"
-
 #include <folly/SocketAddress.h>
 #include <folly/init/Init.h>
 #include <folly/io/async/EventBase.h>
 #include <thrift/lib/cpp2/transport/core/testutil/ServerConfigsMock.h>
 #include <thrift/perf/cpp2/util/Util.h>
 
+#include "EchoService.h"
+
 DEFINE_string(host, "::1", "EchoServer host");
 DEFINE_int32(port, 1234, "EchoServer port");
 DEFINE_string(transport, "header", "Transport to use: header, rsocket, http2");
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
   FLAGS_logtostderr = true;
   folly::init(&argc, &argv);
   folly::EventBase evb;

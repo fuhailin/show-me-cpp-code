@@ -10,7 +10,7 @@ workspace(name = "rules_deps_template")
 
 local_repository(
     name = "org_tensorflow",
-    path = "/root/fuhailin/projects/rules_deps",
+    path = "/root/projects/rules_deps",
     # path = "/Users/vincent/Documents/projects/rules_deps",
 )
 
