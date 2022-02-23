@@ -1,18 +1,22 @@
 workspace(name = "rules_deps_template")
 
-# http_archive(
-#     name = "org_tensorflow",
-#     strip_prefix = "rules_deps-604b0a38982fcd24d42f8129d4606dd6ac53a334",
-#     urls = [
-#         "https://github.com/fuhailin/rules_deps/archive/604b0a38982fcd24d42f8129d4606dd6ac53a334.tar.gz",
-#     ],
-# )
+"""
+http_archive(
+    name = "org_tensorflow",
+    strip_prefix = "rules_deps-604b0a38982fcd24d42f8129d4606dd6ac53a334",
+    urls = [
+        "https://github.com/fuhailin/rules_deps/archive/604b0a38982fcd24d42f8129d4606dd6ac53a334.tar.gz",
+    ],
+)
+
+"""
 
 local_repository(
     name = "org_tensorflow",
-    path = "/root/projects/rules_deps",
-    # path = "/Users/vincent/Documents/projects/rules_deps",
+    # path = "/root/projects/rules_deps",
+    path = "/Users/vincent/Documents/projects/rules_deps",
 )
+# """
 
 # Import all of rules_deps's external dependencies.
 # Downstream projects need to duplicate all code

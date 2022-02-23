@@ -5,3 +5,11 @@ cc_binary(
         "@apache_arrow//:arrow",
     ],
 )
+
+cc_binary(
+    name = "write",
+    srcs = ["write_parquet.cc"],
+    deps = [
+        # "@apache_arrow//:arrow",
+    ],
+)

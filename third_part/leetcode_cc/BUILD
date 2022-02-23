@@ -18,6 +18,7 @@ package(
         deps = [
             "//bits:stdcxx",
             "//include:LinkedList",
+            "//include:TreeNode",
             "@com_google_googletest//:gtest_main",
         ],
     )
