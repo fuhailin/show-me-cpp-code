@@ -9,7 +9,7 @@
             "name": "CodeLLDB",
             "type": "lldb",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
             "args": [],
         }
     ]
