@@ -288,9 +288,6 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 *.exe
-.vscode/
-Memory-based-collaborative-filtering/input/ml-100k/
-Memory-based-collaborative-filtering/CollectiveFiltering/data.txt
 
 # Bazel output
 # */bazel/
@@ -309,3 +306,9 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 .cmake/
+third_part/.vscode/.cache
+sftp.json
+*.plist
+third_part/leetcode_cc/338.counting-bits.dSYM/Contents/Resources/DWARF
+third_part/leetcode_cc/343.integer-break.dSYM/Contents/Resources/DWARF
+.cache/
