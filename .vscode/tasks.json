@@ -74,6 +74,12 @@
           "\"${fileDirname}\\${fileBasenameNoExtension}\""
         ]
       }
+    },
+    {
+      "label": "Refresh Compilation Database",
+      "type": "shell",
+      "command": "bazel build //:refresh_compile_commands",
+      "problemMatcher": []
     }
   ]
 }
