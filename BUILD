@@ -81,6 +81,8 @@ compilation_database(
         "//myexamples/test_fmt:main",
         "//myexamples/test_eigen_city:test_city",
         "//myexamples/test_eigen_city:main",
-        ":build_test_mac",
+        "//bits:stdcxx",
+        "//include:cache_test",
+        # ":build_test_mac",
     ],
 )

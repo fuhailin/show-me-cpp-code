@@ -25,7 +25,6 @@
     "bazel.buildifierFixOnFormat": true,
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
-    "clangd.path": "/usr/bin/clangd",
     "clangd.arguments": [
         "-j=12",
         "--compile-commands-dir=${workspaceFolder}/bazel-bin",
