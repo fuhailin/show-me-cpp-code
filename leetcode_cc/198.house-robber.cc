@@ -1,4 +1,6 @@
 #include <vector>
+#include <iostream>
+
 using namespace std;
 
 class Solution {
@@ -16,3 +18,11 @@ class Solution {
         return dp[nums.size() - 1];
     }
 };
+
+int main(int argc, char const *argv[])
+{
+    vector<int> test{1, 2, 3, 1};
+    int res = Solution().rob(test);
+    cout << boolalpha << res << endl;
+    return 0;
+}

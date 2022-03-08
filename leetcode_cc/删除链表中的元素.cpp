@@ -1,114 +1,99 @@
-//LeetCode 203. É¾³ýÁ´±íÖÐµÄÔªËØ
+// LeetCode 203. É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ôªï¿½ï¿½
 #include <iostream>
 using namespace std;
 
 typedef int ElemType;
 struct ListNode {
-	int val;
-	ListNode *next;
-	ListNode(int x) : val(x), next(NULL) {}
+  int val;
+  ListNode* next;
+  ListNode(int x) : val(x), next(NULL) {}
 };
 
 class Solution {
-public:
-	ListNode* removeElements(ListNode* head, int val) {
+ public:
+  ListNode* removeElements(ListNode* head, int val) {
+    if (head == NULL) return NULL;
+    ListNode* next = removeElements(head->next, val);
+    if (head->val == val)
+      return next;
+    else {
+      head->next = next;
+      return head;
+    }
+  }
 
-		if (head == NULL) 
-			return NULL;
-		ListNode *next = removeElements(head->next, val);
-		if (head->val == val) 
-			return next;
-		else
-		{
-			head->next = next;
-			return head;
-		}
-	}
+  // ListNode* removeElements1(ListNode* head, int val) {
 
-	//ListNode* removeElements1(ListNode* head, int val) {
+  //	if (head == NULL)
+  //		return NULL;
+  //	if (head->val == val)
+  //		head->next = head->next->next;
+  //	return removeElements(head->next, val);
+  //	else
+  //	{
+  //	ListNode *tmp = head;
+  //	while (tmp->next != NULL)
+  //	{
+  //	if (tmp->next->val == val)
+  //	{
+  //	tmp->next = tmp->next->next;
+  //	tmp = tmp->next;
+  //	if (tmp == NULL)
+  //	return head;
+  //	}
+  //	else
+  //	{
+  //	tmp = tmp->next;
+  //	}
+  //	}
+  //	return head;
+  //	}
+  //}
 
-	//	if (head == NULL)
-	//		return NULL;
-	//	if (head->val == val)
-	//		head->next = head->next->next;
-	//	return removeElements(head->next, val);
-	//	else
-	//	{
-	//	ListNode *tmp = head;
-	//	while (tmp->next != NULL)
-	//	{
-	//	if (tmp->next->val == val)
-	//	{
-	//	tmp->next = tmp->next->next;
-	//	tmp = tmp->next;
-	//	if (tmp == NULL)
-	//	return head;
-	//	}
-	//	else
-	//	{
-	//	tmp = tmp->next;
-	//	}
-	//	}
-	//	return head;
-	//	}
-	//}
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
+  ListNode* Create(void) {
+    char s;
+    ListNode* tail = NULL;
+    ListNode* head = NULL;
+    while (1) {
+      ListNode* tmp = new ListNode(0);  //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½sï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+      scanf("%d", &tmp->val);
 
-	//´´½¨ÎÞÍ·½áµãµÄµ¥Á´±í
-	ListNode* Create(void)
-	{
-		char s;
-		ListNode *tail = NULL;
-		ListNode *head = NULL;
-		while (1)
-		{
-
-			ListNode *tmp = new ListNode(0);     //¶¨ÒåÒ»¸ös½ÚµãÓÃÀ´´æ·ÅÃ¿´ÎÒªÊäÈëµÄÖµ
-			scanf("%d", &tmp->val);
-
-			if (head == NULL)
-			{
-				head = tmp;
-			}
-			else
-			{
-				tail->next = tmp;
-			}
-			tail = tmp;
-			s = getchar();
-			if (s == '\n') { break; }
-		}
-		if (tail != NULL)
-			tail->next = NULL;
-		return head;
-	}
-	//Êä³öÎÞÍ·½áµãµ¥Á´±í
-	void List(ListNode *L)
-	{
-		ListNode *p;
-		p = L;  //
-		while (p != NULL)
-		{
-			printf("%2d", p->val);
-			p = p->next;
-		}
-	}
+      if (head == NULL) {
+        head = tmp;
+      } else {
+        tail->next = tmp;
+      }
+      tail = tmp;
+      s = getchar();
+      if (s == '\n') {
+        break;
+      }
+    }
+    if (tail != NULL) tail->next = NULL;
+    return head;
+  }
+  //ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ãµ¥ï¿½ï¿½ï¿½ï¿½
+  void List(ListNode* L) {
+    ListNode* p;
+    p = L;  //
+    while (p != NULL) {
+      printf("%2d", p->val);
+      p = p->next;
+    }
+  }
 };
 
-
-
-
-
-int main3_1()
-{
-	ListNode *L1;
-	int temp;
-	printf("ÇëÊäÈëÁ´±í:\n");
-	L1 = Solution().Create();
-	printf("\nÇëÊäÈëÒªÒÆ³ýµÄÔªËØ:\n");
-	scanf("%d", &temp);
-	ListNode* ret = Solution().removeElements(L1, temp);
-	printf("ÒÆ³ýºóµÄÁ´±íÎª:\n");
-	Solution().List(L1);
-	system("pause");
-	return 0;
+int main3_1() {
+  ListNode* L1;
+  int temp;
+  printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:\n");
+  L1 = Solution().Create();
+  printf("\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Æ³ï¿½ï¿½ï¿½Ôªï¿½ï¿½:\n");
+  scanf("%d", &temp);
+  ListNode* ret = Solution().removeElements(L1, temp);
+  printf("ï¿½Æ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª:\n");
+  Solution().List(L1);
+  system("pause");
+  return 0;
 }

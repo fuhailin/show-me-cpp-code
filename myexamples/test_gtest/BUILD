@@ -1,6 +1,7 @@
+package(default_visibility = ["//visibility:public"])
+
 cc_binary(
     name = "gmock_leak_test_",
-    testonly = 1,
     srcs = ["gmock_leak_test_.cc"],
     deps = [
         "@com_google_googletest//:gtest_main",

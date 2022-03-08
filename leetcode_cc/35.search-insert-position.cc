@@ -22,3 +22,13 @@ class Solution {
             return mid + 1;
     }
 };
+
+
+int main(int argc, char const *argv[])
+{
+    vector<int> test = {1, 3, 5, 6};
+    Solution solu;
+    int res = solu.searchInsert(test, 2);
+    cout << res << endl;
+    return 0;
+}

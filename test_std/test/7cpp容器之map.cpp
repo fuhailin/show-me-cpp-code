@@ -1,34 +1,32 @@
-#include<iostream>
-#include<map>
+#include <iostream>
+#include <map>
 using namespace std;
 
-int main7()
-{
-	map<char, int> chineseNum;
-	chineseNum.insert(pair<char, int>('A', 0));
-	chineseNum['B'] = 1;
+int main7() {
+  map<char, int> chineseNum;
+  chineseNum.insert(pair<char, int>('A', 0));
+  chineseNum['B'] = 1;
 
-	map<char, int>::iterator iter;
-	iter = chineseNum.find('C'); //iter Îª end
-	iter = chineseNum.find('A');//È¡³ökeyÎª'A'µÄ¼üÖµ¶Ô£¬iter Îª ('A', 0)
-	cout << iter->first << '\t' << iter->second << endl;
+  map<char, int>::iterator iter;
+  iter = chineseNum.find('C');  // iter Îª end
+  iter = chineseNum.find('A');  //È¡ï¿½ï¿½keyÎª'A'ï¿½Ä¼ï¿½Öµï¿½Ô£ï¿½iter Îª ('A', 0)
+  cout << iter->first << '\t' << iter->second << endl;
 
-	int tmp = chineseNum['C'];//F²»ÔÚmapÖĞ£¬»á½«('F',0)Ìí¼Ó½ømap£¬²¢·µ»Ø0
-	cout << chineseNum.size() << endl;//3
-	if (chineseNum.find('C') != chineseNum.end())
-		cout << 'C';//C
+  int tmp = chineseNum['C'];  // Fï¿½ï¿½ï¿½ï¿½mapï¿½Ğ£ï¿½ï¿½á½«('F',0)ï¿½ï¿½ï¿½Ó½ï¿½mapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0
+  cout << chineseNum.size() << endl;                          // 3
+  if (chineseNum.find('C') != chineseNum.end()) cout << 'C';  // C
 
-	//µü´úÆ÷„h³ı
-	iter = chineseNum.find('C');
-	chineseNum.erase(iter);
+  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½hï¿½ï¿½
+  iter = chineseNum.find('C');
+  chineseNum.erase(iter);
 
-	//ÓÃêPæI×Ö„h³ı
-	int n = chineseNum.erase('B');//Èç¹û„h³ıÁË•ş·µ»Ø1£¬·ñ„t·µ»Ø0
+  //ï¿½ï¿½ï¿½Pï¿½Iï¿½Ö„hï¿½ï¿½
+  int n = chineseNum.erase('B');  //ï¿½ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Ë•ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½ï¿½0
 
-									 //ÓÃµü´úÆ÷¹ ‡ú„h³ı : °ÑÕû‚€mapÇå¿Õ
-	chineseNum.erase(chineseNum.begin(), chineseNum.end());
-	//µÈÍ¬ì¶chineseNum.clear()
+  //ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½hï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mapï¿½ï¿½ï¿½
+  chineseNum.erase(chineseNum.begin(), chineseNum.end());
+  //ï¿½ï¿½Í¬ï¿½chineseNum.clear()
 
-	system("pause");
-	return 0;
+  system("pause");
+  return 0;
 }
