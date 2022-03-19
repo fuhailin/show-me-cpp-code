@@ -5,7 +5,7 @@ cc_binary(
     srcs = ["hello-world.cc"],
     data = ["test.json"],
     deps = [
-        "@nlohmann_json//:json",
+        "@nlohmann_json_lib//:nlohmann_json",
     ],
 )
 
@@ -13,6 +13,6 @@ cc_binary(
     name = "test1",
     srcs = ["test1.cc"],
     deps = [
-        "@nlohmann_json//:json",
+        "@nlohmann_json_lib//:nlohmann_json",
     ],
 )

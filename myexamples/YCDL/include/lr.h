@@ -6,7 +6,7 @@
 
 namespace YCDL {
 class LRmodel {
-public:
+ public:
   std::shared_ptr<Optimizer> _sparse_weight_sgd;
   std::shared_ptr<loss_func_layer> _loss_layer;
   int _dim;
@@ -75,4 +75,4 @@ public:
               << ", label_avg: " << label_avg;
   }
 };
-} // namespace YCDL
+}  // namespace YCDL

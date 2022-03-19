@@ -1,3 +1,5 @@
+package(default_visibility = ["//visibility:public"])
+
 cc_test(
     name = "client",
     srcs = [
@@ -29,9 +31,9 @@ cc_binary(
 )
 
 cc_binary(
-    name = "simple_app",
+    name = "test_simple_app",
     srcs = [
-        "tests/test_simple_app.cc",
+        "test_simple_app.cc",
     ],
     deps = [
         "@ps-lite//:ps-lite",

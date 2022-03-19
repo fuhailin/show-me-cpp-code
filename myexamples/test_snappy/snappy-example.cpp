@@ -1,4 +1,4 @@
-#include <snappy/snappy.h>
+#include <snappy.h>
 
 #include <iostream>
 #include <string>

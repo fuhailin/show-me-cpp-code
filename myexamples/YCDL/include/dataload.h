@@ -1,8 +1,9 @@
 #pragma once
+#include <generator.h>
+
 #include "all.h"
 #include "instance.h"
 #include "tools.h"
-#include <generator.h>
 
 namespace YCDL {
 Generator<std::vector<Instance>> dataload(std::string path, int epoch,
@@ -64,4 +65,4 @@ Generator<std::vector<Instance>> dataload(std::string path, int epoch,
         }
       });
 }
-} // namespace YCDL
+}  // namespace YCDL

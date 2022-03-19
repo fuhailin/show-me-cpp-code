@@ -5,8 +5,7 @@ namespace YCDL {
 template <class T>
 void print_vec(const std::string &comment, const std::vector<T> segs) {
   std::cout << comment << ": ";
-  for (int i = 0; i < segs.size(); i++)
-    std::cout << segs[i] << " ";
+  for (int i = 0; i < segs.size(); i++) std::cout << segs[i] << " ";
   puts("");
 }
 
@@ -55,10 +54,8 @@ int get_file_len(std::string path) {
 
 double sigmoid(double x) {
   static double overflow = 20.0;
-  if (x > overflow)
-    x = overflow;
-  if (x < -overflow)
-    x = -overflow;
+  if (x > overflow) x = overflow;
+  if (x < -overflow) x = -overflow;
   return 1.0 / (1.0 + exp(-x));
 }
 
@@ -77,8 +74,7 @@ double calc_auc(std::vector<std::pair<int, double>> label_pre) {
       n++;
   }
   int N = n * p;
-  if (N == 0)
-    return 0.0;
+  if (N == 0) return 0.0;
   return (sum_rank - p * (p + 1) / 2.0) / 1.0 / N;
 }
 
@@ -126,11 +122,9 @@ std::vector<double> calc(std::vector<std::pair<int, double>> &label_pre,
 
   double acc = (tp + tn) / (tp + tn + fp + fn);
   double pre = 0.0, recall = 0.0;
-  if (tp + fp)
-    pre = tp / (tp + fp);
-  if (tp + fn)
-    recall = tp / (tp + fn);
+  if (tp + fp) pre = tp / (tp + fp);
+  if (tp + fn) recall = tp / (tp + fn);
   std::vector<double> ans = {acc, pre, recall};
   return ans;
 }
-} // namespace YCDL
+}  // namespace YCDL

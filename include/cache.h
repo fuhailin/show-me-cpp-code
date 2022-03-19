@@ -178,11 +178,6 @@ class LFUCache : public Cache<K, V> {
     freq_table.clear();
   }
 
-  size_t size() {
-    std::unique_lock<std::mutex> l(mu_);
-    return occ.size();
-  }
-
   int get(int key) {
     int res = -1;
     auto it = occ.find(key);

@@ -26,7 +26,7 @@ cc_binary(
         ":headers",
         "@boost",
         "@eigen_archive//:eigen3",
-        "@nlohmann_json//:json",
+        "@nlohmann_json_lib//:nlohmann_json",
         "@ps-lite//:ps-lite",
     ],
 )
@@ -41,7 +41,7 @@ cc_binary(
         ":headers",
         "@boost",
         "@eigen_archive//:eigen3",
-        "@nlohmann_json//:json",
+        "@nlohmann_json_lib//:nlohmann_json",
         "@ps-lite//:ps-lite",
     ],
 )

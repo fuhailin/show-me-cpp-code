@@ -6,8 +6,6 @@
 // This file demonstrates how to use the utility functions defined in
 // rocksdb/utilities/options_util.h to open a rocksdb database without
 // remembering all the rocksdb options.
-#include "rocksdb/options.h"
-
 #include <cstdio>
 #include <string>
 #include <vector>
@@ -15,6 +13,7 @@
 #include "rocksdb/cache.h"
 #include "rocksdb/compaction_filter.h"
 #include "rocksdb/db.h"
+#include "rocksdb/options.h"
 #include "rocksdb/slice.h"
 #include "rocksdb/table.h"
 #include "rocksdb/utilities/options_util.h"
@@ -67,24 +66,6 @@ int main() {
   bbt_opts.block_size = 32 * 1024;
   bbt_opts.block_cache = cache;
 
-  // // change to 4 seems better
-  bbt_opts.format_version = 4;
-  bbt_opts.index_block_restart_interval = 16;
-  //   if (this->block_cache == 0) {
-  //     bbt_opts.no_block_cache = true;
-  //   } else {
-  //     bbt_opts.block_cache = rocksdb::NewLRUCache(this->block_cache);
-  //   }
-  //   if (this->filter_bits_per_key > 0) {
-  //     options.optimize_filters_for_hits = true;
-  //     bbt_opts.filter_policy.reset(
-  //         rocksdb::NewBloomFilterPolicy(this->filter_bits_per_key, false));
-  //   }
-
-  // bbt_opts.block_size = this->block_size;
-  // options.table_factory.reset(new
-  // rocksdb::BlockBasedTableFactory(bbt_opts));
-
   // initialize column families options
   std::unique_ptr<CompactionFilter> compaction_filter;
   compaction_filter.reset(new DummyCompactionFilter());
@@ -100,5 +81,52 @@ int main() {
   s = DB::Open(Options(db_opt, cf_descs[0].options), kDBPath, &db);
   assert(s.ok());
 
+  // Create column family, and rocksdb will persist the options.
+  ColumnFamilyHandle* cf;
+  s = db->CreateColumnFamily(ColumnFamilyOptions(), "new_cf", &cf);
+  assert(s.ok());
+
+  // close DB
+  delete cf;
+  delete db;
+
+  // In the following code, we will reopen the rocksdb instance using
+  // the options file stored in the db directory.
+
+  // Load the options file.
+  DBOptions loaded_db_opt;
+  std::vector<ColumnFamilyDescriptor> loaded_cf_descs;
+  ConfigOptions config_options;
+  s = LoadLatestOptions(config_options, kDBPath, &loaded_db_opt,
+                        &loaded_cf_descs);
+  assert(s.ok());
+  assert(loaded_db_opt.create_if_missing == db_opt.create_if_missing);
+
+  // Initialize pointer options for each column family
+  for (size_t i = 0; i < loaded_cf_descs.size(); ++i) {
+    auto* loaded_bbt_opt =
+        loaded_cf_descs[0]
+            .options.table_factory->GetOptions<BlockBasedTableOptions>();
+    // Expect the same as BlockBasedTableOptions will be loaded form file.
+    assert(loaded_bbt_opt->block_size == bbt_opts.block_size);
+    // However, block_cache needs to be manually initialized as documented
+    // in rocksdb/utilities/options_util.h.
+    loaded_bbt_opt->block_cache = cache;
+  }
+  // In addition, as pointer options are initialized with default value,
+  // we need to properly initialized all the pointer options if non-defalut
+  // values are used before calling DB::Open().
+  assert(loaded_cf_descs[0].options.compaction_filter == nullptr);
+  loaded_cf_descs[0].options.compaction_filter = compaction_filter.get();
+
+  // reopen the db using the loaded options.
+  std::vector<ColumnFamilyHandle*> handles;
+  s = DB::Open(loaded_db_opt, kDBPath, loaded_cf_descs, &handles, &db);
+  assert(s.ok());
+
+  // close DB
+  for (auto* handle : handles) {
+    delete handle;
+  }
   delete db;
 }

@@ -1,4 +1,6 @@
 #pragma once
+#include <stdio.h>
+
 #include <Eigen/Dense>
 #include <algorithm>
 #include <boost/algorithm/string.hpp>
@@ -14,20 +16,18 @@
 #include <memory>
 #include <random>
 #include <sstream>
-#include <stdio.h>
 #include <string>
 #include <type_traits>
 #include <unordered_map>
 #include <vector>
 
 #include "eigen_func.h"
+#include "gflags/gflags.h"
+#include "glog/logging.h"
 #include "hash_method.h"
 #include "nlohmann/json.hpp"
 #include "ps/ps.h"
 #include "tools.h"
-#include <fstream>
-#include "glog/logging.h"
-#include "gflags/gflags.h"
 
 namespace YCDL {
 typedef uint64_t ull;
@@ -39,4 +39,4 @@ inline nlohmann::json &global_conf() {
 }
 
 class Layer {};
-} // namespace YCDL
+}  // namespace YCDL

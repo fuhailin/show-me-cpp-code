@@ -3,7 +3,7 @@
 #include "bits/stdc++.h"
 
 TEST(Cache, LRU_Cache) {
-  LRUCache<int, int>* lRUCache = new LRUCache<int, int>(2);
+  Cache<int, int>* lRUCache = new LRUCache<int, int>(2);
   lRUCache->put(1, 1);             // 缓存是 {1=1}
   lRUCache->put(2, 2);             // 缓存是 {1=1, 2=2}
   EXPECT_EQ(1, lRUCache->get(1));  // 返回 1
@@ -21,7 +21,7 @@ TEST(Cache, LFU_Cache) {
   // obj->put(1, 1);
   // obj->put(2, 2);
   // int param_2 = obj->get(1);
-  LFUCache<int, int>* lfu = new LFUCache<int, int>(2);
+  Cache<int, int>* lfu = new LFUCache<int, int>(2);
   lfu->put(1, 1);             // cache=[1,_], cnt(1)=1
   lfu->put(2, 2);             // cache=[2,1], cnt(2)=1, cnt(1)=1
   EXPECT_EQ(1, lfu->get(1));  // 返回 1

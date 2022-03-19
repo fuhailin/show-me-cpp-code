@@ -8,7 +8,8 @@
 
 namespace YCDL {
 void initialize() {
-  RegisterLayer<loss_func_layer, sigmoid_cross_entroy_with_logits>("sigmoid_cross_entroy_with_logits");
+  RegisterLayer<loss_func_layer, sigmoid_cross_entroy_with_logits>(
+      "sigmoid_cross_entroy_with_logits");
   RegisterLayer<loss_func_layer, mse>("mse");
   RegisterLayer<loss_func_layer, sigmoid_mse>("sigmoid_mse");
   RegisterLayer<Optimizer, SGD>("SGD");
@@ -20,4 +21,4 @@ void initialize() {
   RegisterLayer2<Layer, AdagradServer>("DistAdagrad");
   RegisterLayer2<Layer, SGDServer>("DistSGD");
 }
-} // namespace YCDL
+}  // namespace YCDL

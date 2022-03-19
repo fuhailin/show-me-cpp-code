@@ -1,1 +1,1 @@
-bazel run simple_app --run_under='export PS_VERBOSE=1 DMLC_NUM_SERVER=1 DMLC_NUM_WORKER=1 DMLC_PS_ROOT_URI='127.0.0.1' DMLC_PS_ROOT_PORT=8000 DMLC_ROLE='server' && '
+bazel run test_simple_app --run_under='export PS_VERBOSE=1 DMLC_NUM_SERVER=1 DMLC_NUM_WORKER=1 DMLC_PS_ROOT_URI='127.0.0.1' DMLC_PS_ROOT_PORT=8000 DMLC_ROLE='server' && '

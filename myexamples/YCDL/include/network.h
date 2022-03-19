@@ -11,7 +11,7 @@
 
 namespace YCDL {
 class Network {
-public:
+ public:
   std::shared_ptr<Optimizer> _optimizer;
   std::vector<std::shared_ptr<MatrixValue>> _matrix_vec;
   std::vector<std::shared_ptr<NNLayer>> _layer_vec;
@@ -69,7 +69,6 @@ public:
   }
 
   void forward(std::vector<Instance> &instances, bool is_train = true) {
-
     std::vector<std::vector<SLOT_ID_FEAS>> feas_lines;
     std::vector<double> labels;
     for (int j = 0; j < instances.size(); j++) {
@@ -111,7 +110,6 @@ public:
   }
 
   void stat(std::vector<Instance> &instances) {
-
     auto label = global_matrix_value().get_matrix_value("label");
     auto predict = global_matrix_value().get_matrix_value("predict");
     forward(instances, false);
@@ -124,8 +122,7 @@ public:
       for (int j = 0; j < label->_val.cols(); j++) {
         double val = label->_val(i, j) - predict->_val(i, j);
         int l = 0;
-        if (label->_val(i, j) > 0.5)
-          l = 1;
+        if (label->_val(i, j) > 0.5) l = 1;
         label_pre.push_back(std::make_pair(l, predict->_val(i, j)));
         loss += val * val / 2;
         label_avg += label->_val(i, j);
@@ -143,4 +140,4 @@ public:
               << ", label_avg: " << label_avg;
   }
 };
-} // namespace YCDL
+}  // namespace YCDL
