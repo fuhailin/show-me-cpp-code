@@ -39,6 +39,9 @@ cc_library(
         "@spdlog",
         "@uuid",
         "@zlib",
+        "@ps-lite//:ps-lite",
+        "@com_github_google_leveldb//:leveldb",
+        "@com_github_facebook_rocksdb//:rocksdb",
     ],
 )
 
@@ -54,6 +57,7 @@ build_test(
     name = "build_test",
     targets = [
         ":build_test_mac",
+        "@com_github_jedisct1_libsodium//:sodium",
     ],
 )
 
@@ -84,5 +88,8 @@ compilation_database(
         "//bits:stdcxx",
         "//include:cache_test",
         # ":build_test_mac",
+        "//myexamples/test_pslite:test_simple_app",
+        "//myexamples/test_db/leveldb:leveldb_test",
+        "//myexamples/test_db/rocksdb:simple_example",
     ],
 )
